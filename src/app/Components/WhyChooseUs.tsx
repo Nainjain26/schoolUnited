@@ -1,12 +1,57 @@
-import Head from 'next/head';
-import { FaBook, FaChartLine, FaUsers, FaChalkboardTeacher } from 'react-icons/fa';
+"use client";
+import Head from "next/head";
+import {
+  FaBook,
+  FaChartLine,
+  FaUsers,
+  FaChalkboardTeacher,
+} from "react-icons/fa";
+import React from "react";
+import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
+  const stats = [
+    { number: 40, label: "Cities", suffix: "+" },
+    { number: 100, label: "Institutions", suffix: "+" },
+    { number: 40000, label: "Students", suffix: "+" },
+  ];
+
+  // Features data array
+  const features = [
+    {
+      icon: <FaBook />,
+      title: "Whole-Child Approach",
+      description:
+        "We go beyond academics to nurture every student's mind, emotions, and identity.",
+    },
+    {
+      icon: <FaChartLine />,
+      title: "Science Meets Soul",
+      description:
+        "Our programs blend neuroscience, psychology, and purpose-driven learning to create real transformation",
+    },
+    {
+      icon: <FaUsers />,
+      title: "Partnership, Not Preaching",
+      description:
+        "We collaborate with schools, teachers, and parents — empowering the entire ecosystem, not just students.",
+    },
+    {
+      icon: <FaChalkboardTeacher />,
+      title: "Future-Ready, Not Factory-Made",
+      description:
+        "We equip learners with self-awareness, resilience, and 21st-century skills that exams can't measure.",
+    },
+  ];
+
   return (
-    <div className='container mx-auto'>
+    <div className="container mx-auto">
       <Head>
         <title>Why Choose Scholar United? | Empowering Future Leaders</title>
-        <meta name="description" content="Discover why Scholar United is the premier choice for personalized education and academic success." />
+        <meta
+          name="description"
+          content="Discover why Scholar United is the premier choice for personalized education and academic success."
+        />
       </Head>
       <section className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-16">
         {/* Header Section */}
@@ -21,73 +66,94 @@ export default function WhyChooseUs() {
 
         {/* Grid Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
-          {/* Personalized Learning Paths */}
-          <div className="relative bg-gray-900 p-6 rounded-lg border border-[#FFD700]/30 overflow-hidden group hover:bg-[#6B7280] transition-all duration-500 hover:shadow-xl hover:scale-105">
-            {/* Subtle Pulse Background */}
-            <div className="absolute inset-0 bg-[#FFD700]/10 animate-pulseSlow rounded-lg group-hover:bg-[#6B7280]/20" />
-            <div className="relative flex justify-center mb-4">
-              <FaBook className="w-12 h-12 text-[#FFD700] animate-float group-hover:text-white" />
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="relative bg-gray-900 p-6 rounded-lg border border-[#FFD700]/30 overflow-hidden group hover:bg-[#6B7280] transition-all duration-500 hover:shadow-xl hover:scale-105"
+            >
+              {/* Subtle Pulse Background */}
+              <div className="absolute inset-0 bg-[#FFD700]/10 animate-pulseSlow rounded-lg group-hover:bg-[#6B7280]/20" />
+              <div className="relative flex justify-center mb-4">
+                <div className="w-16 h-16 flex items-center justify-center text-[#FFD700] animate-float group-hover:text-white">
+                  {React.cloneElement(feature.icon, {
+                    className: "w-16 h-16 text-4xl",
+                  })}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-center mb-3 font-montserrat text-white group-hover:text-[#FFD700] transition-colors duration-300">
+                {feature.title}
+              </h3>
+              <p className="text-center text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
+                {feature.description}
+              </p>
             </div>
-            <h3 className="text-xl font-semibold text-center mb-3 font-montserrat text-white group-hover:text-[#FFD700] transition-colors duration-300">
-              Personalized Learning Paths
-            </h3>
-            <p className="text-center text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
-              Customized educational plans designed to unlock your unique potential and foster academic excellence.
-            </p>
-          </div>
-
-          {/* Real Impact on School Growth */}
-          <div className="relative bg-gray-900 p-6 rounded-lg border border-[#FFD700]/30 overflow-hidden group hover:bg-[#6B7280] transition-all duration-500 hover:shadow-xl hover:scale-105">
-            <div className="absolute inset-0 bg-[#FFD700]/10 animate-pulseSlow rounded-lg group-hover:bg-[#6B7280]/20" />
-            <div className="relative flex justify-center mb-4">
-              <FaChartLine className="w-12 h-12 text-[#FFD700] animate-float group-hover:text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-center mb-3 font-montserrat text-white group-hover:text-[#FFD700] transition-colors duration-300">
-              Real Impact on School Growth
-            </h3>
-            <p className="text-center text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
-              Achieve measurable success with strategies that drive your academic and personal growth.
-            </p>
-          </div>
-
-          {/* 1000+ Students Empowered */}
-          <div className="relative bg-gray-900 p-6 rounded-lg border border-[#FFD700]/30 overflow-hidden group hover:bg-[#6B7280] transition-all duration-500 hover:shadow-xl hover:scale-105">
-            <div className="absolute inset-0 bg-[#FFD700]/10 animate-pulseSlow rounded-lg group-hover:bg-[#6B7280]/20" />
-            <div className="relative flex justify-center mb-4">
-              <FaUsers className="w-12 h-12 text-[#FFD700] animate-float group-hover:text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-center mb-3 font-montserrat text-white group-hover:text-[#FFD700] transition-colors duration-300">
-              1000+ Students Empowered
-            </h3>
-            <p className="text-center text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
-              Join a vibrant community of successful graduates thriving in their academic journeys.
-            </p>
-          </div>
-
-          {/* Experienced Mentors & Trainers */}
-          <div className="relative bg-gray-900 p-6 rounded-lg border border-[#FFD700]/30 overflow-hidden group hover:bg-[#6B7280] transition-all duration-500 hover:shadow-xl hover:scale-105">
-            <div className="absolute inset-0 bg-[#FFD700]/10 animate-pulseSlow rounded-lg group-hover:bg-[#6B7280]/20" />
-            <div className="relative flex justify-center mb-4">
-              <FaChalkboardTeacher className="w-12 h-12 text-[#FFD700] animate-float group-hover:text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-center mb-3 font-montserrat text-white group-hover:text-[#FFD700] transition-colors duration-300">
-              Experienced Mentors & Trainers
-            </h3>
-            <p className="text-center text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
-              Learn from industry-leading experts dedicated to your success with proven expertise.
-            </p>
-          </div>
+          ))}
         </div>
 
-        {/* Call to Action Button */}
-        <div className="mt-16">
-          <a
-            href="/contact"
-            className="relative bg-[#FFD700] text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#D4A017] transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 overflow-hidden group"
-          >
-            <span className="relative z-10">Discover More</span>
-            <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
+        {/* Enhanced Statistics Section */}
+        <div className="mt-12 mb-12 w-full">
+          <div className="relative max-w-5xl mx-auto px-4">
+            {/* Background Decorative Elements */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFD700]/5 via-transparent to-[#FFD700]/5 rounded-3xl blur-xl"></div>
+
+            <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 py-12 px-6">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.2,
+                  }}
+                >
+                  <div className="text-center transform transition-all duration-300 hover:scale-105">
+                    {/* Decorative Background Circle */}
+                    <div className="absolute inset-0 bg-[#FFD700]/10 rounded-full blur-2xl group-hover:bg-[#FFD700]/20 transition-all duration-500"></div>
+
+                    {/* Content */}
+                    <div className="relative">
+                      <motion.div
+                        className="text-5xl xs:text-6xl sm:text-7xl font-bold text-[#FFD700] mb-4"
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.8,
+                          delay: index * 0.2,
+                        }}
+                      >
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 1,
+                            delay: index * 0.2 + 0.5,
+                          }}
+                        >
+                          {stat.number.toLocaleString()}
+                          {stat.suffix}
+                        </motion.span>
+                      </motion.div>
+
+                      <h3 className="text-xl xs:text-2xl font-semibold text-white mb-3 tracking-wider">
+                        {stat.label}
+                      </h3>
+
+                      {/* Animated Underline */}
+                      <div className="relative h-1 w-16 mx-auto">
+                        <div className="absolute inset-0 bg-[#FFD700] rounded-full"></div>
+                        <div className="absolute inset-0 bg-white/50 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>

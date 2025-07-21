@@ -1,52 +1,80 @@
 "use client";
 import Image from "next/image";
-import { FaGraduationCap, FaGlobe, FaStar,FaPhone} from "react-icons/fa";
+import { FaGraduationCap, FaGlobe, FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
   // Animation variants for images
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: "easeOut",
-        staggerChildren: 0.2 
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   // Animation for feature cards
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
     },
-    hover: { 
+    hover: {
       y: -10,
       boxShadow: "0 15px 30px rgba(251, 191, 36, 0.3)",
       backgroundColor: "rgba(255, 255, 255, 0.95)",
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
   };
 
   // Animation for text content
   const textVariants = {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      transition: { 
-        duration: 0.8, 
-        staggerChildren: 0.2 
-      }
-    }
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.2,
+      },
+    },
   };
+
+  // Feature cards data
+  const features = [
+    {
+      icon: (
+        <FaGraduationCap className="text-yellow-500 text-xl sm:text-2xl mt-1" />
+      ),
+      title: "Wholeness First",
+      desc: "Education = academics + experience + self-worth",
+    },
+    {
+      icon: <FaGlobe className="text-yellow-500 text-xl sm:text-2xl mt-1" />,
+      title: "Discovery Over Conformity",
+      desc: "Every child has a unique path — we honor it",
+    },
+    {
+      icon: (
+        <FaGraduationCap className="text-yellow-500 text-xl sm:text-2xl mt-1" />
+      ),
+      title: "Shared Evolution",
+      desc: "Real change happens when everyone grows together",
+    },
+    {
+      icon: <FaGlobe className="text-yellow-500 text-xl sm:text-2xl mt-1" />,
+      title: "Integrity In Impact",
+      desc: "We choose depth over display — our work is driven by purpose, not performance.",
+    },
+  ];
 
   return (
     <div className="relative container mx-auto overflow-hidden">
@@ -63,15 +91,21 @@ export default function AboutSection() {
           animate={{
             d: [
               "M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
-              "M0,128L48,144C96,160,192,192,288,181.3C384,171,480,128,576,117.3C672,107,768,128,864,149.3C960,171,1056,192,1152,181.3C1248,171,1344,128,1392,106.7L1440,85L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ]
+              "M0,128L48,144C96,160,192,192,288,181.3C384,171,480,128,576,117.3C672,107,768,128,864,149.3C960,171,1056,192,1152,181.3C1248,171,1344,128,1392,106.7L1440,85L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
+            ],
           }}
           transition={{ repeat: Infinity, repeatType: "reverse", duration: 10 }}
         />
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#fefcbf", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#f6ad55", stopOpacity: 1 }} />
+            <stop
+              offset="0%"
+              style={{ stopColor: "#fefcbf", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#f6ad55", stopOpacity: 1 }}
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -130,20 +164,6 @@ export default function AboutSection() {
             </div>
 
             {/* Animated Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute bottom-10 sm:bottom-12 left-6 sm:left-8 bg-yellow-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg z-10 flex items-center gap-2"
-            >
-              <motion.div
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                transition={{ duration: 0.3 }}
-              >
-                <FaStar className="text-white" />
-              </motion.div>
-              20 Years of Quality Service
-            </motion.div>
           </motion.div>
 
           {/* Right: Text Content */}
@@ -158,77 +178,59 @@ export default function AboutSection() {
               variants={textVariants}
               className="text-yellow-500 font-semibold text-xs sm:text-sm uppercase tracking-wide"
             >
-              About Us
+              What we are doing
             </motion.p>
             <motion.h2
               variants={textVariants}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 leading-tight"
             >
-              Our Education System <span className="text-yellow-500">Inspires</span> You More.
+              {`"Every student is a story waiting to`}
+              <span className="text-yellow-500"> unfold</span>
+              {`!"`}
             </motion.h2>
             <motion.p
               variants={textVariants}
-              className="text-gray-600 text-sm sm:text-base leading-relaxed"
+              className="text-gray-200 text-sm sm:text-base leading-relaxed"
             >
-              Scholars United is committed to empowering students and schools through personalized learning methods, community support, and innovative educational services.
+              Scholars United is committed to empowering students and schools
+              through personalized learning methods, community support, and
+              innovative educational services.
             </motion.p>
 
-             {/* Feature Cards with Classy Hover Effects */}
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <motion.div
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                whileHover="hover"
-                viewport={{ once: true }}
-                className="relative flex gap-3 sm:gap-4 items-start p-4 border rounded-lg bg-white bg-opacity-80 backdrop-blur-sm overflow-hidden"
-              >
-                {/* Sparkle Effect on Hover */}
+            {/* Feature Cards with Classy Hover Effects */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {features.map((feature, index) => (
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-0"
-                  whileHover={{ opacity: 0.5, x: ["-100%", "100%"] }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                />
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
+                  key={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                  className="relative flex gap-3 sm:gap-4 items-start p-4 border rounded-lg bg-white bg-opacity-80 backdrop-blur-sm overflow-hidden"
                 >
-                  <FaGraduationCap className="text-yellow-500 text-xl sm:text-2xl mt-1" />
+                  {/* Sparkle Effect on Hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-0"
+                    whileHover={{ opacity: 0.5, x: ["-100%", "100%"] }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  />
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {feature.icon}
+                  </motion.div>
+                  <div>
+                    <h4 className="font-semibold text-gray-700 text-base sm:text-lg">
+                      {feature.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-gray-600">
+                      {feature.desc}
+                    </p>
+                  </div>
                 </motion.div>
-                <div>
-                  <h4 className="font-semibold text-base sm:text-lg">Education Services</h4>
-                  <p className="text-xs sm:text-sm text-gray-600">
-                    We provide tailor-made educational tools and growth plans.
-                  </p>
-                </div>
-              </motion.div>
-              <motion.div
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                whileHover="hover"
-                viewport={{ once: true }}
-                className="relative flex gap-3 sm:gap-4 items-start p-4 border rounded-lg bg-white bg-opacity-80 backdrop-blur-sm overflow-hidden"
-              >
-                {/* Sparkle Effect on Hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200 to-transparent opacity-0"
-                  whileHover={{ opacity: 0.5, x: ["-100%", "100%"] }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                />
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaGlobe className="text-yellow-500 text-xl sm:text-2xl mt-1" />
-                </motion.div>
-                <div>
-                  <h4 className="font-semibold text-base sm:text-lg">International Hub</h4>
-                  <p className="text-xs sm:text-sm text-gray-600">
-                    Bringing learning communities together globally.
-                  </p>
-                </div>
-              </motion.div>
+              ))}
             </div>
 
             {/* Highlight Box */}
@@ -236,12 +238,12 @@ export default function AboutSection() {
               variants={textVariants}
               className="p-4 bg-gray-100 rounded-lg border-l-4 border-yellow-500 text-gray-700 text-xs sm:text-sm shadow-sm"
             >
-              “It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.”
+              {`"Education is not the molding of minds, but the unfolding of selves."`}
             </motion.div>
 
             {/* Button & Call */}
-           {/* Button & Call */}
-           <motion.div
+            {/* Button & Call */}
+            <motion.div
               variants={textVariants}
               className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4"
             >
@@ -258,23 +260,6 @@ export default function AboutSection() {
                 </motion.div>
                 Discover More
               </motion.button>
-              <div className="text-xs sm:text-sm text-gray-700 flex items-center gap-2">
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaPhone className="text-green-600" />
-                </motion.div>
-                <div>
-                  <p className="font-medium">Call Now</p>
-                  <a
-                    href="tel:+911234567890"
-                    className="text-green-600 font-bold hover:underline"
-                  >
-                    +91 123 654 7890
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         </div>

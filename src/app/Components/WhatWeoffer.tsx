@@ -3,66 +3,72 @@ import { FaSchool, FaUserGraduate } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 
-type ParticleSVGProps = {
+// Gold color for theme
+const GOLD = "#FFD700";
+
+// ParticleSVG updated to gold
+const ParticleSVG = ({
+  x,
+  y,
+  delay,
+}: {
   x: string;
   y: string;
   delay: number;
-};
+}) => (
+  <motion.svg
+    className="absolute w-12 h-12 text-[#FFD700] opacity-30"
+    viewBox="0 0 50 50"
+    fill="currentColor"
+    style={{ top: y, left: x }}
+    animate={{
+      y: [0, -20, 0],
+      opacity: [0.3, 0.6, 0.3],
+      scale: [1, 1.2, 1],
+    }}
+    transition={{ duration: 4, repeat: Infinity, delay, ease: "easeInOut" }}
+  >
+    <circle cx="25" cy="25" r="10" />
+  </motion.svg>
+);
 
 export default function ProgramsOverview() {
-  const [selected, setSelected] = useState<number|null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
 
   const services = [
     {
       title: "Skill Development",
       content:
         "Scholar Unites offers training programs that focus on holistic skill development from communication to tech literacy.",
-      icon: <FaUserGraduate className="text-indigo-600" />,
+      icon: <FaUserGraduate className="text-[#FFD700]" />,
     },
     {
       title: "Counseling & Guidance",
       content:
         "Personal and career counseling by experienced professionals to guide students and educators on the right path.",
-      icon: <FaSchool className="text-indigo-600" />,
+      icon: <FaSchool className="text-[#FFD700]" />,
     },
     {
       title: "Community Engagement",
       content:
         "Workshops and community-based programs designed to foster student growth and institutional awareness.",
-      icon: <FaUserGraduate className="text-indigo-600" />,
+      icon: <FaUserGraduate className="text-[#FFD700]" />,
     },
     {
       title: "Digital Literacy",
       content:
         "Providing tools, courses, and coaching to help bridge the digital divide in education.",
-      icon: <FaSchool className="text-indigo-600" />,
+      icon: <FaSchool className="text-[#FFD700]" />,
     },
   ];
-
-  // SVG Particle Animation
-  const ParticleSVG = ({ x, y, delay }: ParticleSVGProps) => (
-    <motion.svg
-      className="absolute w-12 h-12 text-amber-300 opacity-50"
-      viewBox="0 0 50 50"
-      fill="currentColor"
-      style={{ top: y, left: x }}
-      animate={{
-        y: [0, -20, 0],
-        opacity: [0.5, 1, 0.5],
-        scale: [1, 1.2, 1],
-      }}
-      transition={{ duration: 4, repeat: Infinity, delay, ease: "easeInOut" }}
-    >
-      <circle cx="25" cy="25" r="10" />
-    </motion.svg>
-  );
 
   // Animated Heading Letters
   const headingText = "What We Offer".split("");
   const headingVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i:number) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" },
@@ -72,21 +78,21 @@ export default function ProgramsOverview() {
   return (
     <div className="container mx-auto">
       {/* What We Offer Section */}
-      <section className="relative py-20 px-4 md:px-20 bg-gradient-to-br from-indigo-50 via-gray-50 to-amber-50 overflow-hidden">
+      <section className="relative py-20 px-4 md:px-20 bg-black text-white overflow-hidden min-h-screen">
         {/* Background Animations */}
         <motion.div
-          className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-indigo-500 opacity-60 rounded-full blur-3xl"
+          className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#FFD700] opacity-10 rounded-full blur-3xl"
           animate={{ scale: [1, 1.4, 1], rotate: [0, 45, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-[-150px] right-[-150px] w-[600px] h-[600px] bg-amber-400 opacity-20 rounded-full blur-3xl"
+          className="absolute bottom-[-150px] right-[-150px] w-[600px] h-[600px] bg-[#FFD700] opacity-10 rounded-full blur-3xl"
           animate={{ scale: [1, 1.5, 1], rotate: [0, -45, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-transparent to-indigo-100 opacity-10"
-          animate={{ opacity: [0.1, 0.3, 0.1] }}
+          className="absolute inset-0 bg-gradient-to-t from-transparent to-[#FFD700] opacity-5"
+          animate={{ opacity: [0.05, 0.15, 0.05] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         {/* Floating Particles */}
@@ -109,7 +115,7 @@ export default function ProgramsOverview() {
                   custom={i}
                   variants={headingVariants}
                   className={`text-5xl md:text-6xl font-extrabold ${
-                    letter === "O" ? "text-amber-500" : "text-gray-900"
+                    letter === "O" ? "text-[#FFD700]" : "text-white"
                   } ${letter === " " ? "w-4" : ""}`}
                 >
                   {letter}
@@ -120,9 +126,10 @@ export default function ProgramsOverview() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="text-gray-700 max-w-3xl mx-auto text-lg md:text-xl mt-6 font-light"
+              className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl mt-6 font-light"
             >
-              Discover transformative services and opportunities designed to empower schools and students with Scholar Unites.
+              Discover transformative services and opportunities designed to
+              empower schools and students with Scholar Unites.
             </motion.p>
           </div>
 
@@ -138,11 +145,11 @@ export default function ProgramsOverview() {
                 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-indigo-300 opacity-0 rounded-br-3xl rounded-tl-3xl group-hover:opacity-20"
+                  className="absolute inset-0 bg-[#FFD700] opacity-0 rounded-br-3xl rounded-tl-3xl group-hover:opacity-10"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <motion.div
-                  className="absolute -inset-2 border-2 border-transparent group-hover:border-amber-300 rounded-br-3xl rounded-tl-3xl"
+                  className="absolute -inset-2 border-2 border-transparent group-hover:border-[#FFD700] rounded-br-3xl rounded-tl-3xl"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <Image
@@ -150,10 +157,10 @@ export default function ProgramsOverview() {
                   width={200}
                   height={200}
                   alt="Education Insight"
-                  className="rounded-br-3xl rounded-tl-3xl shadow-xl group-hover:shadow-2xl transition-shadow duration-300 z-10"
+                  className="rounded-br-3xl rounded-tl-3xl shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                 />
                 <motion.video
-                  className="rounded-3xl mt-8 shadow-xl group-hover:shadow-2xl transition-shadow duration-300 z-10"
+                  className="rounded-3xl mt-8 shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                   width="100%"
                   autoPlay
                   loop
@@ -175,11 +182,11 @@ export default function ProgramsOverview() {
                 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-amber-300 opacity-0 rounded-full group-hover:opacity-20"
+                  className="absolute inset-0 bg-[#FFD700] opacity-0 rounded-full group-hover:opacity-10"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <motion.div
-                  className="absolute -inset-2 border-4 border-transparent group-hover:border-indigo-300 rounded-full"
+                  className="absolute -inset-2 border-4 border-transparent group-hover:border-[#FFD700] rounded-full"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <Image
@@ -187,7 +194,7 @@ export default function ProgramsOverview() {
                   width={250}
                   height={250}
                   alt="Learning Hub"
-                  className="rounded-full border-4 border-amber-100 shadow-2xl group-hover:shadow-amber-400 transition-shadow duration-300 z-10"
+                  className="rounded-full border-4 border-[#FFD700]/20 shadow-2xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                 />
               </motion.div>
               <motion.div
@@ -199,15 +206,15 @@ export default function ProgramsOverview() {
                 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-indigo-300 opacity-0 rounded-3xl group-hover:opacity-20"
+                  className="absolute inset-0 bg-[#FFD700] opacity-0 rounded-3xl group-hover:opacity-10"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <motion.div
-                  className="absolute -inset-2 border-2 border-transparent group-hover:border-amber-300 rounded-3xl"
+                  className="absolute -inset-2 border-2 border-transparent group-hover:border-[#FFD700] rounded-3xl"
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
                 <motion.video
-                  className="rounded-3xl shadow-xl group-hover:shadow-2xl transition-shadow duration-300 z-10"
+                  className="rounded-3xl shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                   width="100%"
                   autoPlay
                   loop
@@ -224,7 +231,7 @@ export default function ProgramsOverview() {
                   width={300}
                   height={300}
                   alt="Community Growth"
-                  className="rounded-3xl mt-8 shadow-xl group-hover:shadow-2xl transition-shadow duration-300 z-10"
+                  className="rounded-3xl mt-8 shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                 />
               </motion.div>
             </div>
@@ -243,30 +250,55 @@ export default function ProgramsOverview() {
                   }}
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)",
-                    background: "linear-gradient(to right, #ffffff, #f8faff)",
+                    boxShadow: `0 20px 40px ${GOLD}33`,
+                    background: `linear-gradient(to right, #23272a, #111112)`, // dark gradient only
                   }}
-                  className={`relative bg-white p-4 rounded-2xl shadow-xl border-2 border-gray-100 transition-all duration-400 cursor-pointer overflow-hidden ${
-                    selected === index ? "bg-indigo-50 border-indigo-200" : ""
+                  className={`relative bg-gray-900 p-4 rounded-2xl shadow-xl border-2 border-[#FFD700]/30 transition-all duration-400 cursor-pointer overflow-hidden ${
+                    selected === index ? "bg-[#23272a] border-[#FFD700]" : ""
                   }`}
                   onClick={() => setSelected(selected === index ? null : index)}
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-200 to-amber-100 opacity-0"
-                    whileHover={{ opacity: 0.25 }}
+                    className="absolute inset-0 bg-[#FFD700]/10 opacity-0 group-hover:opacity-20"
+                    whileHover={{ opacity: 0.15 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   />
-                  <div className="flex items-center space-x-5">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="text-3xl"
+                  <div className="flex items-center space-x-5 justify-between">
+                    <div className="flex items-center space-x-5">
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.2 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="text-3xl text-[#FFD700]"
+                      >
+                        {item.icon}
+                      </motion.div>
+                      <h3 className="text-2xl font-semibold text-white group-hover:text-[#FFD700]">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <button
+                      aria-label={
+                        selected === index
+                          ? `Collapse ${item.title}`
+                          : `Expand ${item.title}`
+                      }
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelected(selected === index ? null : index);
+                      }}
+                      className="ml-2 focus:outline-none"
+                      tabIndex={0}
                     >
-                      {item.icon}
-                    </motion.div>
-                    <h3 className="text-2xl font-semibold text-gray-900">
-                      {item.title}
-                    </h3>
+                      <motion.span
+                        animate={{ rotate: selected === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="inline-block"
+                      >
+                        <FaChevronDown
+                          className={`text-[#FFD700] text-xl transition-transform duration-300`}
+                        />
+                      </motion.span>
+                    </button>
                   </div>
                   <AnimatePresence>
                     {selected === index && (
@@ -275,7 +307,7 @@ export default function ProgramsOverview() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="text-gray-600 mt-5 text-base leading-relaxed"
+                        className="text-gray-300 mt-5 text-base leading-relaxed"
                       >
                         {item.content}
                       </motion.p>

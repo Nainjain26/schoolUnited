@@ -75,14 +75,14 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className={`sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-md transition-shadow duration-300 ${
+      className={`sticky top-0 z-50 bg-black bg-opacity-95 backdrop-blur-md transition-shadow duration-300 ${
         isScrolled ? "shadow-lg" : "shadow-sm"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
@@ -95,7 +95,7 @@ export default function Navbar() {
             />
           </motion.div>
           <span className="text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700">
-            Scholar <br/>United
+            ScholarUnited
           </span>
         </Link>
 
@@ -109,7 +109,7 @@ export default function Navbar() {
                   className={`text-sm lg:text-base font-medium transition-colors ${
                     pathname === link.href
                       ? "text-red-600"
-                      : "text-gray-700 group-hover:text-red-600"
+                      : "text-gray-100 group-hover:text-red-600"
                   }`}
                 >
                   {link.name}
@@ -126,23 +126,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <motion.div
-          className="hidden md:block"
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-        >
-          <Link
-            href="/Contact"
-            className="bg-gradient-to-r from-indigo-600 to-red-600 text-white px-4 sm:px-5 lg:px-6 py-2 rounded-full font-medium shadow-sm flex items-center gap-2"
-          >
-            <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.3 }}>
-              <FiStar />
-            </motion.div>
-            Join Now
-          </Link>
-        </motion.div>
+        
 
         {/* Mobile Toggle */}
         <button

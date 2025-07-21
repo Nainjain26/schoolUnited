@@ -5,6 +5,7 @@ import ProgramsOverview from "./Components/ProgramsOverview";
 import WhyChooseUs from "./Components/WhyChooseUs";
 import WhatWeOffer from "./Components/WhatWeoffer";
 import TestimonialCarousel from "./Components/Testimonials";
+import FAQAccordion from "./Components/FAQAccordion";
 
 
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
     <ProgramsOverview/>
     <WhyChooseUs/>
     <WhatWeOffer/>
+   
     <TestimonialCarousel/>
+    <FAQAccordion/>
     </>
   );
 }

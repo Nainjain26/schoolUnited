@@ -1,181 +1,239 @@
-'use client';
+"use client";
 
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
-import { useState } from 'react';
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState } from "react";
+
+// Gold floating particle SVG
+function GoldParticle({
+  x,
+  y,
+  size = 100,
+}: {
+  x: string;
+  y: string;
+  size?: number;
+}) {
+  return (
+    <svg
+      className="absolute opacity-20 animate-float"
+      style={{ left: x, top: y, width: size, height: size, zIndex: 0 }}
+      viewBox="0 0 100 100"
+      fill="none"
+    >
+      <defs>
+        <radialGradient
+          id="gold-gradient-t"
+          cx="50%"
+          cy="50%"
+          r="50%"
+          fx="50%"
+          fy="50%"
+        >
+          <stop offset="0%" stopColor="#FFD700" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="50" fill="url(#gold-gradient-t)" />
+    </svg>
+  );
+}
 
 const testimonials = [
   {
-    quote: "Scholars United helped our school implement a student-centric approach. The transformation has been incredible!",
-    name: "Anita Verma",
-    title: "Principal, Sunrise Public School",
-    image: "/a5.jpg",
-    rating: 5,
-    date: "January 10, 2024"
+    quote:
+      "Scolars United doesn’t just support schools — it helps us evolve. Their programs redefined how we approach student growth beyond the classroom.",
+    name: "R. Mehra",
+    title: "Principal",
   },
   {
-    quote: "The hostel development support from Scholars United was both practical and thoughtful. Students feel more at home now.",
-    name: "Rajeev Mehta",
-    title: "Director, Green Valley Academy",
-    image: "/a2.jpg",
-    rating: 4,
-    date: "February 5, 2024"
+    quote:
+      "The Infinity Code was a turning point for our students. We witnessed emotional growth, self-reflection, and confidence like never before.",
+    name: "Dr. Anjali Kumar",
+    title: "Head of School",
   },
   {
-    quote: "Their documentation and process framework made our school inspections stress-free and well-organized.",
-    name: "Pooja Nair",
-    title: "Academic Coordinator, Harmony School",
-    image: "/a3.jpg",
-    rating: 5,
-    date: "March 12, 2024"
+    quote:
+      "Scolars United brings a rare blend of innovation, empathy, and scientific insight. Their programs are not just relevant — they are essential for the next generation of learners.",
+    name: "Mrs. Neelam Joshi",
+    title: "Principal",
   },
   {
-    quote: "The personalized learning plans helped our students perform better in exams and boosted their confidence.",
-    name: "Sandeep Khanna",
-    title: "Vice Principal, Scholars Academy",
-    image: "/a4.jpg",
-    rating: 5,
-    date: "March 20, 2024"
+    quote:
+      "Our association with Scolars United has transformed the way we define student success. It’s no longer just about marks — it’s about mindset, emotional maturity, and self-leadership.",
+    name: "Mr. R. N. Pillai",
+    title: "Principal",
   },
   {
-    quote: "Scholars United brought structure, clarity, and growth to our school's operations. Highly recommended.",
-    name: "Reema Joshi",
-    title: "Head of School, Blossom International",
-    image: "/a5.jpg",
-    rating: 5,
-    date: "April 3, 2024"
-  }
+    quote:
+      "For the first time, my son came home from a program and said, ‘I finally know who I am.’ That’s the kind of impact Scolars United creates.",
+    name: "Meera Nair",
+    title: "Parent, Class 10 student",
+  },
+  {
+    quote:
+      "Their parent sessions helped me truly see my child — not just as a student, but as a person with emotions, dreams, and a unique pace of growth.",
+    name: "Ashish Ghosh",
+    title: "Parent, Class 8 student",
+  },
+  {
+    quote:
+      "Through Scolars United’s teacher training, I reconnected with why I became an educator in the first place. It’s no longer just teaching — it’s mentoring.",
+    name: "Anupama Sen",
+    title: "English Teacher",
+  },
+  {
+    quote:
+      "Their Guide program made me realize how important emotional literacy is in the classroom. It changed how I interact with every student.",
+    name: "Rakesh Verma",
+    title: "Senior Science Faculty",
+  },
+  {
+    quote:
+      "The Infinity Code felt like a mirror I’d never looked into. It helped me find answers I didn’t know I was searching for.",
+    name: "Aanya M.",
+    title: "Class 11",
+  },
+  {
+    quote:
+      "After the Quantum Key program, I understand how to use tech smartly, not just blindly. It made me feel in control, not overwhelmed.",
+    name: "Kartik S.",
+    title: "Class 9",
+  },
+  {
+    quote:
+      "This wasn’t like school at all — it was better. I could be myself, talk about real things, and actually learn how my brain works.",
+    name: "Tanya K.",
+    title: "Class 10",
+  },
+  {
+    quote:
+      "They didn’t tell us what to think. They showed us how to think, feel, and grow. I wish every school had this.",
+    name: "Ishaan D.",
+    title: "Class 12",
+  },
 ];
 
-
 export default function TestimonialCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
-    slideChanged(s) {
-      setCurrentSlide(s.track.details.rel);
+    slideChanged() {
+      // setCurrentSlide(s.track.details.rel); // Removed unused variable
     },
     created() {
       setLoaded(true);
     },
     loop: true,
     mode: "free-snap",
-    slides: { 
-      perView: 1.1, 
-      spacing: 25,
-      origin: 'center'
+    slides: {
+      perView: 1,
+      spacing: 16,
+      origin: "center",
     },
     breakpoints: {
-      '(min-width: 768px)': {
-        slides: { perView: 1.5, spacing: 30 }
+      "(min-width: 480px)": {
+        slides: { perView: 1.1, spacing: 20 },
       },
-      '(min-width: 1024px)': {
-        slides: { perView: 2, spacing: 40 }
-      }
-    }
+      "(min-width: 640px)": {
+        slides: { perView: 1.2, spacing: 24 },
+      },
+      "(min-width: 768px)": {
+        slides: { perView: 1.3, spacing: 32 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 1.5, spacing: 48 },
+      },
+    },
   });
 
   return (
-    <section className="py-16 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-blue-100 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-200 rounded-full opacity-10"></div>
-      <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-300 rounded-full opacity-10"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-64 bg-blue-400 rounded-full blur-3xl opacity-5"></div>
-      
-      <div className="text-center mb-16 relative z-10">
-        <motion.h2 
+    <section className="py-10 sm:py-14 md:py-16 px-2 sm:px-4 md:px-8 bg-black relative overflow-hidden">
+      {/* Gold background elements */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <GoldParticle x="10%" y="10%" size={80} />
+        <GoldParticle x="70%" y="20%" size={60} />
+        <GoldParticle x="20%" y="80%" size={70} />
+        <GoldParticle x="85%" y="85%" size={100} />
+        <div className="absolute -top-32 -left-32 w-72 h-72 sm:w-96 sm:h-96 bg-[#FFD700] rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+        <div className="absolute -bottom-32 -right-32 w-[18rem] h-[18rem] sm:w-[32rem] sm:h-[32rem] bg-[#FFD700] rounded-full blur-3xl opacity-15 pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl sm:max-w-4xl h-32 sm:h-64 bg-[#FFD700] rounded-full blur-3xl opacity-5 pointer-events-none"></div>
+      </div>
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-20px) scale(1.08); }
+        }
+        .animate-float { animation: float 7s ease-in-out infinite; }
+      `}</style>
+      <div className="text-center mb-10 sm:mb-14 md:mb-16 relative z-10">
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-gray-800 mb-3"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight"
         >
-          What Our Clients Say
+          Testimonials
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-lg text-blue-600 max-w-2xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-[#FFD700] max-w-2xl mx-auto"
         >
-          Trusted by hundreds of customers across India
+          Trusted by hundreds of institutions and parents across India
         </motion.p>
       </div>
-
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
         {loaded && slider.current && (
           <>
-            <button 
+            <button
               onClick={() => slider.current?.prev()}
               aria-label="Previous testimonial"
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-blue-50 transition-colors text-blue-600 hover:text-blue-800"
+              className="absolute left-1 sm:left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-10 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-[#FFD700] shadow-md hover:bg-[#FFD700]/80 transition-colors text-black text-lg sm:text-xl"
+              style={{ touchAction: "manipulation" }}
             >
-              <FaChevronLeft size={24} />
+              <FaChevronLeft size={22} />
             </button>
-            <button 
+            <button
               onClick={() => slider.current?.next()}
               aria-label="Next testimonial"
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-blue-50 transition-colors text-blue-600 hover:text-blue-800"
+              className="absolute right-1 sm:right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-10 z-20 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-[#FFD700] shadow-md hover:bg-[#FFD700]/80 transition-colors text-black text-lg sm:text-xl"
+              style={{ touchAction: "manipulation" }}
             >
-              <FaChevronRight size={24} />
+              <FaChevronRight size={22} />
             </button>
           </>
         )}
-        
         <div ref={sliderRef} className="keen-slider pb-5 relative z-10">
           {testimonials.map((t, i) => (
-            <div 
+            <div
               key={i}
-              className="keen-slider__slide"
+              className="keen-slider__slide flex items-center justify-center"
             >
               <AnimatePresence>
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="p-8 bg-white rounded-2xl shadow-lg flex flex-col items-center border border-blue-50 hover:shadow-xl transition-all duration-300 h-full"
+                  className="p-4 sm:p-6 md:p-8 bg-gray-900 rounded-2xl shadow-lg flex flex-col items-center border border-[#FFD700]/20 hover:shadow-2xl hover:shadow-[#FFD700]/20 transition-all duration-300 h-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl w-full mx-auto"
                 >
-                  <div className="relative mb-6 group">
-                    <div className="absolute inset-0 bg-blue-500 rounded-full blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-                    <Image 
-                      src={t.image} 
-                      alt={t.name} 
-                      width={90} 
-                      height={90} 
-                      className="rounded-full border-4 border-blue-100 shadow-md relative z-10 group-hover:border-blue-200 transition-all duration-300"
-                    />
-                    <div className="absolute -bottom-2 left-1/2 z-20 transform -translate-x-1/2 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap shadow-sm">
-                      Verified Client
-                    </div>
-                  </div>
-                  
-                  <div className="flex mb-3">
-                    {[...Array(5)].map((_, starIdx) => (
-                      <FaStar 
-                        key={starIdx}
-                        size={20}
-                        className={starIdx < t.rating ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"}
-                      />
-                    ))}
-                  </div>
-                  
-                  <FaQuoteRight className="text-blue-100 w-8 h-8 mb-2" />
-                  
-                  <p className="text-gray-700 text-center mb-6 text-lg leading-relaxed relative px-4">
+                  <FaQuoteRight className="text-[#FFD700] w-8 h-8 sm:w-10 sm:h-10 mb-4" />
+                  <p className="text-white text-center mb-6 text-base sm:text-lg md:text-xl leading-relaxed relative px-1 sm:px-2 font-medium">
                     {t.quote}
                   </p>
-                  
                   <div className="text-center mt-auto">
-                    <h4 className="font-bold text-gray-900 text-xl mb-1">{t.name}</h4>
-                    <span className="text-blue-600 text-sm block mb-1">{t.title}</span>
-                    <span className="text-gray-400 text-xs">{t.date}</span>
+                    <h4 className="font-bold text-[#FFD700] text-lg sm:text-xl mb-1">
+                      {t.name}
+                    </h4>
+                    <span className="text-gray-300 text-sm sm:text-base block mb-1">
+                      {t.title}
+                    </span>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -183,45 +241,6 @@ export default function TestimonialCarousel() {
           ))}
         </div>
       </div>
-
-      {/* Navigation dots */}
-      {loaded && slider.current && (
-        <div className="flex justify-center mt-10 gap-2 relative z-10">
-          {[...Array(testimonials.length)].map((_, idx) => (
-            <button 
-              key={idx}
-              onClick={() => slider.current?.moveToIdx(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`w-3 h-3 rounded-full transition-all ${currentSlide === idx ? 'bg-blue-600 w-6' : 'bg-blue-200 hover:bg-blue-400'}`}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Trust indicators */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="flex flex-wrap justify-center gap-6 mt-14 text-gray-600 text-sm"
-      >
-        <div className="flex items-center gap-2">
-          <div className="flex">
-            {[...Array(5)].map((_, i) => (
-              <FaStar key={i} size={16} className="fill-yellow-400 text-yellow-400" />
-            ))}
-          </div>
-          <span>4.9/5 Average Rating</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-green-500"></div>
-          <span>100% Satisfaction Guarantee</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-          <span>500+ Happy Customers</span>
-        </div>
-      </motion.div>
     </section>
   );
 }
