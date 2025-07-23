@@ -22,7 +22,7 @@ const slides = [
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
-    opacity: 1,
+    opacity: 1, 
     y: 0,
     transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.1 },
   },
@@ -189,7 +189,7 @@ export default function HeroSection() {
   );
 }
 
-function Card({ icon, desc }: CardProps) {
+function Card({ icon, desc  }: CardProps) {
   return (
     <motion.div
       initial="hidden"
@@ -223,7 +223,7 @@ function Card({ icon, desc }: CardProps) {
           <span className="absolute inset-0 rounded-full bg-pink-400/40 blur-2xl opacity-40 z-[-1]" />
         </div>
 
-        <p className="text-lg text-gray-900 text-center opacity-90 z-20">
+        <p className="text-lg text-gray-800 font-bold text-center opacity-90 z-20">
           {desc}
         </p>
       </div>

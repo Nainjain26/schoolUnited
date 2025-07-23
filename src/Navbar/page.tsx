@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 const linkVariants = {
   hover: {
     y: -2,
-    color: "#dc2626", 
+    color: "#dc2626",
     transition: { duration: 0.3, ease: "easeOut" },
   },
 };
@@ -26,7 +26,7 @@ const underlineVariants = {
 const buttonVariants = {
   hover: {
     scale: 1.05,
-    boxShadow: "0 5px 15px rgba(79, 70, 229, 0.4)", 
+    boxShadow: "0 5px 15px rgba(79, 70, 229, 0.4)",
     transition: { duration: 0.3 },
   },
   tap: { scale: 0.95 },
@@ -69,7 +69,9 @@ export default function Navbar() {
     { name: "School Empowerment", href: "/School" },
     { name: "Student Empowerment", href: "/Students" },
     {
-      name: "Services",href: "/Services"},
+      name: "Services",
+      href: "/Services",
+    },
     { name: "Contact", href: "/Contact" },
   ];
 
@@ -82,21 +84,21 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Image
-              src="/scholarlogo.png" 
-              alt="Scholar Unites Logo"
-              width={36}
-              height={36}
-              className="rounded-full sm:w-10 sm:h-10"
-            />
+            <div className="relative w-10 h-10 sm:w-32 sm:h-16 md:w-40 md:h-20">
+              <Image
+                src="/jpg1.png"
+                alt="Scholar Unites Logo"
+                fill
+                className="object-contain rounded-full"
+                priority
+                sizes="(max-width: 640px) 2.5rem, (max-width: 768px) 8rem, 10rem"
+              />
+            </div>
           </motion.div>
-          <span className="text-lg sm:text-xl lg:text-2xl font-bold text-indigo-700">
-            ScholarUnited
-          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -121,12 +123,9 @@ export default function Navbar() {
                   />
                 </Link>
               </motion.div>
-              
             </div>
           ))}
         </nav>
-
-        
 
         {/* Mobile Toggle */}
         <button
@@ -152,18 +151,22 @@ export default function Navbar() {
           >
             {navLinks.map((link) => (
               <div key={link.name} className="py-1">
-                <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <Link
                     href={link.href}
                     className={`block py-2 text-base font-medium ${
-                      pathname === link.href ? "text-red-600" : "text-gray-700 hover:text-red-600"
+                      pathname === link.href
+                        ? "text-red-600"
+                        : "text-gray-700 hover:text-red-600"
                     }`}
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
-                
               </div>
             ))}
             <motion.div
@@ -177,7 +180,10 @@ export default function Navbar() {
                 className=" bg-gradient-to-r from-indigo-600 to-red-600 text-white text-center px-4 py-2 rounded-full font-medium flex items-center justify-center gap-2"
                 onClick={() => setMenuOpen(false)}
               >
-                <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.3 }}>
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <FiStar />
                 </motion.div>
                 Join Now
