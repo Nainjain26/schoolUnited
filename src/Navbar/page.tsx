@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX, FiStar } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -52,6 +52,8 @@ const mobileMenuVariants = {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   // Handle scroll for shadow animation
@@ -63,15 +65,36 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/About" },
-    { name: "School Empowerment", href: "/School" },
-    { name: "Student Empowerment", href: "/Students" },
+    { name: "Who We Are", href: "/About" },
+    
+    // DROPDOWN: Student Empowerment
     {
-      name: "Services",
-      href: "/Services",
+      name: "Student Empowerment",
+      dropdown: [
+        { name: "Flagship Programs", href: "/Students/Flagship" },
+        { name: "Other Programs", href: "/Students/Other" },
+      ],
     },
+    { name: " For School", href: "/School" },
+    { name: "Initiatives", href: "/Initiatives "},
     { name: "Contact", href: "/Contact" },
   ];
 
@@ -103,33 +126,89 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-4 lg:space-x-6 items-center">
-          {navLinks.map((link) => (
-            <div key={link.name} className="relative group">
-              <motion.div whileHover="hover" variants={linkVariants}>
-                <Link
-                  href={link.href}
-                  className={`text-sm lg:text-base font-medium transition-colors ${
-                    pathname === link.href
-                      ? "text-red-600"
-                      : "text-gray-100 group-hover:text-red-600"
-                  }`}
+          {navLinks.map((link) =>
+            link.dropdown ? (
+              <div key={link.name} className="relative" ref={dropdownRef}>
+                <div
+                  className="flex items-center cursor-pointer select-none"
+                  onClick={() =>
+                    setOpenDropdown(
+                      openDropdown === link.name ? null : link.name
+                    )
+                  }
                 >
-                  {link.name}
-                  <motion.div
-                    className="absolute bottom-0 left-0 h-0.5 bg-red-600"
-                    variants={underlineVariants}
-                    initial="hidden"
-                    whileHover="hover"
-                  />
-                </Link>
-              </motion.div>
-            </div>
-          ))}
+                  <span
+                    className={
+                      `text-sm lg:text-base font-medium transition-colors text-gray-400` +
+                      (pathname.startsWith("/Students") ? " text-gray-100" : "")
+                    }
+                  >
+                    {link.name}
+                  </span>
+                  {/* Chevron indicator */}
+                  <svg
+                    className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                      openDropdown === link.name ? "rotate-180" : "rotate-0"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+                {/* Dropdown menu */}
+                {openDropdown === link.name && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+                    {link.dropdown.map(
+                      (item: { name: string; href: string }) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-gray-600 text-sm"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div key={link.name} className="relative group">
+                <motion.div whileHover="hover" variants={linkVariants}>
+                  <Link
+                    href={link.href}
+                    className={`text-sm lg:text-base font-bold transition-colors ${
+                      pathname === link.href
+                        ? "text-gray-100"
+                        : "text-gray-500 group-hover:text-gray-100"
+                    }`}
+                  >
+                    {link.name}
+                    <motion.div
+                      className="absolute bottom-0 left-0 h-0.5 bg-red-600"
+                      variants={underlineVariants}
+                      initial="hidden"
+                      whileHover="hover"
+                    />
+                  </Link>
+                </motion.div>
+              </div>
+            )
+          )}
         </nav>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-800"
+          className="md:hidden text-gray-500"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
@@ -149,26 +228,34 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
           >
-            {navLinks.map((link) => (
-              <div key={link.name} className="py-1">
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`block py-2 text-base font-medium ${
-                      pathname === link.href
-                        ? "text-red-600"
-                        : "text-gray-700 hover:text-red-600"
-                    }`}
-                    onClick={() => setMenuOpen(false)}
+            {navLinks.map((link) =>
+              link.dropdown ? (
+                <MobileDropdown
+                  key={link.name}
+                  link={link}
+                  pathname={pathname}
+                />
+              ) : (
+                <div key={link.name} className="py-1">
+                  <motion.div
+                    whileHover={{ x: 10 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              </div>
-            ))}
+                    <Link
+                      href={link.href}
+                      className={`block py-2 text-base font-medium ${
+                        pathname === link.href
+                          ? "text-red-600"
+                          : "text-gray-700 hover:text-red-600"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                </div>
+              )
+            )}
             <motion.div
               variants={buttonVariants}
               whileHover="hover"
@@ -193,5 +280,63 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
+  );
+}
+
+interface DropdownLink {
+  name: string;
+  dropdown: { name: string; href: string }[];
+}
+
+interface MobileDropdownProps {
+  link: DropdownLink;
+  pathname: string;
+}
+
+function MobileDropdown({ link, pathname }: MobileDropdownProps) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="py-1">
+      <div
+        className={`flex items-center justify-between py-2 text-base font-medium cursor-pointer ${
+          pathname.startsWith("/Students")
+            ? "text-red-600"
+            : "text-gray-700 hover:text-red-600"
+        }`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <span>{link.name}</span>
+        <svg
+          className={`w-4 h-4 ml-2 transition-transform ${
+            open ? "rotate-180" : "rotate-0"
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
+      {open && (
+        <div className="pl-4">
+          {link.dropdown.map((item: { name: string; href: string }) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="block py-2 text-gray-700 hover:text-red-600"
+              onClick={() => setOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

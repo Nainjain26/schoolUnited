@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
-import { FaLightbulb, FaChalkboardTeacher, FaLaptopCode } from "react-icons/fa";
+
 import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from "react";
+
+import { Fa1, Fa2, Fa3 } from "react-icons/fa6";
 
 type CardProps = {
   icon: ReactNode;
@@ -41,7 +43,7 @@ const buttonVariants = {
 export default function HeroSection() {
   // Split heading text for animation
   const headingText =
-    "We Prepare Students with The Transformative Experience with Shaping the NextGen!";
+    "Shaping the NextGen!";
   const headingWords = headingText.split(" ").map((word, i) => (
     <span key={i} className="inline-block mr-1 sm:mr-2">
       {word.split("").map((char, j) => (
@@ -137,9 +139,9 @@ export default function HeroSection() {
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="absolute inset-0 flex flex-col items-center justify-center sm:items-start sm:justify-center px-2 xs:px-4 sm:px-6 lg:px-16 z-20"
+            className="absolute inset-0 flex flex-col items-center text-center justify-center px-2 xs:px-4  z-20"
           >
-            <div className="flex flex-col w-full max-w-5xl   mx-auto items-center sm:items-start text-center sm:text-left">
+            <div className="flex flex-col w-full max-w-5xl   mx-auto items-center text-center sm:text-left">
               <motion.h1
                 variants={textVariants}
                 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg"
@@ -151,7 +153,7 @@ export default function HeroSection() {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="mt-2  sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-white/30 border border-white/40 text-base sm:text-lg font-semibold text-black shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/50 hover:text-red-600 focus:outline-none"
+                className="mt-2  sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-white/30 border border-white/40 text-base sm:text-lg font-semibold text-black shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/50 hover:text-gray-600 focus:outline-none"
                 style={{ boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.18)" }}
               >
                 Explore More
@@ -164,23 +166,23 @@ export default function HeroSection() {
         <div className="relative z-10 w-full max-w-7xl mx-auto -mt-10 xs:-mt-14 sm:-mt-16 md:-mt-20 lg:-mt-28 px-2 xs:px-4 sm:px-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 overflow-x-hidden">
           <Card
             icon={
-              <FaLightbulb className="text-red-600 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <Fa1 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
-            desc="•	Are we preparing students for a world that no longer exists?"
+            desc="Are we preparing students for a world that no longer exists?"
             gradient="from-red-100 to-indigo-100"
           />
           <Card
             icon={
-              <FaChalkboardTeacher className="text-red-600 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <Fa2 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
-            desc="•	Does every child truly understand who they are — and what they’re capable of?"
+            desc="Does every child truly understand who they are — and what they’re capable of?"
             gradient="from-indigo-100 to-yellow-100"
           />
           <Card
             icon={
-              <FaLaptopCode className="text-red-600 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <Fa3 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
-            desc="•	Do we treat all children like they are the same?"
+            desc="Do we treat all children like they are the same?"
             gradient="from-yellow-100 to-red-100"
           />
         </div>

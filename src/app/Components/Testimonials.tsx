@@ -144,7 +144,7 @@ export default function TestimonialCarousel() {
         slides: { perView: 1.3, spacing: 32 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 1.5, spacing: 48 },
+        slides: { perView: 2, spacing: 48 },
       },
     },
   });
