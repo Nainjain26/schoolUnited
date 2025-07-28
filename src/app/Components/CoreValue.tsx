@@ -1,110 +1,145 @@
 "use client";
-import { FaUsers, FaLightbulb, FaHandsHelping, FaHeart, FaUserCog, FaSeedling } from "react-icons/fa";
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import {
+  FaUsers,
+  FaLightbulb,
+  FaHandsHelping,
+  FaHeart,
+ 
+  FaSeedling,
+} from "react-icons/fa";
+import { motion} from "framer-motion";
+import React, { useState, useEffect } from "react";
 
-const coreValues = [
+const values = [
   {
     icon: <FaUsers className="text-3xl text-indigo-600" />,
-    title: "Inclusivity",
-    text: "We welcome and uplift every learner and educator, regardless of background."
-  },
-  {
-    icon: <FaLightbulb className="text-3xl text-yellow-500" />,
-    title: "Innovation",
-    text: "We believe in continuously evolving educational practices through creativity and technology."
-  },
-  {
-    icon: <FaUserCog className="text-3xl text-blue-500" />,
-    title: "Personalization",
-    text: "Each student is unique. We tailor experiences to meet individual needs."
+    title: "Clarity",
+    desc: "We foster clarity of thought, emotion, and purpose — for learners, educators, and institutions alike.",
   },
   {
     icon: <FaHandsHelping className="text-3xl text-green-600" />,
-    title: "Collaboration",
-    text: "Stronger together—we grow by working with schools, communities, and families."
+    title: "Empathy & Co-Creation",
+    desc: "We believe growth is a shared process. Our work is built through collaboration with stakeholders, not in isolation from them.",
+  },
+  {
+    icon: <FaLightbulb className="text-3xl text-yellow-500" />,
+    title: "Purpose-Driven Design",
+    desc: "Every program is designed not just to inform, but to transform — aligning individual growth with institutional vision.",
   },
   {
     icon: <FaHeart className="text-3xl text-pink-500" />,
-    title: "Empathy",
-    text: "We listen with compassion and respond with understanding and care."
+    title: "Integrity in Learning",
+    desc: "We work with depth, authenticity, and a deep respect for scientific research, cultural relevance, and lived experience.",
   },
   {
     icon: <FaSeedling className="text-3xl text-emerald-500" />,
-    title: "Growth Mindset",
-    text: "Learning never ends. We encourage curiosity, effort, and resilience."
-  }
+    title: "Agility & Innovation",
+    desc: "We constantly refine, adapt, and innovate — because education must stay ahead of the curve, not behind it.",
+  },
 ];
 
 export default function CoreValuesSection() {
+  const [index, setIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Responsive: update slidesToShow on resize
+  useEffect(() => {
+    function updateSlides() {
+      if (window.innerWidth >= 1024) {
+        setSlidesToShow(3);
+      } else if (window.innerWidth >= 640) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(1);
+      }
+    }
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+  // Auto-advance logic, pause on hover
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % values.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  // Get the slides to show
+  const getSlides = () => {
+    const slides = [];
+    for (let i = 0; i < slidesToShow; i++) {
+      slides.push(values[(index + i) % values.length]);
+    }
+    return slides;
+  };
+
   return (
-    <section className="w-full py-20 bg-white overflow-hidden">
-      <div className="text-center mb-12 px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-          Our Core <span className="text-indigo-600">Values</span>
+    <section className="w-full py-20 bg-[#181c3a] text-gray-100 overflow-hidden">
+      <div className="max-w-2xl mx-auto text-center mb-12 px-4">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-yellow-400">
+          OUR VALUES
         </h2>
-        <p className="text-gray-600 text-base md:text-lg">
-          At Scholars United, our values guide how we empower schools and inspire students.
+        <p className="text-gray-300 text-base md:text-lg">
+          These principles guide everything we build, deliver, and stand for:
         </p>
       </div>
-
-      <div
-        className="overflow-x-auto no-scrollbar"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div
-          className={`flex space-x-6 w-max px-4 ${!isHovered ? "animate-slide" : ""}`}
-        >
-          {[...coreValues, ...coreValues].map((value, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="min-w-[280px] max-w-sm bg-gray-50 rounded-full p-8 text-center shadow-md hover:shadow-xl transition duration-300"
-            >
-              <div className="mb-4 flex justify-center">{value.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{value.title}</h3>
-              <p className="text-gray-600 text-sm">{value.text}</p>
-            </motion.div>
-          ))}
+      <div className="flex justify-center items-center">
+        <div className="relative w-full max-w-4xl min-h-[260px]">
+          <div className="flex gap-6 justify-center items-stretch">
+            {getSlides().map((value, i) => (
+              <motion.div
+                key={value.title + i + index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+                className="flex-1 min-w-0"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <div className="flex flex-col items-center bg-[#23284d] rounded-2xl shadow-lg p-8 border-l-4 border-yellow-400 w-full max-w-xs mx-auto h-full">
+                  <div className="mb-3">{value.icon}</div>
+                  <h3 className="text-xl font-semibold text-yellow-300 mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-200 text-base text-center">
+                    {value.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-slide {
-          animation: slideLeft 40s linear infinite;
-        }
-        @keyframes slideLeft {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        @media (max-width: 768px) {
-          .min-w-[280px] {
-            min-width: 220px;
-          }
-          .max-w-sm {
-            max-width: 300px;
-          }
-        }
-        @media (max-width: 480px) {
-          .min-w-[280px] {
-            min-width: 180px;
-          }
-        }
-      `}</style>
+      <div className="max-w-2xl mx-auto mt-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="bg-gradient-to-r from-yellow-500 to-purple-500 rounded-2xl p-6 text-center shadow-xl text-white"
+        >
+          <h4 className="text-2xl font-bold mb-2">Join the Movement</h4>
+          <p className="text-base md:text-lg mb-2">
+            Scolars United is not just a service provider — we are a partner in
+            redesigning education for relevance, resilience, and real-world
+            impact.
+          </p>
+          <p className="text-base md:text-lg">
+            Whether you&apos;re a parent seeking clarity for your child, a teacher
+            eager to grow, or an institution ready to transform — we&apos;re here to
+            walk this journey with you.
+            <br />
+            <span className="font-semibold">
+              Let&apos;s build education that empowers. Together.
+            </span>
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }
