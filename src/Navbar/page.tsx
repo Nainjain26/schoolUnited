@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiStar } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -23,14 +23,7 @@ const underlineVariants = {
   },
 };
 
-const buttonVariants = {
-  hover: {
-    scale: 1.05,
-    boxShadow: "0 5px 15px rgba(79, 70, 229, 0.4)",
-    transition: { duration: 0.3 },
-  },
-  tap: { scale: 0.95 },
-};
+
 
 const mobileMenuVariants = {
   hidden: {
@@ -84,7 +77,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Who We Are", href: "/About" },
-    
+
     // DROPDOWN: Student Empowerment
     {
       name: "Student Empowerment",
@@ -94,7 +87,7 @@ export default function Navbar() {
       ],
     },
     { name: " For School", href: "/School" },
-    { name: "Initiatives", href: "/Initiatives "},
+    { name: "Initiatives", href: "/Initiatives " },
     { name: "Contact", href: "/Contact" },
   ];
 
@@ -109,16 +102,19 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+        <Link
+          href="/"
+          className="flex items-center justify-center space-x-2 sm:space-x-3"
+        >
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <div className="relative w-10 h-10 sm:w-32 sm:h-16 md:w-40 md:h-20">
+            <div className="relative w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-20 md:w-48 md:h-24 transition-all duration-300 mr-2">
               <Image
                 src="/jpg1.png"
                 alt="Scholar Unites Logo"
                 fill
-                className="object-contain rounded-full"
+                className="object-contain rounded-full drop-shadow-lg"
                 priority
-                sizes="(max-width: 640px) 2.5rem, (max-width: 768px) 8rem, 10rem"
+                sizes="(max-width: 480px) 6rem, (max-width: 640px) 7rem, (max-width: 768px) 9rem, 12rem"
               />
             </div>
           </motion.div>
@@ -256,26 +252,7 @@ export default function Navbar() {
                 </div>
               )
             )}
-            <motion.div
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-              className="mt-4"
-            >
-              <Link
-                href="/Contact"
-                className=" bg-gradient-to-r from-indigo-600 to-red-600 text-white text-center px-4 py-2 rounded-full font-medium flex items-center justify-center gap-2"
-                onClick={() => setMenuOpen(false)}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FiStar />
-                </motion.div>
-                Join Now
-              </Link>
-            </motion.div>
+           
           </motion.div>
         )}
       </AnimatePresence>

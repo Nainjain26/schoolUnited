@@ -6,8 +6,42 @@ import {
   FaUsers,
   FaChalkboardTeacher,
 } from "react-icons/fa";
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+
+type CountUpProps = {
+  end: number;
+  duration?: number;
+  inView: boolean;
+  suffix?: string;
+};
+
+function CountUp({ end, duration = 1.5, inView, suffix = "" }: CountUpProps) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const increment = end / (duration * 60);
+    let frame: number;
+    function animate() {
+      start += increment;
+      if (start < end) {
+        setCount(Math.floor(start));
+        frame = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    }
+    animate();
+    return () => cancelAnimationFrame(frame);
+  }, [end, duration, inView]);
+  return (
+    <span>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+}
 
 export default function WhyChooseUs() {
   const stats = [
@@ -43,6 +77,34 @@ export default function WhyChooseUs() {
         "We equip learners with self-awareness, resilience, and 21st-century skills that exams can't measure.",
     },
   ];
+
+  const statRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [inViewArr, setInViewArr] = useState(stats.map(() => false));
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    statRefs.current.forEach((ref, i) => {
+      if (!ref) return;
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setInViewArr((prev) => {
+              const updated = [...prev];
+              updated[i] = true;
+              return updated;
+            });
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(ref);
+      observers.push(observer);
+    });
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
   return (
     <div className="container mx-auto">
@@ -100,6 +162,9 @@ export default function WhyChooseUs() {
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
+                  ref={(el) => {
+                    statRefs.current[index] = el;
+                  }}
                   className="relative group"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -109,45 +174,47 @@ export default function WhyChooseUs() {
                     delay: index * 0.2,
                   }}
                 >
-                  <div className="text-center transform transition-all duration-300 hover:scale-105">
-                    {/* Decorative Background Circle */}
-                    <div className="absolute inset-0 bg-[#FFD700]/10 rounded-full blur-2xl group-hover:bg-[#FFD700]/20 transition-all duration-500"></div>
+                  {/* Decorative Background Circle */}
+                  <div className="absolute inset-0 bg-[#FFD700]/10 rounded-full blur-2xl group-hover:bg-[#FFD700]/20 transition-all duration-500"></div>
 
-                    {/* Content */}
-                    <div className="relative">
-                      <motion.div
-                        className="text-5xl xs:text-6xl sm:text-7xl font-bold text-[#FFD700] mb-4"
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                  {/* Content */}
+                  <div className="relative">
+                    <motion.div
+                      className="text-5xl xs:text-6xl sm:text-7xl font-bold text-[#FFD700] mb-4"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        delay: index * 0.2,
+                      }}
+                    >
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{
-                          duration: 0.8,
-                          delay: index * 0.2,
+                          duration: 1,
+                          delay: index * 0.2 + 0.5,
                         }}
                       >
-                        <motion.span
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 1,
-                            delay: index * 0.2 + 0.5,
-                          }}
-                        >
-                          {stat.number.toLocaleString()}
-                          {stat.suffix}
-                        </motion.span>
-                      </motion.div>
+                        <CountUp
+                          end={stat.number}
+                          duration={1.5}
+                          inView={inViewArr[index]}
+                          suffix={stat.suffix}
+                        />
+                      </motion.span>
+                    </motion.div>
 
-                      <h3 className="text-xl xs:text-2xl font-semibold text-white mb-3 tracking-wider">
-                        {stat.label}
-                      </h3>
+                    <h3 className="text-xl xs:text-2xl font-semibold text-white mb-3 tracking-wider">
+                      {stat.label}
+                    </h3>
 
-                      {/* Animated Underline */}
-                      <div className="relative h-1 w-16 mx-auto">
-                        <div className="absolute inset-0 bg-[#FFD700] rounded-full"></div>
-                        <div className="absolute inset-0 bg-white/50 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                      </div>
+                    {/* Animated Underline */}
+                    <div className="relative h-1 w-16 mx-auto">
+                      <div className="absolute inset-0 bg-[#FFD700] rounded-full"></div>
+                      <div className="absolute inset-0 bg-white/50 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
                   </div>
                 </motion.div>

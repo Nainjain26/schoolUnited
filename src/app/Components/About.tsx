@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FaGraduationCap, FaGlobe, FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function AboutSection() {
   // Animation variants for images
@@ -247,6 +248,7 @@ export default function AboutSection() {
               variants={textVariants}
               className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4"
             >
+              <Link href="About">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -259,7 +261,7 @@ export default function AboutSection() {
                   <FaStar />
                 </motion.div>
                 Discover More
-              </motion.button>
+              </motion.button></Link>
             </motion.div>
           </motion.div>
         </div>

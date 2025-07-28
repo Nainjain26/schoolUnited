@@ -7,6 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from "react";
 
 import { Fa1, Fa2, Fa3 } from "react-icons/fa6";
+import Link from "next/link";
 
 type CardProps = {
   icon: ReactNode;
@@ -149,6 +150,7 @@ export default function HeroSection() {
                 {headingWords}
               </motion.h1>
               {/* Explore More Button */}
+              <Link href="/School">
               <motion.button
                 variants={buttonVariants}
                 whileHover="hover"
@@ -157,7 +159,7 @@ export default function HeroSection() {
                 style={{ boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.18)" }}
               >
                 Explore More
-              </motion.button>
+              </motion.button></Link>
             </div>
           </motion.div>
         </div>
