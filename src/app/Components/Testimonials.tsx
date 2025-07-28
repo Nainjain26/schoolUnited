@@ -174,7 +174,7 @@ export default function TestimonialCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight"
+          className="text-2xl sm:text-3xl md:text-6xl font-extrabold text-white mb-3 tracking-tight"
         >
           Testimonials
         </motion.h2>
@@ -183,7 +183,7 @@ export default function TestimonialCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-base sm:text-lg md:text-xl text-[#FFD700] max-w-2xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
         >
           Trusted by hundreds of institutions and parents across India
         </motion.p>

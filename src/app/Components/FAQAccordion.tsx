@@ -163,7 +163,7 @@ export default function FAQAccordion() {
         }
         .animate-float { animation: float 7s ease-in-out infinite; }
       `}</style>
-      <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-8 text-white tracking-tight relative z-10">
+      <h1 className="text-3xl md:text-6xl font-extrabold text-center mb-8 text-white tracking-tight relative z-10">
         FAQ
       </h1>
       <div className="flex justify-center mb-8 relative z-10">

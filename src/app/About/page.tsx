@@ -29,7 +29,7 @@ export default function AboutIntroBanner() {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full w-full px-4 py-12">
           
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-2">
+          <h1 className="text-3xl md:text-6xl font-extrabold text-white mb-2">
             WHO WE ARE?
             <span className="block w-16 h-1 mx-auto mt-2 bg-gradient-to-r from-yellow-400 to-purple-500 rounded"></span>
           </h1>

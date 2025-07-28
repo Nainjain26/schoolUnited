@@ -80,7 +80,7 @@ export default function CoreValuesSection() {
   return (
     <section className="w-full py-20 bg-[#181c3a] text-gray-100 overflow-hidden">
       <div className="max-w-2xl mx-auto text-center mb-12 px-4">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-yellow-400">
+        <h2 className="text-3xl md:text-6xl font-extrabold mb-4 text-white">
           OUR VALUES
         </h2>
         <p className="text-gray-300 text-base md:text-lg">

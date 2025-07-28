@@ -145,7 +145,7 @@ export default function HeroSection() {
             <div className="flex flex-col w-full max-w-5xl   mx-auto items-center text-center sm:text-left">
               <motion.h1
                 variants={textVariants}
-                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg"
+                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg"
               >
                 {headingWords}
               </motion.h1>

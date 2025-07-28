@@ -183,7 +183,7 @@ export default function AboutSection() {
             </motion.p>
             <motion.h2
               variants={textVariants}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-100 leading-tight"
             >
               {`"Every student is a story waiting to`}
               <span className="text-yellow-500"> unfold</span>
