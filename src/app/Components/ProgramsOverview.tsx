@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaKey, FaRegFileAlt, FaRegLightbulb } from "react-icons/fa";
+import { FaCode, FaKey, FaRegLightbulb } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 // Animation variants
 
@@ -72,6 +73,170 @@ const useTypewriter = (text: string, speed = 60) => {
 export default function ProgramsOverview() {
   // Typewriter heading
   const whatIfHeading = useTypewriter("WHAT IF…", 80);
+  const [openProgram, setOpenProgram] = useState<null | "infinity" | "quantum">(
+    null
+  );
+
+  // Detailed content for each program
+  const infinityContent = (
+    <motion.div
+      key="infinity"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.5 }}
+      className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-xl p-8 border-2 border-indigo-400/30 flex flex-col items-start relative z-20"
+    >
+      <button
+        onClick={() => setOpenProgram(null)}
+        className="absolute top-4 right-4 text-indigo-600 font-bold text-lg hover:underline"
+      >
+        × Close
+      </button>
+      <h2 className="text-2xl sm:text-3xl font-bold text-indigo-700 mb-2">
+        “The Infinity Code”
+      </h2>
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4">
+        Decode Yourself. Design the Future.
+      </h3>
+      <p className="text-gray-700 mb-4">
+        A radical 3-day experiential journey for adolescents (13–18 years)
+      </p>
+      <h4 className="font-bold text-indigo-600 mb-2">
+        What Makes It UNLIKE Anything Else?
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
+        <li>
+          Combines neuroscience, philosophy, AI-thinking, Vedic psychology &
+          storytelling
+        </li>
+        <li>Multisensory experiences (sound, movement, light, tech, nature)</li>
+        <li>
+          Daily “Time Capsule” creation to track emotional and mental
+          transformation
+        </li>
+        <li>Gamified, immersive, and deeply reflective</li>
+        <li>No classrooms, no lectures — only missions, quests, and labs</li>
+      </ul>
+      <h4 className="font-bold text-indigo-600 mb-2">
+        DAY 1 – Decode: “Who Am I in the Now?”
+      </h4>
+      <p className="mb-2">
+        Discover your inner wiring. Build a deep connection with your mind,
+        body, and emotions.
+      </p>
+      <h4 className="font-bold text-indigo-600 mb-2">
+        DAY 2 – Disrupt: “Who Can I Become?”
+      </h4>
+      <p className="mb-2">
+        Break mental patterns. Discover limitless possibility. Rebuild from
+        courage and curiosity.
+      </p>
+      <h4 className="font-bold text-indigo-600 mb-2">
+        DAY 3 – Design: “What Legacy Will I Leave?”
+      </h4>
+      <p className="mb-2">
+        Design your future. Lead with empathy. Embody your highest possibility.
+      </p>
+      <h4 className="font-bold text-indigo-600 mb-2 mt-4">
+        Takeaways That WOW:
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
+        <li>Certificate of Completion</li>
+        <li>
+          Infinity Passport: A personalized, sealed journey book with
+          AI-inferred insights
+        </li>
+        <li>
+          Neuro Card: Shows brain-behavior pattern using responses from Brain
+          Gym
+        </li>
+        <li>
+          Legacy Video: A recorded 1-minute message from the future self to
+          present self
+        </li>
+        <li>
+          Infinity Pendant: A symbolic token of inner strength and limitlessness
+        </li>
+        <li>
+          Family Circle: Final-day experience with parents to witness the
+          transformation
+        </li>
+      </ul>
+    </motion.div>
+  );
+
+  const quantumContent = (
+    <motion.div
+      key="quantum"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.5 }}
+      className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-xl p-8 border-2 border-yellow-400/30 flex flex-col items-start relative z-20"
+    >
+      <button
+        onClick={() => setOpenProgram(null)}
+        className="absolute top-4 right-4 text-yellow-600 font-bold text-lg hover:underline"
+      >
+        × Close
+      </button>
+      <h2 className="text-2xl sm:text-3xl font-bold text-yellow-700 mb-2">
+        The Quantum Key Program
+      </h2>
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4">
+        Unlock the Digital Future
+      </h3>
+      <p className="text-gray-700 mb-4">
+        A futuristic 3-day technological journey for adolescents (13–18 years)
+      </p>
+      <h4 className="font-bold text-yellow-600 mb-2">
+        What Makes It UNLIKE Anything Else?
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
+        <li>Tool-Centric, Not Theory-Heavy</li>
+        <li>AI, AR & Future Tech—Made Simple</li>
+        <li>Personal Tech Toolkit for Growth</li>
+        <li>From Consumers to Creators</li>
+        <li>Ethics + Awareness = Digital Wisdom</li>
+        <li>Future-Readiness & Career-Awareness</li>
+        <li>Portfolio-Driven, Not Just Certificates</li>
+      </ul>
+      <h4 className="font-bold text-yellow-600 mb-2">
+        Day 1: Decode – Awareness & Digital Foundations
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
+        <li>TechSense: The Digital Self</li>
+        <li>SmartSearch: Learn the Art of Finding</li>
+        <li>ToolKit: Power Tools for Students</li>
+      </ul>
+      <h4 className="font-bold text-yellow-600 mb-2">
+        Day 2: Discover – Creation, Expression & AI Integration
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
+        <li>CreateLab: Technology as Your Canvas</li>
+        <li>AI Unlocked: Friend or Future?</li>
+        <li>TechTalk: From Users to Builders</li>
+      </ul>
+      <h4 className="font-bold text-yellow-600 mb-2">
+        Day 3: Do – Presentation, Practice & Purpose
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
+        <li>DigiPresent: Show Your Tech Power</li>
+        <li>Project Showcase: Quantum Challenge</li>
+        <li>SoulSync: Purposeful Tech</li>
+      </ul>
+      <h4 className="font-bold text-yellow-600 mb-2 mt-4">
+        Takeaways That WOW:
+      </h4>
+      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
+        <li>Certificate of Completion</li>
+        <li>A Digital Portfolio</li>
+        <li>Quantum Key Handbook</li>
+        <li>Access to monthly tech-upgrade workshops/webinars</li>
+      </ul>
+    </motion.div>
+  );
 
   return (
     <div className="relative container mx-auto overflow-hidden">
@@ -171,78 +336,71 @@ export default function ProgramsOverview() {
           </motion.ul>
         </motion.div>
 
+        {/* Program Cards or Detailed Content */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-xl p-8 border-2 border-indigo-400/30 flex flex-col items-center relative overflow-hidden"
+          className="w-full max-w-4xl flex flex-col items-center relative overflow-hidden "
         >
-          {/* Animated Border Glow */}
-          <motion.div
-            className="absolute -inset-2 rounded-3xl pointer-events-none"
-            animate={{
-              opacity: [0.3, 0.6, 0.3],
-              filter: ["blur(12px)", "blur(24px)", "blur(12px)"],
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              background:
-                "linear-gradient(120deg, rgba(99,102,241,0.18) 0%, rgba(253,224,71,0.18) 100%)",
-            }}
-          />
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-xl sm:text-2xl font-bold text-indigo-800 mb-8 text-center tracking-wide relative z-10 flex items-center gap-2"
-          >
-            <FaRegFileAlt className="text-indigo-400 animate-bounce" />
-            FLAGSHIP PROGRAMS BY SCHOLARS UNITED
-          </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full relative z-10">
-            {/* The Infinity Code */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              whileHover={{
-                scale: 1.04,
-                boxShadow: "0 8px 32px 0 rgba(99,102,241,0.18)",
-              }}
-              className="bg-indigo-50 rounded-2xl p-6 flex flex-col items-start shadow-md border border-indigo-200 transition-all duration-300 group cursor-pointer relative overflow-hidden"
-            >
-              <FaCode className="text-indigo-500 text-3xl mb-2 animate-spin-slow group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg font-semibold text-indigo-700 mb-2">
-                The Infinity Code
-              </span>
-              <span className="text-gray-700 text-base mb-2">
-                Decode Yourself. Design the Future.
-              </span>
-            </motion.div>
-            {/* The Quantum Key */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              whileHover={{
-                scale: 1.04,
-                boxShadow: "0 8px 32px 0 rgba(253,224,71,0.18)",
-              }}
-              className="bg-yellow-50 rounded-2xl p-6 flex flex-col items-start shadow-md border border-yellow-200 transition-all duration-300 group cursor-pointer relative overflow-hidden"
-            >
-              <FaKey className="text-yellow-500 text-3xl mb-2 animate-wiggle group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg font-semibold text-yellow-700 mb-2">
-                The Quantum Key
-              </span>
-              <span className="text-gray-700 text-base mb-2">
-                Unlock the Digital Future
-              </span>
-            </motion.div>
-          </div>
+          <AnimatePresence mode="wait">
+            {openProgram === null && (
+              <motion.div
+                key="cards"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full relative z-10"
+              >
+                {/* The Infinity Code */}
+                <div
+                  className="bg-indigo-50 rounded-2xl p-6 flex flex-col items-start shadow-md border border-indigo-200 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                  onClick={() => setOpenProgram("infinity")}
+                >
+                  <FaCode className="text-indigo-500 text-3xl mb-2 animate-spin-slow group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-lg font-semibold text-indigo-700 mb-2">
+                    The Infinity Code
+                  </span>
+                  <span className="text-gray-700 text-base mb-2">
+                    <span
+                      className="underline cursor-pointer hover:text-indigo-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenProgram("infinity");
+                      }}
+                    >
+                      Decode Yourself. Design the Future.
+                    </span>
+                  </span>
+                </div>
+                {/* The Quantum Key */}
+                <div
+                  className="bg-yellow-50 rounded-2xl p-6 flex flex-col items-start shadow-md border border-yellow-200 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                  onClick={() => setOpenProgram("quantum")}
+                >
+                  <FaKey className="text-yellow-500 text-3xl mb-2 animate-wiggle group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-lg font-semibold text-yellow-700 mb-2">
+                    The Quantum Key
+                  </span>
+                  <span className="text-gray-700 text-base mb-2">
+                    <span
+                      className="underline cursor-pointer hover:text-yellow-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenProgram("quantum");
+                      }}
+                    >
+                      Unlock the Digital Future
+                    </span>
+                  </span>
+                </div>
+              </motion.div>
+            )}
+            {openProgram === "infinity" && infinityContent}
+            {openProgram === "quantum" && quantumContent}
+          </AnimatePresence>
         </motion.div>
       </section>
     </div>
