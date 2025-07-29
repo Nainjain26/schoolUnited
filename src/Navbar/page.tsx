@@ -87,7 +87,7 @@ export default function Navbar() {
       ],
     },
     { name: " For School", href: "/School" },
-    { name: "Initiatives", href: "/Initiatives " },
+    { name: "Initiatives", href: "/ShikshaSetu" },
     { name: "Contact", href: "/Contact" },
   ];
 

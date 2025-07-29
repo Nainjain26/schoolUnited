@@ -1,7 +1,6 @@
 "use client";
 
 import {
- 
   FaInstagram,
   FaPhoneAlt,
   FaWhatsapp,
@@ -58,7 +57,7 @@ export default function Footer() {
                 Stay in the Loop
               </h2>
               <p className="text-gray-100 max-w-md mx-auto md:mx-0 text-sm sm:text-base">
-                Join ScholarsUnited to get exclusive updates on programs,
+                Join Scolars United to get exclusive updates on programs,
                 events, and educational insights.
               </p>
             </div>
@@ -185,9 +184,9 @@ export default function Footer() {
               Contact Us
             </h3>
             <p className="text-gray-300 mb-2 text-sm sm:text-base">
-            Monday to Saturday, 10 am to 7 pm
+              Monday to Saturday, 10 am to 7 pm
             </p>
-            
+
             <motion.a
               whileHover={{
                 scale: 1.1,
@@ -209,7 +208,7 @@ export default function Footer() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          © {new Date().getFullYear()} ScholarsUnited - All Rights Reserved
+          © {new Date().getFullYear()} Scolars United - All Rights Reserved
         </motion.p>
       </div>
     </footer>
