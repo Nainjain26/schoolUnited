@@ -123,43 +123,52 @@ export default function Navbar() {
           {navLinks.map((link) =>
             link.dropdown ? (
               <div key={link.name} className="relative" ref={dropdownRef}>
-                <div
-                  className="flex items-center cursor-pointer select-none"
-                  onClick={() =>
-                    setOpenDropdown(
-                      openDropdown === link.name ? null : link.name
-                    )
-                  }
-                >
-                  <span
+                <div className="flex items-center select-none">
+                  {/* Label as Link */}
+                  <Link
+                    href={"/Students"}
                     className={
-                      `text-sm lg:text-base font-medium transition-colors text-gray-400` +
+                      "text-sm lg:text-base font-medium transition-colors text-gray-400 pr-1" +
                       (pathname.startsWith("/Students") ? " text-gray-100" : "")
                     }
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setOpenDropdown(null)}
                   >
                     {link.name}
-                  </span>
-                  {/* Chevron indicator */}
-                  <svg
-                    className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                      openDropdown === link.name ? "rotate-180" : "rotate-0"
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                  </Link>
+                  {/* Chevron as dropdown toggle */}
+                  <button
+                    type="button"
+                    aria-label="Toggle dropdown"
+                    className="flex items-center cursor-pointer focus:outline-none"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setOpenDropdown(
+                        openDropdown === link.name ? null : link.name
+                      );
+                    }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                    <svg
+                      className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                        openDropdown === link.name ? "rotate-180" : "rotate-0"
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 {/* Dropdown menu */}
                 {openDropdown === link.name && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+                  <div className="absolute  left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
                     {link.dropdown.map(
                       (item: { name: string; href: string }) => (
                         <Link
