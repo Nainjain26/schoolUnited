@@ -122,13 +122,16 @@ export default function ShikshaSetuPage() {
     </motion.div>
 
     <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
-      {`Empowering `} 
+      {`Connecting `} 
+
+
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
         Aspirations
       </span> 
-      {` through `} 
+      {` to `} 
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-400 to-purple-500 animate-gradient-x">
-        Innovation
+      Opportunities .
+
       </span>
     </h1>
 
@@ -138,7 +141,7 @@ export default function ShikshaSetuPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2 }}
     >
-      We bridge ambition with opportunity — one spark at a time.
+      SHIKSHA-SETU
     </motion.p>
   </motion.div>
 
