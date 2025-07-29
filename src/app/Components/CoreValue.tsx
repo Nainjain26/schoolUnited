@@ -4,10 +4,9 @@ import {
   FaLightbulb,
   FaHandsHelping,
   FaHeart,
- 
   FaSeedling,
 } from "react-icons/fa";
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 const values = [
@@ -130,9 +129,9 @@ export default function CoreValuesSection() {
             impact.
           </p>
           <p className="text-base md:text-lg">
-            Whether you&apos;re a parent seeking clarity for your child, a teacher
-            eager to grow, or an institution ready to transform — we&apos;re here to
-            walk this journey with you.
+            Whether you&apos;re a parent seeking clarity for your child, a
+            teacher eager to grow, or an institution ready to transform —
+            we&apos;re here to walk this journey with you.
             <br />
             <span className="font-semibold">
               Let&apos;s build education that empowers. Together.

@@ -18,14 +18,14 @@ type CardProps = {
 const slides = [
   { image: "/s1.jpg", alt: "Empowering Education" },
   { image: "/s2.jpg", alt: "Innovative Learning" },
-  { image: "/s3.jpg", alt: "Scholar Unites Community" },
+  { image: "/s3.jpg", alt: "Scolars Unites Community" },
 ];
 
 // Animation variants
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
-    opacity: 1, 
+    opacity: 1,
     y: 0,
     transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.1 },
   },
@@ -43,8 +43,7 @@ const buttonVariants = {
 
 export default function HeroSection() {
   // Split heading text for animation
-  const headingText =
-    "Shaping the NextGen!";
+  const headingText = "Shaping the NextGen!";
   const headingWords = headingText.split(" ").map((word, i) => (
     <span key={i} className="inline-block mr-1 sm:mr-2">
       {word.split("").map((char, j) => (
@@ -151,15 +150,16 @@ export default function HeroSection() {
               </motion.h1>
               {/* Explore More Button */}
               <Link href="/School">
-              <motion.button
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className="mt-2  sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-white/30 border border-white/40 text-base sm:text-lg font-semibold text-black shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/50 hover:text-gray-600 focus:outline-none"
-                style={{ boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.18)" }}
-              >
-                Explore More
-              </motion.button></Link>
+                <motion.button
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="mt-2  sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-white/30 border border-white/40 text-base sm:text-lg font-semibold text-black shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/50 hover:text-gray-600 focus:outline-none"
+                  style={{ boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.18)" }}
+                >
+                  Explore More
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -193,7 +193,7 @@ export default function HeroSection() {
   );
 }
 
-function Card({ icon, desc  }: CardProps) {
+function Card({ icon, desc }: CardProps) {
   return (
     <motion.div
       initial="hidden"

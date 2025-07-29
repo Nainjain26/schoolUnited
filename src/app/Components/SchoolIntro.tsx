@@ -17,10 +17,26 @@ export default function SchoolEmpowermentIntro() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl md:text-5xl font-bold text-indigo-600 mb-4">
-          School Empowerment <span className="text-gray-800">Program</span>
+            School Empowerment <span className="text-gray-800">Program</span>
           </h2>
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-            At <span className="text-indigo-600 font-semibold">Scholars United</span>, we believe that a truly impactful education system begins with empowered institutions. The Schools Empowerment Program is a transformative journey crafted to redefine the very fabric of how schools operate, evolve, and inspire. This program is more than just a roadmap—it&apos;s a partnership. We start by delving deep into your institution&apos;s current landscape, conducting a meticulous present-state analysis that highlights strengths and uncovers opportunities. From there, we design actionable strategies that address not just today&apos;s challenges but anticipate tomorrow&apos;s possibilities. But empowerment isn&apos;t about plans; it&apos;s about progress. That&apos;s why we work alongside schools to implement these strategies seamlessly, embedding growth into the institution&apos;s DNA.
+            At{" "}
+            <span className="text-indigo-600 font-semibold">
+              Scolars United
+            </span>
+            , we believe that a truly impactful education system begins with
+            empowered institutions. The Schools Empowerment Program is a
+            transformative journey crafted to redefine the very fabric of how
+            schools operate, evolve, and inspire. This program is more than just
+            a roadmap—it&apos;s a partnership. We start by delving deep into
+            your institution&apos;s current landscape, conducting a meticulous
+            present-state analysis that highlights strengths and uncovers
+            opportunities. From there, we design actionable strategies that
+            address not just today&apos;s challenges but anticipate
+            tomorrow&apos;s possibilities. But empowerment isn&apos;t about
+            plans; it&apos;s about progress. That&apos;s why we work alongside
+            schools to implement these strategies seamlessly, embedding growth
+            into the institution&apos;s DNA.
           </p>
         </motion.div>
 
@@ -33,7 +49,7 @@ export default function SchoolEmpowermentIntro() {
         >
           <div className="relative  w-full max-w-md">
             <Image
-              src="/school.jpg" 
+              src="/school.jpg"
               alt="School Growth Visual"
               width={500}
               height={500}

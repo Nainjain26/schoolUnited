@@ -2,7 +2,6 @@
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
-  
   FaInstagram,
   FaTwitter,
   FaLinkedin,
@@ -42,9 +41,6 @@ const hoverScale = {
   hover: { scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
-
-
-
 const glowHover = {
   hover: {
     scale: 1.1,
@@ -52,7 +48,6 @@ const glowHover = {
     transition: { duration: 0.3, ease: "easeOut" },
   },
 };
-
 
 // Particle component for background
 const Particles = () => {
@@ -391,7 +386,9 @@ export default function ContactUs() {
                   <h2 className="text-2xl font-bold text-white">
                     Send us a Message
                   </h2>
-                  <p className="text-gray-300">We&apos;d love to hear from you</p>
+                  <p className="text-gray-300">
+                    We&apos;d love to hear from you
+                  </p>
                 </div>
               </div>
 
@@ -636,7 +633,7 @@ export default function ContactUs() {
               viewport={{ once: true }}
             >
               Join thousands of students who have already discovered their
-              potential with Scholars United.
+              potential with Scolars United.
             </motion.p>
             <motion.a
               href=""

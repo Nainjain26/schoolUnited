@@ -193,7 +193,7 @@ export default function AboutSection() {
               variants={textVariants}
               className="text-gray-200 text-sm sm:text-base leading-relaxed"
             >
-              Scholars United is committed to empowering students and schools
+              Scolars United is committed to empowering students and schools
               through personalized learning methods, community support, and
               innovative educational services.
             </motion.p>
@@ -249,19 +249,20 @@ export default function AboutSection() {
               className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4"
             >
               <Link href="About">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-yellow-500 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition shadow-md text-sm sm:text-base flex items-center gap-2"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-yellow-500 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition shadow-md text-sm sm:text-base flex items-center gap-2"
                 >
-                  <FaStar />
-                </motion.div>
-                Discover More
-              </motion.button></Link>
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <FaStar />
+                  </motion.div>
+                  Discover More
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

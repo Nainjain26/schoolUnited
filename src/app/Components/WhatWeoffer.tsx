@@ -41,7 +41,7 @@ export default function ProgramsOverview() {
     {
       title: "Skill Development",
       content:
-        "Scholar Unites offers training programs that focus on holistic skill development from communication to tech literacy.",
+        "Scolars Unites offers training programs that focus on holistic skill development from communication to tech literacy.",
       icon: <FaUserGraduate className="text-[#FFD700]" />,
     },
     {
@@ -129,7 +129,7 @@ export default function ProgramsOverview() {
               className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl mt-6 font-light"
             >
               Discover transformative services and opportunities designed to
-              empower schools and students with Scholar Unites.
+              empower schools and students with Scolars Unites.
             </motion.p>
           </div>
 

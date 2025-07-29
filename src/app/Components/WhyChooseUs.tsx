@@ -109,17 +109,17 @@ export default function WhyChooseUs() {
   return (
     <div className="container mx-auto">
       <Head>
-        <title>Why Choose Scholar United? | Empowering Future Leaders</title>
+        <title>Why Choose Scolars United? | Empowering Future Leaders</title>
         <meta
           name="description"
-          content="Discover why Scholar United is the premier choice for personalized education and academic success."
+          content="Discover why Scolars United is the premier choice for personalized education and academic success."
         />
       </Head>
       <section className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-16">
         {/* Header Section */}
         <div className="text-center mb-16 animate-fadeIn max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-montserrat text-white">
-            Why Choose Scholars United?
+            Why Choose Scolars United?
           </h1>
           <p className="text-lg sm:text-xl font-open-sans text-gray-300 mt-4 leading-relaxed">
             Empowering Future Leaders with Timeless Excellence

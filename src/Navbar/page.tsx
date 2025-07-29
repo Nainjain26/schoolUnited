@@ -23,8 +23,6 @@ const underlineVariants = {
   },
 };
 
-
-
 const mobileMenuVariants = {
   hidden: {
     opacity: 0,
@@ -110,7 +108,7 @@ export default function Navbar() {
             <div className="relative w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-20 md:w-48 md:h-24 transition-all duration-300 mr-2">
               <Image
                 src="/jpg1.png"
-                alt="Scholar Unites Logo"
+                alt="Scolars Unites Logo"
                 fill
                 className="object-contain rounded-full drop-shadow-lg"
                 priority
@@ -252,7 +250,6 @@ export default function Navbar() {
                 </div>
               )
             )}
-           
           </motion.div>
         )}
       </AnimatePresence>

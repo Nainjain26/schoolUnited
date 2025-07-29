@@ -103,7 +103,7 @@ export default function Footer() {
           >
             <div className="text-3xl  font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-400">
-                Scholars
+                Scolars
               </span>
               <span className="text-white">United</span>
             </div>

@@ -87,7 +87,7 @@ const schoolFAQs = [
   },
   {
     q: "How can we book a program or get a proposal?",
-    a: `Please call us at +91 8955529950 or write to us at info@scolarsunited.com. Our team will schedule a consultation and send you a tailored proposal within 48 hours.`,
+    a: `Please call us at +91 8955529950 or write to us at info@Scolarsunited.com. Our team will schedule a consultation and send you a tailored proposal within 48 hours.`,
   },
   {
     q: "What is your pricing structure?",

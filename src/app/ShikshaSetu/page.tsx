@@ -8,7 +8,7 @@ import {
   FaUsers,
   FaComments,
   FaCertificate,
-  FaArrowRight
+  FaArrowRight,
 } from "react-icons/fa";
 
 const sectionFade = {
@@ -63,189 +63,189 @@ const outcomes = [
   },
 ];
 
-
 export default function ShikshaSetuPage() {
-  
   return (
     <main className="bg-gray-950 text-gray-100 min-h-screen font-sans overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0e0f1a] via-[#14172b] to-[#0e0f1a] px-4 py-20 text-white">
-  {/* Orbital Glow Particles */}
-  <div className="absolute w-full h-full top-0 left-0 pointer-events-none z-0 overflow-hidden">
-    {[...Array(50)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute w-[2px] h-[2px] rounded-full bg-white/30 animate-pulse"
-        style={{
-          top: `${Math.random() * 100}%`,
-          left: `${Math.random() * 100}%`,
-          animationDuration: `${3 + Math.random() * 3}s`,
-        }}
-      />
-    ))}
-  </div>
+        {/* Orbital Glow Particles */}
+        <div className="absolute w-full h-full top-0 left-0 pointer-events-none z-0 overflow-hidden">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-[2px] h-[2px] rounded-full bg-white/30 animate-pulse"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDuration: `${3 + Math.random() * 3}s`,
+              }}
+            />
+          ))}
+        </div>
 
-  {/* Animated Blurred Rings */}
-  <motion.div
-    className="absolute w-[500px] h-[500px] rounded-full border border-purple-500/30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl opacity-40"
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
-  />
-  <motion.div
-    className="absolute w-[400px] h-[400px] bg-gradient-to-tr from-purple-500 via-pink-500 to-blue-500 opacity-30 blur-[100px] rounded-full"
-    initial={{ scale: 0.8 }}
-    animate={{ scale: 1 }}
-    transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
-  />
+        {/* Animated Blurred Rings */}
+        <motion.div
+          className="absolute w-[500px] h-[500px] rounded-full border border-purple-500/30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl opacity-40"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bg-gradient-to-tr from-purple-500 via-pink-500 to-blue-500 opacity-30 blur-[100px] rounded-full"
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
+        />
 
-  {/* Glowing Orb Effect */}
-  <motion.div
-    className="absolute top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-purple-600/30 via-blue-600/20 to-transparent rounded-full blur-3xl opacity-40"
-    animate={{ scale: [0.95, 1.05, 0.95] }}
-    transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-  />
+        {/* Glowing Orb Effect */}
+        <motion.div
+          className="absolute top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-purple-600/30 via-blue-600/20 to-transparent rounded-full blur-3xl opacity-40"
+          animate={{ scale: [0.95, 1.05, 0.95] }}
+          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+        />
 
-  {/* Content */}
-  <motion.div
-    className="relative z-10 text-center max-w-4xl"
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1.2 }}
-  >
-    <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
-      className="flex justify-center mb-6"
-    >
-      <FaRegLightbulb className="text-yellow-300 text-6xl animate-spin-slow drop-shadow-2xl" />
-    </motion.div>
+        {/* Content */}
+        <motion.div
+          className="relative z-10 text-center max-w-4xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+            className="flex justify-center mb-6"
+          >
+            <FaRegLightbulb className="text-yellow-300 text-6xl animate-spin-slow drop-shadow-2xl" />
+          </motion.div>
 
-    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
-      {`Connecting `} 
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
+            {`Connecting `}
 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+              Aspirations
+            </span>
+            {` to `}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-400 to-purple-500 animate-gradient-x">
+              Opportunities .
+            </span>
+          </h1>
 
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
-        Aspirations
-      </span> 
-      {` to `} 
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-400 to-purple-500 animate-gradient-x">
-      Opportunities .
+          <motion.p
+            className="text-lg md:text-2xl mt-6 text-gray-200"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+          >
+            SHIKSHA-SETU
+          </motion.p>
+        </motion.div>
 
-      </span>
-    </h1>
-
-    <motion.p
-      className="text-lg md:text-2xl mt-6 text-gray-200"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.2 }}
-    >
-      SHIKSHA-SETU
-    </motion.p>
-  </motion.div>
-
-  {/* Bottom Wave Divider */}
-  <svg
-    className="absolute bottom-0 left-0 w-full"
-    viewBox="0 0 1440 150"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fill="#0e0f1a"
-      d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,74.7C840,75,960,85,1080,101.3C1200,117,1320,139,1380,149.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-    ></path>
-  </svg>
-</section>
-
+        {/* Bottom Wave Divider */}
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 150"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#0e0f1a"
+            d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,74.7C840,75,960,85,1080,101.3C1200,117,1320,139,1380,149.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          ></path>
+        </svg>
+      </section>
 
       {/* PROGRAM OVERVIEW - Split Layout with Animated SVG Illustration */}
       <section className="relative overflow-hidden py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-gray-900 via-gray-950 to-black">
-  {/* Floating Blob Background */}
-  <div className="absolute -top-32 -left-20 w-[500px] h-[500px] bg-yellow-700 blur-3xl opacity-20 rounded-full z-0 animate-pulse"></div>
-  <div className="absolute -bottom-24 right-0 w-[400px] h-[400px] bg-orange-500 blur-3xl opacity-20 rounded-full z-0 animate-ping"></div>
+        {/* Floating Blob Background */}
+        <div className="absolute -top-32 -left-20 w-[500px] h-[500px] bg-yellow-700 blur-3xl opacity-20 rounded-full z-0 animate-pulse"></div>
+        <div className="absolute -bottom-24 right-0 w-[400px] h-[400px] bg-orange-500 blur-3xl opacity-20 rounded-full z-0 animate-ping"></div>
 
-  {/* Content */}
-  <div className="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
-    {/* Illustration */}
-    <motion.div
-      initial={{ opacity: 0, x: -80 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1 }}
-      className="w-full md:w-1/2 flex items-center justify-center"
-    >
-      <img
-        src="/photo.png"
-        alt="Illustration"
-        className="w-[320px] md:w-[400px] drop-shadow-[0_0_40px_rgba(96,165,250,0.4)] animate-float"
-      />
-    </motion.div>
-
-    {/* Floating Text Content */}
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1.1 }}
-      className="w-full md:w-1/2 text-left"
-    >
-      <div className="mb-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow">
-          Shiksha-Setu <br />
-          <span className="text-yellow-400">A Bridge to Brilliance</span>
-        </h2>
-      </div>
-      <p className="text-gray-300 text-lg leading-relaxed mb-6">
-        Shiksha-Setu isn&apos;t just a program — it&apos;s a <span className="text-yellow-400 font-medium">movement</span> to unlock the potential of students from underserved communities by providing essential skills, mentorship, and digital access.
-      </p>
-      <ul className="space-y-4 text-gray-200">
-        {[
-          {
-            title: "Bridges the Access Gap",
-            desc: "Reaches rural and low-income learners with modern, skill-based education.",
-          },
-          {
-            title: "Empowers for the Future",
-            desc: "From digital literacy to emotional intelligence — beyond just academics.",
-          },
-          {
-            title: "Mentorship That Matters",
-            desc: "Guidance from experienced mentors, not just tutors.",
-          },
-        ].map((item, idx) => (
-          <motion.li
-            key={idx}
-            className="relative pl-6"
-            initial={{ opacity: 0, x: 20 }}
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
+          {/* Illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 * idx }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="w-full md:w-1/2 flex items-center justify-center"
           >
-            <span className="absolute left-0 top-1 text-yellow-400">✔</span>
-            <span className="font-semibold text-yellow-300">{item.title}:</span>{" "}
-            {item.desc}
-          </motion.li>
-        ))}
-      </ul>
-    </motion.div>
-  </div>
+            <img
+              src="/photo.png"
+              alt="Illustration"
+              className="w-[320px] md:w-[400px] drop-shadow-[0_0_40px_rgba(96,165,250,0.4)] animate-float"
+            />
+          </motion.div>
 
-  {/* Bottom Wave Divider */}
-  <svg
-    className="absolute bottom-0 left-0 w-full h-32"
-    viewBox="0 0 1440 320"
-    preserveAspectRatio="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fill="#0f172a"
-      fillOpacity="1"
-      d="M0,160L60,149.3C120,139,240,117,360,117.3C480,117,600,139,720,160C840,181,960,203,1080,197.3C1200,192,1320,160,1380,144L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-    />
-  </svg>
-</section>
+          {/* Floating Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.1 }}
+            className="w-full md:w-1/2 text-left"
+          >
+            <div className="mb-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow">
+                Shiksha-Setu <br />
+                <span className="text-yellow-400">A Bridge to Brilliance</span>
+              </h2>
+            </div>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              Shiksha-Setu isn&apos;t just a program — it&apos;s a{" "}
+              <span className="text-yellow-400 font-medium">movement</span> to
+              unlock the potential of students from underserved communities by
+              providing essential skills, mentorship, and digital access.
+            </p>
+            <ul className="space-y-4 text-gray-200">
+              {[
+                {
+                  title: "Bridges the Access Gap",
+                  desc: "Reaches rural and low-income learners with modern, skill-based education.",
+                },
+                {
+                  title: "Empowers for the Future",
+                  desc: "From digital literacy to emotional intelligence — beyond just academics.",
+                },
+                {
+                  title: "Mentorship That Matters",
+                  desc: "Guidance from experienced mentors, not just tutors.",
+                },
+              ].map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  className="relative pl-6"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 * idx }}
+                >
+                  <span className="absolute left-0 top-1 text-yellow-400">
+                    ✔
+                  </span>
+                  <span className="font-semibold text-yellow-300">
+                    {item.title}:
+                  </span>{" "}
+                  {item.desc}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
 
-
+        {/* Bottom Wave Divider */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-32"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#0f172a"
+            fillOpacity="1"
+            d="M0,160L60,149.3C120,139,240,117,360,117.3C480,117,600,139,720,160C840,181,960,203,1080,197.3C1200,192,1320,160,1380,144L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          />
+        </svg>
+      </section>
 
       {/* OBJECTIVES - Horizontal Timeline/Stepper */}
       <section className="relative w-full max-w-5xl mx-auto py-20 px-4 flex flex-col items-center">
@@ -484,7 +484,7 @@ export default function ShikshaSetuPage() {
               {
                 icon: <FaLightbulb className="text-yellow-400 text-xl" />,
                 title: "Expert Facilitators",
-                desc: "By Scholars United professionals and volunteers.",
+                desc: "By Scolars  United professionals and volunteers.",
               },
               {
                 icon: <FaCertificate className="text-blue-300 text-xl" />,
@@ -557,225 +557,235 @@ export default function ShikshaSetuPage() {
 
       {/* PROGRAM OUTCOMES - Aurora Flow Animated Chips */}
       <section
-      className="relative w-full max-w-7xl mx-auto py-20 px-4 flex flex-col items-center justify-center overflow-visible"
-      aria-labelledby="program-outcomes"
-    >
-      {/* Aurora SVG Background */}
-      <svg
-        className="absolute left-0 top-0 w-full h-full z-0 opacity-40 pointer-events-none"
-        viewBox="0 0 1440 320"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        className="relative w-full max-w-7xl mx-auto py-20 px-4 flex flex-col items-center justify-center overflow-visible"
+        aria-labelledby="program-outcomes"
       >
-        <motion.path
-          d="M0,160L60,176C120,192,240,224,360,224C480,224,600,192,720,160C840,128,960,96,1080,112C1200,128,1320,192,1380,208L1440,224L1440,320L0,320Z"
-          fill="url(#aurora1)"
-          initial={{ y: 0 }}
-          animate={{ y: [0, 30, 0] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "reverse",
-            duration: 12,
-          }}
-          style={{ filter: "blur(24px)" }}
-        />
-        <defs>
-          <linearGradient
-            id="aurora1"
-            x1="0"
-            y1="0"
-            x2="1440"
-            y2="320"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#818cf8" stopOpacity="0.7" />
-            <stop offset="0.5" stopColor="#f472b6" stopOpacity="0.5" />
-            <stop offset="1" stopColor="#fbbf24" stopOpacity="0.6" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Heading */}
-      <motion.h2
-        id="program-outcomes"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="text-3xl md:text-6xl font-extrabold text-white mb-16 text-center relative z-10"
-      >
-        Program Outcomes
-      </motion.h2>
-
-      {/* Outcome Cards Grid */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
-        {outcomes.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
+        {/* Aurora SVG Background */}
+        <svg
+          className="absolute left-0 top-0 w-full h-full z-0 opacity-40 pointer-events-none"
+          viewBox="0 0 1440 320"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <motion.path
+            d="M0,160L60,176C120,192,240,224,360,224C480,224,600,192,720,160C840,128,960,96,1080,112C1200,128,1320,192,1380,208L1440,224L1440,320L0,320Z"
+            fill="url(#aurora1)"
+            initial={{ y: 0 }}
+            animate={{ y: [0, 30, 0] }}
             transition={{
-              duration: 0.6,
-              delay: item.delay,
-              ease: "easeOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 12,
             }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 24px #93c5fd55, 0 2px 16px #1e293b",
-            }}
-            className={`bg-gradient-to-br ${item.colorFrom} ${item.colorTo} rounded-2xl px-6 py-5 flex items-start gap-4 shadow-2xl backdrop-blur-xl cursor-pointer border border-blue-200/30 glass-card`}
-            style={{
-              background: "rgba(30,41,59,0.6)",
-              border: "1px solid #60a5fa55",
-              willChange: "transform",
-            }}
-          >
-            <div className="text-white">{item.icon}</div>
-            <span className="text-blue-100 font-semibold text-lg leading-snug drop-shadow-md">
-              {item.label}
-            </span>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+            style={{ filter: "blur(24px)" }}
+          />
+          <defs>
+            <linearGradient
+              id="aurora1"
+              x1="0"
+              y1="0"
+              x2="1440"
+              y2="320"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#818cf8" stopOpacity="0.7" />
+              <stop offset="0.5" stopColor="#f472b6" stopOpacity="0.5" />
+              <stop offset="1" stopColor="#fbbf24" stopOpacity="0.6" />
+            </linearGradient>
+          </defs>
+        </svg>
 
+        {/* Heading */}
+        <motion.h2
+          id="program-outcomes"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-3xl md:text-6xl font-extrabold text-white mb-16 text-center relative z-10"
+        >
+          Program Outcomes
+        </motion.h2>
+
+        {/* Outcome Cards Grid */}
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+          {outcomes.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: item.delay,
+                ease: "easeOut",
+              }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 24px #93c5fd55, 0 2px 16px #1e293b",
+              }}
+              className={`bg-gradient-to-br ${item.colorFrom} ${item.colorTo} rounded-2xl px-6 py-5 flex items-start gap-4 shadow-2xl backdrop-blur-xl cursor-pointer border border-blue-200/30 glass-card`}
+              style={{
+                background: "rgba(30,41,59,0.6)",
+                border: "1px solid #60a5fa55",
+                willChange: "transform",
+              }}
+            >
+              <div className="text-white">{item.icon}</div>
+              <span className="text-blue-100 font-semibold text-lg leading-snug drop-shadow-md">
+                {item.label}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* Certification */}
       <section className="relative py-24 px-6 bg-blackoverflow-hidden">
-      {/* Aurora animated background glow */}
-      <svg
-        className="absolute left-0 top-0 w-full h-full z-0 pointer-events-none opacity-30"
-        viewBox="0 0 1440 320"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          d="M0,160L60,176C120,192,240,224,360,224C480,224,600,192,720,160C840,128,960,96,1080,112C1200,128,1320,192,1380,208L1440,224L1440,320L0,320Z"
-          fill="url(#grad)"
-          initial={{ y: 0 }}
-          animate={{ y: [0, 30, 0] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "reverse",
-            duration: 12,
-          }}
-          style={{ filter: "blur(80px)" }}
-        />
-        <defs>
-          <linearGradient id="grad" x1="0" y1="0" x2="1440" y2="320" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#38bdf8" stopOpacity="0.5" />
-            <stop offset="0.5" stopColor="#f472b6" stopOpacity="0.4" />
-            <stop offset="1" stopColor="#facc15" stopOpacity="0.4" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Content container */}
-      <div className="relative z-10 max-w-6xl mx-auto space-y-16">
-
-        {/* Certification Section */}
-        <motion.div
-          className="bg-gray-800/50 backdrop-blur-xl border border-yellow-400/30 rounded-3xl p-10 shadow-[0_0_20px_#6e710dc5] hover:shadow-[0_0_30px_#595b15c5] transition-all hover:scale-[1.015]"
-          variants={sectionFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={1}
+        {/* Aurora animated background glow */}
+        <svg
+          className="absolute left-0 top-0 w-full h-full z-0 pointer-events-none opacity-30"
+          viewBox="0 0 1440 320"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <div className="flex items-center gap-4 mb-5">
-            <motion.div
-              className="p-4 rounded-full bg-gradient-to-br from-yellow-500 via-yellow-400 to-yellow-300 shadow-lg"
-              initial={{ rotate: 0 }}
-              animate={{ rotate: [0, 360] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+          <motion.path
+            d="M0,160L60,176C120,192,240,224,360,224C480,224,600,192,720,160C840,128,960,96,1080,112C1200,128,1320,192,1380,208L1440,224L1440,320L0,320Z"
+            fill="url(#grad)"
+            initial={{ y: 0 }}
+            animate={{ y: [0, 30, 0] }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 12,
+            }}
+            style={{ filter: "blur(80px)" }}
+          />
+          <defs>
+            <linearGradient
+              id="grad"
+              x1="0"
+              y1="0"
+              x2="1440"
+              y2="320"
+              gradientUnits="userSpaceOnUse"
             >
-              <FaCertificate className="text-white text-3xl" />
-            </motion.div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-blue-100 tracking-tight">
-              Certification & Alumni Access
-            </h2>
-          </div>
-          <p className="text-blue-100/90 text-lg leading-relaxed">
-            All participants receive an official certificate from{" "}
-            <span className="font-semibold text-yellow-500">Scholars United</span> and become part of the{" "}
-            <span className="italic text-yellow-700">Shiksha-Setu Alumni Network</span> — unlocking future opportunities,
-            mentorship, and lifelong guidance.
-          </p>
-        </motion.div>
+              <stop stopColor="#38bdf8" stopOpacity="0.5" />
+              <stop offset="0.5" stopColor="#f472b6" stopOpacity="0.4" />
+              <stop offset="1" stopColor="#facc15" stopOpacity="0.4" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-        {/* Why Shiksha-Setu Section */}
-        <motion.div
-          className="bg-gray-800/60 backdrop-blur-xl border  border-yellow-400/30 rounded-3xl p-12 shadow-[0_0_20px_#6e710dc5] hover:shadow-[0_0_30px_#595b15c5] transition-all"
-          variants={sectionFade}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={2}
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <motion.div
-              className="p-4 rounded-full bg-gradient-to-br from-yellow-300 via-pink-400 to-yellow-500 shadow-2xl"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.2 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <FaRegLightbulb className="text-white text-3xl" />
-            </motion.div>
-            <h2 className="text-4xl font-black text-blue-100 tracking-tight leading-tight">
-              Why Shiksha-Setu?
-            </h2>
-          </div>
-
-          <p className="text-slate-100 text-lg leading-loose mb-6">
-            <span className="text-yelow-400 font-bold">Shiksha-Setu</span> isn&apos;t a charity — it&apos;s a bridge. A bold movement delivering future-ready education,
-            mentorship, and life-skills to students who need it most — completely barrier-free.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
-            {[
-              {
-                title: "Bridges the Access Gap",
-                desc:
-                  "Reaches underserved schools, rural regions, and low-income families with modern education tools.",
-              },
-              {
-                title: "Focus on Employable Skills",
-                desc:
-                  "Equips students with emotional resilience, digital skills, and communication — not just book knowledge.",
-              },
-              {
-                title: "Mentorship That Matters",
-                desc:
-                  "Volunteers and educators guide beyond the classroom — toward life direction and growth.",
-              },
-              {
-                title: "Flexible & Scalable Delivery",
-                desc:
-                  "Runs seamlessly both online and offline, across schools and communities with zero compromise on quality.",
-              },
-            ].map((item, i) => (
+        {/* Content container */}
+        <div className="relative z-10 max-w-6xl mx-auto space-y-16">
+          {/* Certification Section */}
+          <motion.div
+            className="bg-gray-800/50 backdrop-blur-xl border border-yellow-400/30 rounded-3xl p-10 shadow-[0_0_20px_#6e710dc5] hover:shadow-[0_0_30px_#595b15c5] transition-all hover:scale-[1.015]"
+            variants={sectionFade}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+          >
+            <div className="flex items-center gap-4 mb-5">
               <motion.div
-                key={i}
-                whileHover={{ scale: 1.04 }}
-                transition={{ type: "spring", stiffness: 250 }}
-                className="p-5 rounded-xl bg-gradient-to-br from-slate-900/70 to-slate-800/60 border border-blue-300/20 shadow-xl hover:shadow-blue-400/30 transition-all"
+                className="p-4 rounded-full bg-gradient-to-br from-yellow-500 via-yellow-400 to-yellow-300 shadow-lg"
+                initial={{ rotate: 0 }}
+                animate={{ rotate: [0, 360] }}
+                transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
               >
-                <h4 className="text-yellow-600 font-semibold text-lg mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-slate-200 leading-relaxed text-base">
-                  {item.desc}
-                </p>
+                <FaCertificate className="text-white text-3xl" />
               </motion.div>
-            ))}
-          </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-blue-100 tracking-tight">
+                Certification & Alumni Access
+              </h2>
+            </div>
+            <p className="text-blue-100/90 text-lg leading-relaxed">
+              All participants receive an official certificate from{" "}
+              <span className="font-semibold text-yellow-500">
+                Scolars United
+              </span>{" "}
+              and become part of the{" "}
+              <span className="italic text-yellow-700">
+                Shiksha-Setu Alumni Network
+              </span>{" "}
+              — unlocking future opportunities, mentorship, and lifelong
+              guidance.
+            </p>
+          </motion.div>
 
-          <p className="mt-10 text-yellow-300 font-semibold italic text-lg text-center">
-            Shiksha-Setu is how we turn potential into possibility — one student at a time.
-          </p>
-        </motion.div>
-      </div>
-    </section>
+          {/* Why Shiksha-Setu Section */}
+          <motion.div
+            className="bg-gray-800/60 backdrop-blur-xl border  border-yellow-400/30 rounded-3xl p-12 shadow-[0_0_20px_#6e710dc5] hover:shadow-[0_0_30px_#595b15c5] transition-all"
+            variants={sectionFade}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={2}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <motion.div
+                className="p-4 rounded-full bg-gradient-to-br from-yellow-300 via-pink-400 to-yellow-500 shadow-2xl"
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <FaRegLightbulb className="text-white text-3xl" />
+              </motion.div>
+              <h2 className="text-4xl font-black text-blue-100 tracking-tight leading-tight">
+                Why Shiksha-Setu?
+              </h2>
+            </div>
+
+            <p className="text-slate-100 text-lg leading-loose mb-6">
+              <span className="text-yelow-400 font-bold">Shiksha-Setu</span>{" "}
+              isn&apos;t a charity — it&apos;s a bridge. A bold movement
+              delivering future-ready education, mentorship, and life-skills to
+              students who need it most — completely barrier-free.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mt-6">
+              {[
+                {
+                  title: "Bridges the Access Gap",
+                  desc: "Reaches underserved schools, rural regions, and low-income families with modern education tools.",
+                },
+                {
+                  title: "Focus on Employable Skills",
+                  desc: "Equips students with emotional resilience, digital skills, and communication — not just book knowledge.",
+                },
+                {
+                  title: "Mentorship That Matters",
+                  desc: "Volunteers and educators guide beyond the classroom — toward life direction and growth.",
+                },
+                {
+                  title: "Flexible & Scalable Delivery",
+                  desc: "Runs seamlessly both online and offline, across schools and communities with zero compromise on quality.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.04 }}
+                  transition={{ type: "spring", stiffness: 250 }}
+                  className="p-5 rounded-xl bg-gradient-to-br from-slate-900/70 to-slate-800/60 border border-blue-300/20 shadow-xl hover:shadow-blue-400/30 transition-all"
+                >
+                  <h4 className="text-yellow-600 font-semibold text-lg mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-slate-200 leading-relaxed text-base">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-yellow-300 font-semibold italic text-lg text-center">
+              Shiksha-Setu is how we turn potential into possibility — one
+              student at a time.
+            </p>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }

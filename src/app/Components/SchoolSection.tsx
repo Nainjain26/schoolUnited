@@ -2,45 +2,64 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaBrain, FaGraduationCap, FaHandsHelping, FaSmile, FaComments, FaLightbulb } from "react-icons/fa";
+import {
+  FaBrain,
+  FaGraduationCap,
+  FaHandsHelping,
+  FaSmile,
+  FaComments,
+  FaLightbulb,
+} from "react-icons/fa";
 
 const sections = [
   {
-    icon: <FaGraduationCap className="text-indigo-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaGraduationCap className="text-indigo-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Academic Mentorship",
     content:
-      "One-on-one academic guidance tailored to each student’s learning style, helping them grow at their own pace and perform their best."
+      "One-on-one academic guidance tailored to each student’s learning style, helping them grow at their own pace and perform their best.",
   },
   {
-    icon: <FaHandsHelping className="text-green-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaHandsHelping className="text-green-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Skill Development",
     content:
-      "Building life skills beyond books—communication, critical thinking, creativity—to prepare students for a dynamic world."
+      "Building life skills beyond books—communication, critical thinking, creativity—to prepare students for a dynamic world.",
   },
   {
-    icon: <FaSmile className="text-yellow-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaSmile className="text-yellow-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Mental Health & Mindset Building",
     content:
-      "Addressing student anxiety, depression, burnout through supportive programs and positive mindset coaching."
+      "Addressing student anxiety, depression, burnout through supportive programs and positive mindset coaching.",
   },
   {
-    icon: <FaBrain className="text-purple-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaBrain className="text-purple-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Career Counseling",
     content:
-      "Empowering students with direction through personalized career guidance, aptitude assessment, and mentoring."
+      "Empowering students with direction through personalized career guidance, aptitude assessment, and mentoring.",
   },
   {
-    icon: <FaComments className="text-pink-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaComments className="text-pink-500 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Interactive Sessions",
     content:
-      "Live discussions, Q&A rounds, and brainstorming activities that engage students and build collaborative skills."
+      "Live discussions, Q&A rounds, and brainstorming activities that engage students and build collaborative skills.",
   },
   {
-    icon: <FaLightbulb className="text-orange-400 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />,
+    icon: (
+      <FaLightbulb className="text-orange-400 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
+    ),
     title: "Creative Thinking & Brainstorming",
     content:
-      "Innovative problem-solving exercises and group brainstorming sessions that ignite curiosity and creativity."
-  }
+      "Innovative problem-solving exercises and group brainstorming sessions that ignite curiosity and creativity.",
+  },
 ];
 
 export default function PersonalizedLearning() {
@@ -48,28 +67,28 @@ export default function PersonalizedLearning() {
 
   const headingVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1, 
-      transition: { duration: 0.8, ease: "easeOut" } 
-    }
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, rotate: 5 },
-    visible: (i:number) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       rotate: 0,
-      transition: { delay: i * 0.2, duration: 0.7, ease: "easeOut" }
+      transition: { delay: i * 0.2, duration: 0.7, ease: "easeOut" },
     }),
-    hover: { 
-      scale: 1.05, 
-      rotate: 1, 
+    hover: {
+      scale: 1.05,
+      rotate: 1,
       boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   const sparkleVariants = {
@@ -79,8 +98,8 @@ export default function PersonalizedLearning() {
       scale: [0, 1.5, 0],
       x: [0, 20, 40],
       y: [0, -20, -40],
-      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 1 }
-    }
+      transition: { duration: 0.8, repeat: Infinity, repeatDelay: 1 },
+    },
   };
 
   return (
@@ -97,13 +116,21 @@ export default function PersonalizedLearning() {
             d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,160C672,128,768,96,864,112C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,560L0,560Z"
             fill="#a78bfa"
             animate={{ y: [-20, 20] }}
-            transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 5,
+            }}
           />
           <motion.path
             d="M0,320L48,304C96,288,192,256,288,256C384,256,480,288,576,320C672,352,768,384,864,368C960,352,1056,288,1152,272C1248,256,1344,288,1392,304L1440,320L1440,560L0,560Z"
             fill="#f472b6"
             animate={{ y: [20, -20] }}
-            transition={{ repeat: Infinity, repeatType: "reverse", duration: 6 }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 6,
+            }}
           />
         </svg>
       </div>
@@ -140,7 +167,11 @@ export default function PersonalizedLearning() {
           viewport={{ once: true }}
           className="text-gray-700 mt-6 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed"
         >
-          In an era where academic pressure and competition have reached unprecedented levels, programs designed to nurture the holistic development of children are not just beneficial but essential. Scholar Unites believes that every child has the potential to shine not just in academics, but in life.
+          In an era where academic pressure and competition have reached
+          unprecedented levels, programs designed to nurture the holistic
+          development of children are not just beneficial but essential. Scolars
+          Unites believes that every child has the potential to shine not just
+          in academics, but in life.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -149,7 +180,9 @@ export default function PersonalizedLearning() {
           viewport={{ once: true }}
           className="text-purple-800 mt-2 max-w-3xl font-semibold mx-auto text-base sm:text-lg leading-relaxed"
         >
-          With increasing pressure comes the alarming rise in mental health challenges—anxiety, depression, burnout. Scholar Unites steps in with programs that restore balance and uplift student potential.
+          With increasing pressure comes the alarming rise in mental health
+          challenges—anxiety, depression, burnout. Scolars Unites steps in with
+          programs that restore balance and uplift student potential.
         </motion.p>
       </div>
 
@@ -195,7 +228,10 @@ export default function PersonalizedLearning() {
             )}
             <div className="flex flex-col items-start relative z-10">
               <motion.div
-                animate={{ y: activeIndex === idx ? -10 : 0, rotate: activeIndex === idx ? 5 : 0 }}
+                animate={{
+                  y: activeIndex === idx ? -10 : 0,
+                  rotate: activeIndex === idx ? 5 : 0,
+                }}
                 transition={{ duration: 0.3 }}
               >
                 {section.icon}
