@@ -188,7 +188,7 @@ export default function ProgramsOverview() {
             <FaGem className="text-white text-xl" />
           </motion.div>
           <h2 className="text-2xl sm:text-3xl font-bold text-purple-300">
-          &quot;The Infinity Code&quot;
+            "The Infinity Code"
           </h2>
         </div>
 
@@ -196,7 +196,7 @@ export default function ProgramsOverview() {
           Decode Yourself. Design the Future.
         </h3>
         <p className="text-gray-300 mb-6 text-lg">
-          A radical 3-day experiential journey for adolescents (13-18 years)
+          A radical 3-day experiential journey for adolescents (13–18 years)
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -214,7 +214,7 @@ export default function ProgramsOverview() {
                 Multisensory experiences (sound, movement, light, tech, nature)
               </li>
               <li>
-                Daily &quot;Time Capsule&quot; creation to track emotional and mental
+                Daily "Time Capsule" creation to track emotional and mental
                 transformation
               </li>
               <li>Gamified, immersive, and deeply reflective</li>
@@ -231,7 +231,7 @@ export default function ProgramsOverview() {
             <div className="space-y-3">
               <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
                 <h5 className="font-bold text-purple-300 mb-1">
-                  DAY 1 - Decode: &quot;Who Am I in the Now?&quot;
+                  DAY 1 – Decode: "Who Am I in the Now?"
                 </h5>
                 <p className="text-gray-300 text-sm">
                   Discover your inner wiring. Build a deep connection with your
@@ -240,7 +240,7 @@ export default function ProgramsOverview() {
               </div>
               <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
                 <h5 className="font-bold text-purple-300 mb-1">
-                  DAY 2 – Disrupt: &quot;Who Can I Become?&quot;
+                  DAY 2 – Disrupt: "Who Can I Become?"
                 </h5>
                 <p className="text-gray-300 text-sm">
                   Break mental patterns. Discover limitless possibility. Rebuild
@@ -249,7 +249,7 @@ export default function ProgramsOverview() {
               </div>
               <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
                 <h5 className="font-bold text-purple-300 mb-1">
-                  DAY 3 - Design: &quot;What Legacy Will I Leave?&quot;
+                  DAY 3 – Design: "What Legacy Will I Leave?"
                 </h5>
                 <p className="text-gray-300 text-sm">
                   Design your future. Lead with empathy. Embody your highest
@@ -472,9 +472,7 @@ export default function ProgramsOverview() {
             >
               <FaRegLightbulb className="text-purple-400 text-4xl sm:text-6xl" />
             </motion.div>
-            <span className="bg-clip-text text-white">
-              {whatIfHeading}
-            </span>
+            <span className="bg-clip-text text-white">{whatIfHeading}</span>
           </motion.h2>
 
           <motion.ul
@@ -565,7 +563,6 @@ export default function ProgramsOverview() {
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            
           >
             Our Flagship Programs
           </motion.h2>
