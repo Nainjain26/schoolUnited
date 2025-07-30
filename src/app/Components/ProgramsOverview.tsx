@@ -1,22 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaKey, FaRegLightbulb } from "react-icons/fa";
+import {
+  FaCode,
+  FaKey,
+  FaRegLightbulb,
+  FaRocket,
+  FaStar,
+  FaGem,
+} from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 // Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
 
-// Particle component for CSS-based animations
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+// Enhanced Particle component for CSS-based animations
 const Particles = () => {
-  const particleCount = 20; // Reduced for formance
+  const particleCount = 40; // Increased for more visual impact
   const particles = Array.from({ length: particleCount }, (_, i) => ({
     id: i,
-    size: Math.random() * 4 + 2,
+    size: Math.random() * 8 + 4,
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
-    duration: Math.random() * 5 + 5,
-    delay: Math.random() * 2,
+    duration: Math.random() * 10 + 8,
+    delay: Math.random() * 4,
+    type: Math.random() > 0.5 ? "star" : "circle",
   }));
 
   return (
@@ -24,18 +54,24 @@ const Particles = () => {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-yellow-400 opacity-30"
+          className={`absolute ${
+            particle.type === "star"
+              ? "text-purple-400"
+              : "bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 rounded-full"
+          } opacity-50`}
           style={{
             width: particle.size,
             height: particle.size,
             left: particle.left,
             top: particle.top,
             willChange: "transform, opacity",
+            filter: "blur(0.5px)",
           }}
           animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.6, 0.3],
-            scale: [1, 1.2, 1],
+            y: [0, -40, 0],
+            opacity: [0.5, 0.9, 0.5],
+            scale: [1, 1.4, 1],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: particle.duration,
@@ -43,13 +79,47 @@ const Particles = () => {
             delay: particle.delay,
             ease: "easeInOut",
           }}
-        />
+        >
+          {particle.type === "star" && <FaStar className="w-full h-full" />}
+        </motion.div>
       ))}
-      {/* Background Glow Effect */}
+
+      {/* Enhanced Background Glow Effect */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-indigo-200/20 via-transparent to-yellow-200/20"
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-transparent to-blue-900/40"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Multiple floating orbs with different sizes and colors */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.8, 1],
+          opacity: [0.3, 0.6, 0.3],
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl"
+        animate={{
+          scale: [1.5, 1, 1.5],
+          opacity: [0.4, 0.7, 0.4],
+          x: [0, -30, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/2 right-1/3 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.5, 0.2],
+          rotate: [0, 180, 360],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
     </div>
   );
@@ -77,178 +147,290 @@ export default function ProgramsOverview() {
     null
   );
 
-  // Detailed content for each program
+  // Enhanced detailed content for each program
   const infinityContent = (
     <motion.div
       key="infinity"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-xl p-8 border-2 border-indigo-400/30 flex flex-col items-start relative z-20"
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -30, scale: 0.95 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full max-w-4xl bg-gradient-to-br from-gray-900/95 via-purple-900/90 to-gray-900/95 rounded-3xl shadow-2xl p-8 border-2 border-purple-500/50 flex flex-col items-start relative z-20 backdrop-blur-xl"
     >
+      {/* Enhanced glow effect */}
+      <motion.div
+        className="absolute -inset-1 rounded-3xl pointer-events-none"
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          filter: ["blur(8px)", "blur(16px)", "blur(8px)"],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(147,51,234,0.3) 0%, rgba(59,130,246,0.2) 50%, rgba(147,51,234,0.3) 100%)",
+        }}
+      />
+
       <button
         onClick={() => setOpenProgram(null)}
-        className="absolute top-4 right-4 text-indigo-600 font-bold text-lg hover:underline"
+        className="absolute top-4 right-4 text-purple-400 font-bold text-lg hover:text-purple-300 hover:underline transition-colors z-10"
       >
         × Close
       </button>
-      <h2 className="text-2xl sm:text-3xl font-bold text-indigo-700 mb-2">
-        “The Infinity Code”
-      </h2>
-      <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4">
-        Decode Yourself. Design the Future.
-      </h3>
-      <p className="text-gray-700 mb-4">
-        A radical 3-day experiential journey for adolescents (13–18 years)
-      </p>
-      <h4 className="font-bold text-indigo-600 mb-2">
-        What Makes It UNLIKE Anything Else?
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
-        <li>
-          Combines neuroscience, philosophy, AI-thinking, Vedic psychology &
-          storytelling
-        </li>
-        <li>Multisensory experiences (sound, movement, light, tech, nature)</li>
-        <li>
-          Daily “Time Capsule” creation to track emotional and mental
-          transformation
-        </li>
-        <li>Gamified, immersive, and deeply reflective</li>
-        <li>No classrooms, no lectures — only missions, quests, and labs</li>
-      </ul>
-      <h4 className="font-bold text-indigo-600 mb-2">
-        DAY 1 – Decode: “Who Am I in the Now?”
-      </h4>
-      <p className="mb-2">
-        Discover your inner wiring. Build a deep connection with your mind,
-        body, and emotions.
-      </p>
-      <h4 className="font-bold text-indigo-600 mb-2">
-        DAY 2 – Disrupt: “Who Can I Become?”
-      </h4>
-      <p className="mb-2">
-        Break mental patterns. Discover limitless possibility. Rebuild from
-        courage and curiosity.
-      </p>
-      <h4 className="font-bold text-indigo-600 mb-2">
-        DAY 3 – Design: “What Legacy Will I Leave?”
-      </h4>
-      <p className="mb-2">
-        Design your future. Lead with empathy. Embody your highest possibility.
-      </p>
-      <h4 className="font-bold text-indigo-600 mb-2 mt-4">
-        Takeaways That WOW:
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
-        <li>Certificate of Completion</li>
-        <li>
-          Infinity Passport: A personalized, sealed journey book with
-          AI-inferred insights
-        </li>
-        <li>
-          Neuro Card: Shows brain-behavior pattern using responses from Brain
-          Gym
-        </li>
-        <li>
-          Legacy Video: A recorded 1-minute message from the future self to
-          present self
-        </li>
-        <li>
-          Infinity Pendant: A symbolic token of inner strength and limitlessness
-        </li>
-        <li>
-          Family Circle: Final-day experience with parents to witness the
-          transformation
-        </li>
-      </ul>
+
+      <div className="relative z-10 w-full">
+        <div className="flex items-center gap-3 mb-4">
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="p-2 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full"
+          >
+            <FaGem className="text-white text-xl" />
+          </motion.div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-purple-300">
+          &quot;The Infinity Code&quot;
+          </h2>
+        </div>
+
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-200 mb-4">
+          Decode Yourself. Design the Future.
+        </h3>
+        <p className="text-gray-300 mb-6 text-lg">
+          A radical 3-day experiential journey for adolescents (13-18 years)
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="space-y-4">
+            <h4 className="font-bold text-purple-400 text-lg flex items-center gap-2">
+              <FaRocket className="text-purple-400" />
+              What Makes It UNLIKE Anything Else?
+            </h4>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>
+                Combines neuroscience, philosophy, AI-thinking, Vedic psychology
+                & storytelling
+              </li>
+              <li>
+                Multisensory experiences (sound, movement, light, tech, nature)
+              </li>
+              <li>
+                Daily &quot;Time Capsule&quot; creation to track emotional and mental
+                transformation
+              </li>
+              <li>Gamified, immersive, and deeply reflective</li>
+              <li>
+                No classrooms, no lectures — only missions, quests, and labs
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="font-bold text-purple-400 text-lg">
+              Journey Overview
+            </h4>
+            <div className="space-y-3">
+              <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
+                <h5 className="font-bold text-purple-300 mb-1">
+                  DAY 1 - Decode: &quot;Who Am I in the Now?&quot;
+                </h5>
+                <p className="text-gray-300 text-sm">
+                  Discover your inner wiring. Build a deep connection with your
+                  mind, body, and emotions.
+                </p>
+              </div>
+              <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
+                <h5 className="font-bold text-purple-300 mb-1">
+                  DAY 2 – Disrupt: &quot;Who Can I Become?&quot;
+                </h5>
+                <p className="text-gray-300 text-sm">
+                  Break mental patterns. Discover limitless possibility. Rebuild
+                  from courage and curiosity.
+                </p>
+              </div>
+              <div className="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
+                <h5 className="font-bold text-purple-300 mb-1">
+                  DAY 3 - Design: &quot;What Legacy Will I Leave?&quot;
+                </h5>
+                <p className="text-gray-300 text-sm">
+                  Design your future. Lead with empathy. Embody your highest
+                  possibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-xl p-4 border border-purple-500/30">
+          <h4 className="font-bold text-purple-300 mb-3 flex items-center gap-2">
+            <FaStar className="text-yellow-400" />
+            Takeaways That WOW:
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+              <li>Certificate of Completion</li>
+              <li>
+                Infinity Passport: A personalized, sealed journey book with
+                AI-inferred insights
+              </li>
+              <li>
+                Neuro Card: Shows brain-behavior pattern using responses from
+                Brain Gym
+              </li>
+            </ul>
+            <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+              <li>
+                Legacy Video: A recorded 1-minute message from the future self
+                to present self
+              </li>
+              <li>
+                Infinity Pendant: A symbolic token of inner strength and
+                limitlessness
+              </li>
+              <li>
+                Family Circle: Final-day experience with parents to witness the
+                transformation
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 
   const quantumContent = (
     <motion.div
       key="quantum"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-3xl bg-white/90 rounded-3xl shadow-xl p-8 border-2 border-yellow-400/30 flex flex-col items-start relative z-20"
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -30, scale: 0.95 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full max-w-4xl bg-gradient-to-br from-gray-900/95 via-blue-900/90 to-gray-900/95 rounded-3xl shadow-2xl p-8 border-2 border-blue-500/50 flex flex-col items-start relative z-20 backdrop-blur-xl"
     >
+      {/* Enhanced glow effect */}
+      <motion.div
+        className="absolute -inset-1 rounded-3xl pointer-events-none"
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          filter: ["blur(8px)", "blur(16px)", "blur(8px)"],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(59,130,246,0.3) 0%, rgba(6,182,212,0.2) 50%, rgba(59,130,246,0.3) 100%)",
+        }}
+      />
+
       <button
         onClick={() => setOpenProgram(null)}
-        className="absolute top-4 right-4 text-yellow-600 font-bold text-lg hover:underline"
+        className="absolute top-4 right-4 text-blue-400 font-bold text-lg hover:text-blue-300 hover:underline transition-colors z-10"
       >
         × Close
       </button>
-      <h2 className="text-2xl sm:text-3xl font-bold text-yellow-700 mb-2">
-        The Quantum Key Program
-      </h2>
-      <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4">
-        Unlock the Digital Future
-      </h3>
-      <p className="text-gray-700 mb-4">
-        A futuristic 3-day technological journey for adolescents (13–18 years)
-      </p>
-      <h4 className="font-bold text-yellow-600 mb-2">
-        What Makes It UNLIKE Anything Else?
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
-        <li>Tool-Centric, Not Theory-Heavy</li>
-        <li>AI, AR & Future Tech—Made Simple</li>
-        <li>Personal Tech Toolkit for Growth</li>
-        <li>From Consumers to Creators</li>
-        <li>Ethics + Awareness = Digital Wisdom</li>
-        <li>Future-Readiness & Career-Awareness</li>
-        <li>Portfolio-Driven, Not Just Certificates</li>
-      </ul>
-      <h4 className="font-bold text-yellow-600 mb-2">
-        Day 1: Decode – Awareness & Digital Foundations
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
-        <li>TechSense: The Digital Self</li>
-        <li>SmartSearch: Learn the Art of Finding</li>
-        <li>ToolKit: Power Tools for Students</li>
-      </ul>
-      <h4 className="font-bold text-yellow-600 mb-2">
-        Day 2: Discover – Creation, Expression & AI Integration
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
-        <li>CreateLab: Technology as Your Canvas</li>
-        <li>AI Unlocked: Friend or Future?</li>
-        <li>TechTalk: From Users to Builders</li>
-      </ul>
-      <h4 className="font-bold text-yellow-600 mb-2">
-        Day 3: Do – Presentation, Practice & Purpose
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
-        <li>DigiPresent: Show Your Tech Power</li>
-        <li>Project Showcase: Quantum Challenge</li>
-        <li>SoulSync: Purposeful Tech</li>
-      </ul>
-      <h4 className="font-bold text-yellow-600 mb-2 mt-4">
-        Takeaways That WOW:
-      </h4>
-      <ul className="list-disc list-inside text-gray-700 mb-2 space-y-1">
-        <li>Certificate of Completion</li>
-        <li>A Digital Portfolio</li>
-        <li>Quantum Key Handbook</li>
-        <li>Access to monthly tech-upgrade workshops/webinars</li>
-      </ul>
+
+      <div className="relative z-10 w-full">
+        <div className="flex items-center gap-3 mb-4">
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="p-2 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full"
+          >
+            <FaRocket className="text-white text-xl" />
+          </motion.div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-blue-300">
+            The Quantum Key Program
+          </h2>
+        </div>
+
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-200 mb-4">
+          Unlock the Digital Future
+        </h3>
+        <p className="text-gray-300 mb-6 text-lg">
+          A futuristic 3-day technological journey for adolescents (13–18 years)
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="space-y-4">
+            <h4 className="font-bold text-blue-400 text-lg flex items-center gap-2">
+              <FaStar className="text-blue-400" />
+              What Makes It UNLIKE Anything Else?
+            </h4>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>Tool-Centric, Not Theory-Heavy</li>
+              <li>AI, AR & Future Tech—Made Simple</li>
+              <li>Personal Tech Toolkit for Growth</li>
+              <li>From Consumers to Creators</li>
+              <li>Ethics + Awareness = Digital Wisdom</li>
+              <li>Future-Readiness & Career-Awareness</li>
+              <li>Portfolio-Driven, Not Just Certificates</li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="font-bold text-blue-400 text-lg">
+              Journey Overview
+            </h4>
+            <div className="space-y-3">
+              <div className="bg-blue-900/30 rounded-lg p-3 border border-blue-500/30">
+                <h5 className="font-bold text-blue-300 mb-1">
+                  Day 1: Decode – Awareness & Digital Foundations
+                </h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• TechSense: The Digital Self</li>
+                  <li>• SmartSearch: Learn the Art of Finding</li>
+                  <li>• ToolKit: Power Tools for Students</li>
+                </ul>
+              </div>
+              <div className="bg-blue-900/30 rounded-lg p-3 border border-blue-500/30">
+                <h5 className="font-bold text-blue-300 mb-1">
+                  Day 2: Discover – Creation, Expression & AI Integration
+                </h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• CreateLab: Technology as Your Canvas</li>
+                  <li>• AI Unlocked: Friend or Future?</li>
+                  <li>• TechTalk: From Users to Builders</li>
+                </ul>
+              </div>
+              <div className="bg-blue-900/30 rounded-lg p-3 border border-blue-500/30">
+                <h5 className="font-bold text-blue-300 mb-1">
+                  Day 3: Do – Presentation, Practice & Purpose
+                </h5>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• DigiPresent: Show Your Tech Power</li>
+                  <li>• Project Showcase: Quantum Challenge</li>
+                  <li>• SoulSync: Purposeful Tech</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 rounded-xl p-4 border border-blue-500/30">
+          <h4 className="font-bold text-blue-300 mb-3 flex items-center gap-2">
+            <FaStar className="text-yellow-400" />
+            Takeaways That WOW:
+          </h4>
+          <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+            <li>Certificate of Completion</li>
+            <li>A Digital Portfolio</li>
+            <li>Quantum Key Handbook</li>
+            <li>Access to monthly tech-upgrade workshops/webinars</li>
+          </ul>
+        </div>
+      </div>
     </motion.div>
   );
 
   return (
-    <div className="relative container mx-auto overflow-hidden">
-      {/* Animated Gradient Overlay */}
+    <div className="relative container mx-auto overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950 min-h-screen">
+      {/* Enhanced Animated Gradient Overlay */}
       <motion.div
         className="absolute inset-0 z-0 pointer-events-none"
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ opacity: [0.4, 0.8, 0.4] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         style={{
           background:
-            "linear-gradient(120deg, rgba(99,102,241,0.12) 0%, rgba(253,224,71,0.10) 100%)",
+            "linear-gradient(120deg, rgba(147,51,234,0.2) 0%, rgba(59,130,246,0.15) 25%, rgba(6,182,212,0.15) 50%, rgba(59,130,246,0.15) 75%, rgba(147,51,234,0.2) 100%)",
         }}
       />
       {/* CSS Particle Background */}
@@ -261,84 +443,115 @@ export default function ProgramsOverview() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full max-w-3xl bg-gradient-to-br from-indigo-900/90 to-yellow-700/80 rounded-3xl shadow-2xl p-8 text-white border-4 border-yellow-400/40 backdrop-blur-lg relative overflow-hidden"
+          className="w-full max-w-4xl bg-gradient-to-br from-gray-900/90 via-purple-900/80 to-blue-900/80 rounded-3xl shadow-2xl p-8 text-white border-4 border-purple-500/40 backdrop-blur-lg relative overflow-hidden"
         >
-          {/* Animated Glow */}
+          {/* Enhanced Animated Glow */}
           <motion.div
             className="absolute -inset-2 rounded-3xl pointer-events-none"
             animate={{
-              opacity: [0.5, 0.8, 0.5],
-              filter: ["blur(16px)", "blur(32px)", "blur(16px)"],
+              opacity: [0.7, 1, 0.7],
+              filter: ["blur(24px)", "blur(48px)", "blur(24px)"],
             }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             style={{
               background:
-                "linear-gradient(120deg, rgba(253,224,71,0.25) 0%, rgba(99,102,241,0.18) 100%)",
+                "linear-gradient(120deg, rgba(147,51,234,0.5) 0%, rgba(59,130,246,0.4) 50%, rgba(147,51,234,0.5) 100%)",
             }}
           />
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-3xl sm:text-6xl font-extrabold mb-6 text-center tracking-wide relative z-10 flex items-center justify-center gap-2"
+            className="text-3xl sm:text-6xl font-extrabold mb-6 text-center tracking-wide relative z-10 flex items-center justify-center gap-3"
           >
-            <FaRegLightbulb className="text-yellow-300 animate-pulse" />
-            <span>{whatIfHeading}</span>
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            >
+              <FaRegLightbulb className="text-purple-400 text-4xl sm:text-6xl" />
+            </motion.div>
+            <span className="bg-clip-text text-white">
+              {whatIfHeading}
+            </span>
           </motion.h2>
+
           <motion.ul
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.25 } },
-              hidden: {},
-            }}
+            variants={containerVariants}
             className="space-y-4 text-lg sm:text-xl font-medium relative z-10"
           >
             <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
-              }}
+              variants={itemVariants}
+              className="flex items-start gap-3"
             >
-              <span className="text-yellow-300">•</span> What if our children
-              discovered their strengths before the world told them their
-              limits?
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="text-purple-400 text-xl mt-1"
+              >
+                ✨
+              </motion.div>
+              <span>
+                What if our children discovered their strengths before the world
+                told them their limits?
+              </span>
             </motion.li>
             <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.7, delay: 0.2 },
-                },
-              }}
+              variants={itemVariants}
+              className="flex items-start gap-3"
             >
-              <span className="text-yellow-300">•</span> What if education
-              helped them build a life — not just chase a career and fight for
-              survival?
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="text-blue-400 text-xl mt-1"
+              >
+                🚀
+              </motion.div>
+              <span>
+                What if education helped them build a life — not just chase a
+                career and fight for survival?
+              </span>
             </motion.li>
             <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.7, delay: 0.4 },
-                },
-              }}
+              variants={itemVariants}
+              className="flex items-start gap-3"
             >
-              <span className="text-yellow-300">•</span> What if every teenager
-              could turn confusion into clarity, pressure into purpose?
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="text-purple-400 text-xl mt-1"
+              >
+                💎
+              </motion.div>
+              <span>
+                What if every teenager could turn confusion into clarity,
+                pressure into purpose?
+              </span>
             </motion.li>
           </motion.ul>
         </motion.div>
       </section>
 
       {/* FLAGSHIP PROGRAMS SECTION */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-16 z-20 bg-gradient-to-b from-transparent via-white/30 to-transparent">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-16 z-20 bg-gradient-to-b from-transparent via-gray-900/30 to-transparent">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -346,10 +559,17 @@ export default function ProgramsOverview() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-4">
+          <motion.h2
+            className="text-4xl sm:text-6xl font-extrabold text-white mb-4"
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            
+          >
             Our Flagship Programs
-          </h2>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          </motion.h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Transformative experiences designed to unlock your potential and
             shape your future
           </p>
@@ -375,48 +595,94 @@ export default function ProgramsOverview() {
                 {/* The Infinity Code */}
                 <motion.div
                   whileHover={{
-                    scale: 1.02,
-                    y: -5,
-                    boxShadow: "0 25px 50px -12px rgba(99, 102, 241, 0.25)",
+                    scale: 1.05,
+                    y: -12,
+                    boxShadow: "0 40px 80px -12px rgba(147, 51, 234, 0.5)",
                   }}
-                  className="group relative bg-gradient-to-br from-white via-indigo-50/50 to-white rounded-3xl p-8 shadow-lg border border-indigo-100/50 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-sm"
+                  className="group relative bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900 rounded-3xl p-8 shadow-2xl border border-purple-500/30 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-sm"
                   onClick={() => setOpenProgram("infinity")}
                 >
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-100/20 via-transparent to-purple-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Enhanced Background Pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Floating Elements */}
-                  <div className="absolute top-4 right-4 w-16 h-16 bg-indigo-200/30 rounded-full blur-xl group-hover:bg-indigo-300/40 transition-all duration-500" />
-                  <div className="absolute bottom-4 left-4 w-12 h-12 bg-purple-200/30 rounded-full blur-lg group-hover:bg-purple-300/40 transition-all duration-500" />
+                  {/* Enhanced Floating Elements */}
+                  <motion.div
+                    className="absolute top-4 right-4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl group-hover:bg-purple-400/30 transition-all duration-500"
+                    animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <motion.div
+                    className="absolute bottom-4 left-4 w-20 h-20 bg-blue-500/20 rounded-full blur-lg group-hover:bg-blue-400/30 transition-all duration-500"
+                    animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
 
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <motion.div
+                        className="p-3 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
                         <FaCode className="text-white text-2xl" />
-                      </div>
+                      </motion.div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-1">
+                        <h3 className="text-2xl font-bold text-white mb-1">
                           The Infinity Code
                         </h3>
-                        <p className="text-indigo-600 font-medium">
+                        <p className="text-purple-300 font-medium">
                           Decode Yourself. Design the Future.
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-indigo-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-purple-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
                         <span className="text-sm">
                           3-day experiential journey
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-blue-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.5,
+                          }}
+                        />
                         <span className="text-sm">Ages 13-18 years</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-indigo-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-purple-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 1,
+                          }}
+                        />
                         <span className="text-sm">
                           Neuroscience & AI-thinking
                         </span>
@@ -424,12 +690,16 @@ export default function ProgramsOverview() {
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-indigo-600 font-semibold text-sm">
+                      <span className="text-purple-300 font-semibold text-sm">
                         Click to explore →
                       </span>
-                      <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center group-hover:bg-indigo-200 transition-colors duration-300">
+                      <motion.div
+                        className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center group-hover:bg-purple-400/30 transition-colors duration-300"
+                        whileHover={{ scale: 1.2, rotate: 90 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <svg
-                          className="w-4 h-4 text-indigo-600"
+                          className="w-4 h-4 text-purple-300"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -441,7 +711,7 @@ export default function ProgramsOverview() {
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
@@ -449,57 +719,107 @@ export default function ProgramsOverview() {
                 {/* The Quantum Key */}
                 <motion.div
                   whileHover={{
-                    scale: 1.02,
-                    y: -5,
-                    boxShadow: "0 25px 50px -12px rgba(251, 191, 36, 0.25)",
+                    scale: 1.05,
+                    y: -12,
+                    boxShadow: "0 40px 80px -12px rgba(59, 130, 246, 0.5)",
                   }}
-                  className="group relative bg-gradient-to-br from-white via-yellow-50/50 to-white rounded-3xl p-8 shadow-lg border border-yellow-100/50 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-sm"
+                  className="group relative bg-gradient-to-br from-gray-900 via-blue-900/50 to-gray-900 rounded-3xl p-8 shadow-2xl border border-blue-500/30 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-sm"
                   onClick={() => setOpenProgram("quantum")}
                 >
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-100/20 via-transparent to-orange-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Enhanced Background Pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Floating Elements */}
-                  <div className="absolute top-4 right-4 w-16 h-16 bg-yellow-200/30 rounded-full blur-xl group-hover:bg-yellow-300/40 transition-all duration-500" />
-                  <div className="absolute bottom-4 left-4 w-12 h-12 bg-orange-200/30 rounded-full blur-lg group-hover:bg-orange-300/40 transition-all duration-500" />
+                  {/* Enhanced Floating Elements */}
+                  <motion.div
+                    className="absolute top-4 right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-400/30 transition-all duration-500"
+                    animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <motion.div
+                    className="absolute bottom-4 left-4 w-20 h-20 bg-cyan-500/20 rounded-full blur-lg group-hover:bg-cyan-400/30 transition-all duration-500"
+                    animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
 
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <motion.div
+                        className="p-3 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
                         <FaKey className="text-white text-2xl" />
-                      </div>
+                      </motion.div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-1">
+                        <h3 className="text-2xl font-bold text-white mb-1">
                           The Quantum Key
                         </h3>
-                        <p className="text-yellow-800 font-medium">
+                        <p className="text-blue-300 font-medium">
                           Unlock the Digital Future
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-blue-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
                         <span className="text-sm">3-day tech journey</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-orange-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-cyan-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.5,
+                          }}
+                        />
                         <span className="text-sm">Ages 13-18 years</span>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                      <div className="flex items-center gap-2 text-gray-300">
+                        <motion.div
+                          className="w-2 h-2 bg-blue-400 rounded-full"
+                          animate={{ scale: [1, 1.5, 1] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 1,
+                          }}
+                        />
                         <span className="text-sm">AI, AR & Future Tech</span>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-yellow-800 font-semibold text-sm">
+                      <span className="text-blue-300 font-semibold text-sm">
                         Click to explore →
                       </span>
-                      <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center group-hover:bg-yellow-200 transition-colors duration-300">
+                      <motion.div
+                        className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-400/30 transition-colors duration-300"
+                        whileHover={{ scale: 1.2, rotate: 90 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <svg
-                          className="w-4 h-4 text-yellow-600"
+                          className="w-4 h-4 text-blue-300"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -511,7 +831,7 @@ export default function ProgramsOverview() {
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
@@ -525,8 +845,3 @@ export default function ProgramsOverview() {
     </div>
   );
 }
-
-// Custom slow spin and wiggle animations for icons (add to global CSS if not present)
-// .animate-spin-slow { animation: spin 6s linear infinite; }
-// .animate-wiggle { animation: wiggle 1.2s infinite; }
-// @keyframes wiggle { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }

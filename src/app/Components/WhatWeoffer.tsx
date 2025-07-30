@@ -39,27 +39,39 @@ export default function ProgramsOverview() {
 
   const services = [
     {
-      title: "Skill Development",
+      title: "Self-Discovery for Every Child",
       content:
-        "Scolars Unites offers training programs that focus on holistic skill development from communication to tech literacy.",
+        "A platform for every child to discover who they truly are — and who they can become.",
       icon: <FaUserGraduate className="text-[#FFD700]" />,
     },
     {
-      title: "Counseling & Guidance",
+      title: "Education Beyond Grades",
       content:
-        "Personal and career counseling by experienced professionals to guide students and educators on the right path.",
+        "We help students grow not just academically, but as confident, self-aware individuals.",
       icon: <FaSchool className="text-[#FFD700]" />,
     },
     {
-      title: "Community Engagement",
+      title: "Transforming School Environments",
       content:
-        "Workshops and community-based programs designed to foster student growth and institutional awareness.",
+        "Support for schools to transform into spaces of innovation, emotional safety, and true learning.",
       icon: <FaUserGraduate className="text-[#FFD700]" />,
     },
     {
-      title: "Digital Literacy",
+      title: "Empowered Parenting",
       content:
-        "Providing tools, courses, and coaching to help bridge the digital divide in education.",
+        "Tools and insights for parents to nurture their children with understanding, not pressure.",
+      icon: <FaSchool className="text-[#FFD700]" />,
+    },
+    {
+      title: "Equal Opportunities for All",
+      content:
+        "Bridging the learning-gap for the underprivileged through high-impact accessible opportunities.",
+      icon: <FaUserGraduate className="text-[#FFD700]" />,
+    },
+    {
+      title: "Preparing for Life, Not Just Survival",
+      content:
+        "A bold step toward building a generation that is skilled, resilient, and deeply human.",
       icon: <FaSchool className="text-[#FFD700]" />,
     },
   ];
@@ -231,7 +243,7 @@ export default function ProgramsOverview() {
                   width={300}
                   height={300}
                   alt="Community Growth"
-                  className="rounded-3xl mt-8 shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
+                  className="rounded-br-3xl rounded-tl-3xl mt-8 shadow-xl group-hover:shadow-[#FFD700] transition-shadow duration-300 z-10"
                 />
               </motion.div>
             </div>

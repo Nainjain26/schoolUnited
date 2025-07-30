@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from "react";
 
-import { Fa1, Fa2, Fa3 } from "react-icons/fa6";
 import Link from "next/link";
+import { FaQuestion } from "react-icons/fa";
 
 type CardProps = {
   icon: ReactNode;
@@ -144,10 +144,21 @@ export default function HeroSection() {
             <div className="flex flex-col w-full max-w-5xl   mx-auto items-center text-center sm:text-left">
               <motion.h1
                 variants={textVariants}
-                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg"
+                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-white mb-2 sm:mb-3 leading-tight drop-shadow-lg"
               >
                 {headingWords}
               </motion.h1>
+              {/* Subtitle */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="text-xs xs:text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-4 tracking-wide text-white animate-gradient-move"
+                
+              >
+                Built by Experts. Backed by Schools. Trusted by Parents. Loved
+                by Students.
+              </motion.div>
               {/* Explore More Button */}
               <Link href="/School">
                 <motion.button
@@ -168,21 +179,21 @@ export default function HeroSection() {
         <div className="relative z-10 w-full max-w-7xl mx-auto -mt-10 xs:-mt-14 sm:-mt-16 md:-mt-20 lg:-mt-28 px-2 xs:px-4 sm:px-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 overflow-x-hidden">
           <Card
             icon={
-              <Fa1 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Are we preparing students for a world that no longer exists?"
             gradient="from-red-100 to-indigo-100"
           />
           <Card
             icon={
-              <Fa2 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Does every child truly understand who they are — and what they’re capable of?"
             gradient="from-indigo-100 to-yellow-100"
           />
           <Card
             icon={
-              <Fa3 className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Do we treat all children like they are the same?"
             gradient="from-yellow-100 to-red-100"
@@ -200,7 +211,7 @@ function Card({ icon, desc }: CardProps) {
       whileInView="visible"
       whileHover={{}}
       viewport={{ once: true }}
-      className="relative group rounded-2xl overflow-hidden shadow-2xl w-full"
+      className="relative group rounded-2xl border-2 border-blue-600 overflow-hidden shadow-2xl w-full"
       style={{
         perspective: 1000,
         boxShadow: "0 12px 40px 0 rgba(31,38,135,0.18)",
@@ -288,6 +299,17 @@ function Card({ icon, desc }: CardProps) {
           }
           100% {
             transform: translateX(200%);
+          }
+        }
+        .animate-gradient-move {
+          animation: gradient-move 4s ease-in-out infinite alternate;
+        }
+        @keyframes gradient-move {
+          0% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 100% 50%;
           }
         }
       `}</style>
