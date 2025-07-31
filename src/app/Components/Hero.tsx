@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ReactNode } from "react";
 
 import Link from "next/link";
-import { FaQuestion, FaStar } from "react-icons/fa";
+import { FaQuestion } from "react-icons/fa";
 
 type CardProps = {
   icon: ReactNode;
@@ -54,57 +54,8 @@ export default function HeroSection() {
     </span>
   ));
 
-  // Floating orbs/particles for background
-  const Orbs = () => (
-    <>
-      <motion.div
-        className="absolute top-10 left-10 w-40 h-40 bg-pink-400/20 rounded-full blur-3xl z-0"
-        animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-10 right-20 w-56 h-56 bg-indigo-400/20 rounded-full blur-3xl z-0"
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-32 h-32 bg-yellow-300/20 rounded-full blur-2xl z-0"
-        animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0.3, 0.1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </>
-  );
-
-  // Sparkle overlay for carousel
-  const Sparkles = () => (
-    <div className="absolute inset-0 pointer-events-none z-20">
-      {[...Array(12)].map((_, i) => (
-        <motion.span
-          key={i}
-          className="absolute w-2 h-2 bg-white/60 rounded-full blur-sm"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            opacity: [0.5, 1, 0.5],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-
   return (
-    <div className="relative w-full overflow-x-hidden min-h-[700px] bg-gradient-to-br from-gray-950 via-indigo-950 to-yellow-900">
-      {/* Animated Orbs */}
-      <Orbs />
+    <div className="relative w-full overflow-x-hidden">
       <section className="relative w-full">
         {/* Carousel */}
         <div className="relative w-full h-[260px] xs:h-[320px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
@@ -120,10 +71,10 @@ export default function HeroSection() {
               hasPrev && (
                 <button
                   onClick={onClickHandler}
-                  className="absolute left-2 xs:left-3 sm:left-4 top-1/2 transform -translate-y-1/2 bg-opacity-40 p-2 rounded-full z-30 hover:bg-indigo-500/60 hover:scale-110 hover:shadow-lg transition"
+                  className="absolute left-2 xs:left-3 sm:left-4 top-1/2 transform -translate-y-1/2 bg-opacity-40 p-2 rounded-full z-20 hover:bg-opacity-75 transition"
                 >
                   <svg
-                    className="w-5 h-5 xs:w-6 xs:h-6 text-white drop-shadow-lg"
+                    className="w-5 h-5 xs:w-6 xs:h-6 text-gray-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -142,10 +93,10 @@ export default function HeroSection() {
               hasNext && (
                 <button
                   onClick={onClickHandler}
-                  className="absolute right-2 xs:right-3 sm:right-4 top-1/2 transform -translate-y-1/2 bg-opacity-30 p-2 rounded-full z-30 hover:bg-yellow-400/60 hover:scale-110 hover:shadow-lg transition"
+                  className="absolute right-2 xs:right-3 sm:right-4 top-1/2 transform -translate-y-1/2 bg-opacity-30 p-2 rounded-full z-20 hover:bg-opacity-75 transition"
                 >
                   <svg
-                    className="w-5 h-5 xs:w-6 xs:h-6 text-white drop-shadow-lg"
+                    className="w-5 h-5 xs:w-6 xs:h-6 text-gray-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -170,7 +121,7 @@ export default function HeroSection() {
                   src={slide.image}
                   alt={slide.alt}
                   fill
-                  className="object-cover scale-100 transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover"
                   priority
                 />
                 {/* Full glassmorphism overlay */}
@@ -179,8 +130,6 @@ export default function HeroSection() {
                   style={{ boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)" }}
                 />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/50 to-transparent z-0"></div>
-                {/* Sparkles overlay */}
-                <Sparkles />
               </div>
             ))}
           </Carousel>
@@ -190,53 +139,32 @@ export default function HeroSection() {
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="absolute inset-0 flex flex-col items-center text-center justify-center px-2 xs:px-4  z-40"
+            className="absolute inset-0 flex flex-col items-center text-center justify-center px-2 xs:px-4  z-20"
           >
-            <div className="flex flex-col w-full max-w-5xl mx-auto items-center text-center sm:text-left">
+            <div className="flex flex-col w-full max-w-5xl   mx-auto items-center text-center sm:text-left">
               <motion.h1
                 variants={textVariants}
-                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold mb-2 sm:mb-3 leading-tight drop-shadow-lg bg-gradient-to-r from-pink-400 via-indigo-400 to-yellow-400 bg-clip-text text-transparent animate-gradient-move relative"
-                style={{
-                  backgroundSize: "200% 200%",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  textShadow: "0 2px 16px rgba(255,255,255,0.12)",
-                }}
+                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg"
               >
-                <span className="inline-block align-middle mr-2 animate-bounce-slow text-yellow-300 text-3xl lg:text-5xl">
-                  🌟
-                </span>
                 {headingWords}
               </motion.h1>
-              {/* Subtitle */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="text-xs xs:text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-4 tracking-wide bg-gradient-to-r from-pink-400 via-indigo-400 to-yellow-400 bg-clip-text text-transparent animate-gradient-move"
-                style={{
-                  backgroundSize: "200% 200%",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  textShadow: "0 1px 8px rgba(255,255,255,0.10)",
-                }}
+              <motion.p
+                variants={textVariants}
+                className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 font-medium drop-shadow-md"
               >
                 Built by Experts. Backed by Schools. Trusted by Parents. Loved
                 by Students.
-              </motion.div>
+              </motion.p>
               {/* Explore More Button */}
               <Link href="/School">
                 <motion.button
                   variants={buttonVariants}
                   whileHover="hover"
                   whileTap="tap"
-                  className="mt-2 sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-gradient-to-r from-pink-400 via-indigo-400 to-yellow-400 border border-white/40 text-base sm:text-lg font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:shadow-2xl hover:scale-105 focus:outline-none relative overflow-hidden animate-glow"
+                  className="mt-2  sm:mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-white/30 border border-white/40 text-base sm:text-lg font-semibold text-black shadow-lg backdrop-blur-md transition-all duration-200 hover:bg-white/50 hover:text-gray-600 focus:outline-none"
                   style={{ boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.18)" }}
                 >
-                  <span className="relative z-10">Explore More</span>
-                  <span className="absolute inset-0 rounded-full bg-white/10 blur-lg opacity-60 animate-pulse pointer-events-none" />
+                  Explore More
                 </motion.button>
               </Link>
             </div>
@@ -247,57 +175,70 @@ export default function HeroSection() {
         <div className="relative z-10 w-full max-w-7xl mx-auto -mt-10 xs:-mt-14 sm:-mt-16 md:-mt-20 lg:-mt-28 px-2 xs:px-4 sm:px-6 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 overflow-x-hidden">
           <Card
             icon={
-              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto animate-spin-slow" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Are we preparing students for a world that no longer exists?"
             gradient="from-red-100 to-indigo-100"
           />
           <Card
             icon={
-              <FaStar className="text-yellow-300 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto animate-pulse" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Does every child truly understand who they are — and what they’re capable of?"
             gradient="from-indigo-100 to-yellow-100"
           />
           <Card
             icon={
-              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto animate-spin-slow" />
+              <FaQuestion className="text-blue-200 text-xl xs:text-2xl sm:text-3xl mb-3 mx-auto" />
             }
             desc="Do we treat all children like they are the same?"
             gradient="from-yellow-100 to-red-100"
           />
         </div>
       </section>
+    </div>
+  );
+}
+
+function Card({ icon, desc }: CardProps) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      whileHover={{}}
+      viewport={{ once: true }}
+      className="relative group rounded-2xl border border-yellow-600 overflow-hidden shadow-2xl w-full"
+      style={{
+        perspective: 1000,
+        boxShadow: "0 12px 40px 0 rgba(31,38,135,0.18)",
+      }}
+    >
+      {/* Aurora/Glow Animated Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute left-1/4 top-0 w-32 h-32 bg-pink-400 opacity-30 rounded-full blur-2xl animate-aurora1" />
+        <div className="absolute right-1/4 bottom-0 w-36 h-36 bg-indigo-400 opacity-30 rounded-full blur-2xl animate-aurora2" />
+        <div className="absolute left-1/2 top-1/2 w-24 h-24 bg-yellow-300 opacity-20 rounded-full blur-2xl animate-aurora3" />
+      </div>
+      {/* Glassmorphism + Neumorphism Panel */}
+      <div className="relative flex flex-col items-center h-full w-full rounded-2xl backdrop-blur-[12px] bg-white/30 border border-white/40 px-5 py-6 sm:px-6 sm:py-7 z-10 overflow-hidden shadow-inner-neu">
+        {/* Animated shimmer on hover */}
+        <span className="absolute left-0 top-0 w-full h-full rounded-2xl pointer-events-none overflow-hidden">
+          <span className="block w-1/3 h-full bg-gradient-to-r from-white/10 via-white/60 to-white/10 opacity-0 group-hover:opacity-70 blur-lg animate-shimmer" />
+        </span>
+        {/* Floating glowing icon */}
+        <div className="mb-4 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 via-indigo-500 to-yellow-400 shadow-2xl border-4 border-white/40 group-hover:scale-110 group-hover:shadow-pink-200/60 transition-transform duration-300 relative z-20">
+          <span className="text-white text-2xl drop-shadow-xl animate-float">
+            {icon}
+          </span>
+          {/* Icon glow */}
+          <span className="absolute inset-0 rounded-full bg-pink-400/40 blur-2xl opacity-40 z-[-1]" />
+        </div>
+
+        <p className="text-lg text-gray-800 font-bold text-center opacity-90 z-20">
+          {desc}
+        </p>
+      </div>
       <style jsx>{`
-        .animate-gradient-move {
-          animation: gradient-move 4s ease-in-out infinite alternate;
-        }
-        @keyframes gradient-move {
-          0% {
-            background-position: 0% 50%;
-          }
-          100% {
-            background-position: 100% 50%;
-          }
-        }
-        .animate-glow {
-          box-shadow: 0 0 24px 4px #f472b6, 0 0 48px 8px #818cf8,
-            0 0 24px 4px #fde68a;
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 2.5s infinite alternate;
-        }
-        @keyframes bounce-slow {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(-12px);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin 6s linear infinite;
-        }
         .shadow-inner-neu {
           box-shadow: inset 8px 8px 24px #e0e0e0, inset -8px -8px 24px #ffffff33;
         }
@@ -357,51 +298,6 @@ export default function HeroSection() {
           }
         }
       `}</style>
-    </div>
-  );
-}
-
-function Card({ icon, desc }: CardProps) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      whileHover={{
-        rotateY: 8,
-        scale: 1.04,
-        boxShadow: "0 8px 32px 0 #818cf8, 0 0 24px 4px #fde68a",
-      }}
-      viewport={{ once: true }}
-      className="relative group rounded-2xl border-2 border-blue-600 overflow-hidden shadow-2xl w-full bg-gradient-to-br from-white/40 via-indigo-100/30 to-yellow-100/40 backdrop-blur-xl"
-      style={{
-        perspective: 1000,
-        boxShadow: "0 12px 40px 0 rgba(31,38,135,0.18)",
-      }}
-    >
-      {/* Aurora/Glow Animated Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute left-1/4 top-0 w-32 h-32 bg-pink-400 opacity-30 rounded-full blur-2xl animate-aurora1" />
-        <div className="absolute right-1/4 bottom-0 w-36 h-36 bg-indigo-400 opacity-30 rounded-full blur-2xl animate-aurora2" />
-        <div className="absolute left-1/2 top-1/2 w-24 h-24 bg-yellow-300 opacity-20 rounded-full blur-2xl animate-aurora3" />
-      </div>
-      {/* Glassmorphism + Neumorphism Panel */}
-      <div className="relative flex flex-col items-center h-full w-full rounded-2xl backdrop-blur-[12px] bg-white/30 border border-white/40 px-5 py-6 sm:px-6 sm:py-7 z-10 overflow-hidden shadow-inner-neu">
-        {/* Animated shimmer on hover */}
-        <span className="absolute left-0 top-0 w-full h-full rounded-2xl pointer-events-none overflow-hidden">
-          <span className="block w-1/3 h-full bg-gradient-to-r from-white/10 via-white/60 to-white/10 opacity-0 group-hover:opacity-70 blur-lg animate-shimmer" />
-        </span>
-        {/* Floating glowing icon */}
-        <div className="mb-4 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 via-indigo-500 to-yellow-400 shadow-2xl border-4 border-white/40 group-hover:scale-110 group-hover:shadow-pink-200/60 transition-transform duration-300 relative z-20">
-          <span className="text-white text-2xl drop-shadow-xl animate-float">
-            {icon}
-          </span>
-          {/* Icon glow */}
-          <span className="absolute inset-0 rounded-full bg-pink-400/40 blur-2xl opacity-40 z-[-1]" />
-        </div>
-        <p className="text-lg text-gray-800 font-bold text-center opacity-90 z-20">
-          {desc}
-        </p>
-      </div>
     </motion.div>
   );
 }

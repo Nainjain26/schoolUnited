@@ -78,7 +78,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <div className="relative container mx-auto overflow-hidden">
+    <div className="relative container mx-auto overflow-hidden bg-black">
       {/* Animated SVG Wave Background */}
       <svg
         className="absolute inset-0 w-full h-full z-0"
