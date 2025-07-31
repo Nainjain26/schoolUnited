@@ -5,46 +5,52 @@ import React from "react";
 
 export default function CallToActionSection() {
   return (
-    <section className="relative w-full py-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-400">
-      {/* Animated Blobs */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.3, scale: 1 }}
-        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute top-[-60px] left-[-60px] w-96 h-96 bg-indigo-400 rounded-full blur-3xl"
-      ></motion.div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.3, scale: 1 }}
-        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 1 }}
-        className="absolute bottom-[-60px] right-[-60px] w-96 h-96 bg-pink-400 rounded-full blur-3xl"
-      ></motion.div>
+    <section className="relative w-full py-16 px-6 md:px-12 lg:px-16 overflow-hidden bg-gradient-to-br from-gray-950 via-black to-gray-900">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [360, 180, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
-      {/* SVG Particle Background */}
-      <svg className="absolute inset-0 w-full h-full z-0 opacity-30" preserveAspectRatio="none">
-        <defs>
-          <radialGradient id="particleGradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {[...Array(60)].map((_, i) => (
-          <circle
+      {/* Floating Particles */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
             key={i}
-            cx={Math.random() * 100 + "%"}
-            cy={Math.random() * 100 + "%"}
-            r={Math.random() * 3 + 1}
-            fill="url(#particleGradient)"
-          >
-            <animate
-              attributeName="cy"
-              values="0%;100%"
-              dur={`${5 + Math.random() * 5}s`}
-              repeatCount="indefinite"
-            />
-          </circle>
+            className="absolute w-2 h-2 bg-white/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 3,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
         ))}
-      </svg>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -58,16 +64,21 @@ export default function CallToActionSection() {
           transition={{ duration: 0.6, ease: "backOut" }}
           className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-2xl"
         >
-          Ready to <span className="text-yellow-300">Elevate</span> Your School?
+          Ready to{" "}
+          <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            Elevate
+          </span>{" "}
+          Your School?
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-white/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          Let’s partner to transform your institution’s future through impactful support, modern innovation, and a growth-first vision.
+          Let&apos;s partner to transform your institution&apos;s future through impactful
+          support, modern innovation, and a growth-first vision.
         </motion.p>
 
         <motion.div
@@ -76,7 +87,7 @@ export default function CallToActionSection() {
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
         >
           <Link href="/contact">
-            <button className="bg-yellow-400 text-gray-900 font-semibold py-3 px-10 rounded-full shadow-xl hover:bg-yellow-300 hover:shadow-2xl transition duration-300 text-lg">
+            <button className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-gray-900 font-semibold py-3 px-10 rounded-full shadow-xl hover:shadow-2xl transition duration-300 text-lg">
               Talk to Us
             </button>
           </Link>

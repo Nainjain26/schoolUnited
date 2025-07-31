@@ -113,7 +113,7 @@ export default function ProgramsOverview() {
         × Close
       </button>
       <h2 className="text-2xl sm:text-3xl font-bold text-purple-300 mb-2">
-        "The Infinity Code"
+      &quot;The Infinity Code&quot;
       </h2>
       <h3 className="text-lg sm:text-xl font-semibold text-gray-200 mb-4">
         Decode Yourself. Design the Future.
@@ -131,28 +131,28 @@ export default function ProgramsOverview() {
         </li>
         <li>Multisensory experiences (sound, movement, light, tech, nature)</li>
         <li>
-          Daily "Time Capsule" creation to track emotional and mental
+          Daily &quot;Time Capsule&quot; creation to track emotional and mental
           transformation
         </li>
         <li>Gamified, immersive, and deeply reflective</li>
         <li>No classrooms, no lectures — only missions, quests, and labs</li>
       </ul>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 1 – Decode: "Who Am I in the Now?"
+        DAY 1 – Decode: &quot;Who Am I in the Now?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
         Discover your inner wiring. Build a deep connection with your mind,
         body, and emotions.
       </p>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 2 – Disrupt: "Who Can I Become?"
+        DAY 2 – Disrupt: &quot;Who Can I Become?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
         Break mental patterns. Discover limitless possibility. Rebuild from
         courage and curiosity.
       </p>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 3 – Design: "What Legacy Will I Leave?"
+        DAY 3 – Design: &quot;What Legacy Will I Leave?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
         Design your future. Lead with empathy. Embody your highest possibility.
