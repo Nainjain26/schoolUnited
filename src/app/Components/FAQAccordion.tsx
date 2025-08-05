@@ -40,7 +40,7 @@ function GoldParticle({
 const parentFAQs = [
   {
     q: "What does Scolars United offer for my child’s growth?",
-    a: `We offer transformative, non-academic and academic-supportive programs that help children build self-awareness, emotional resilience, decision-making skills, and future-ready capabilities through experiential journeys, skill labs, and psychological profiling.`,
+    a: `We offer transformative, non-academic and academic-supportive programs that help children build self-awareness, emotional resilience, decision-making skills, and future-ready capabilities through experiential journeys, skill labs, psychological profiling, and much more.`,
   },
   {
     q: "Will this help with my child’s studies or career clarity?",
@@ -52,7 +52,7 @@ const parentFAQs = [
   },
   {
     q: "How can I track my child’s progress or outcomes?",
-    a: `Our programs include personalized reflections, growth worksheets, psychometric insights and individual reports. You’ll often notice changes in your child’s mindset, self-confidence, and emotional maturity soon after the sessions. Then, the reflections and insights provided by us will help you to understand the transformation of your child better.`,
+    a: `Our programs include personalized reflections, growth worksheets, psychometric insights and individual reports. You’ll often notice changes in your child’s mindset, self-confidence, and emotional maturity soon after the sessions. Also, the reflections and insights provided by us will help you to understand the transformation of your child better.`,
   },
   {
     q: "Can parents be involved in the process?",
@@ -63,11 +63,11 @@ const parentFAQs = [
 const schoolFAQs = [
   {
     q: "What kind of support does Scolars United offer to schools?",
-    a: `We provide four major solutions:\n• Academic & Institutional Development\n• Holistic development infrastructure for schools\n• Marketing and branding support\n• Tech integration support`,
+    a: `We provide four major solutions:\n· Holistic development of the students\n· Development of academic support system\n· Marketing and branding support\n· Tech integration support`,
   },
   {
     q: "How do these programs add value to our institution?",
-    a: `Scolars United adds value to schools by offering four core solutions that drive meaningful transformation. We support academic and institutional development through strategic leadership and faculty advancement, build holistic development infrastructure to foster emotional and character growth, enhance school visibility with targeted marketing and branding support, and enable future-readiness through guided tech integration — including smart classrooms, LMS, STEM labs, and data systems. Together, these solutions help institutions grow purposefully and sustainably.`,
+    a: `Scolars United adds value to schools by offering four core solutions that drive meaningful transformation—for both students and the institution.\n\n1. Create holistic development frameworks to nurture emotional intelligence and creativity and foster character growth of the students.\n2. Help the institutions develop strong academic support systems through strategic leadership and faculty advancement.\n3. Enhance school visibility through focused marketing and branding.\n4. Help institutions build future-readiness via guided tech integration, including, but not limited to, smart classrooms, LMS, STEM labs, and data systems.`,
   },
   {
     q: "Are these programs backed by scientific research?",
@@ -78,16 +78,16 @@ const schoolFAQs = [
     a: `Absolutely! All offerings can be tailored based on your students’ age group, school size, curriculum, institutional goals, and logistical preferences.`,
   },
   {
-    q: "Do your programs interrupt academics or school schedule?",
+    q: "Do your programs interrupt academics or school schedules?",
     a: `Not at all. We ensure minimal academic disruption. Programs can be conducted at a time which is mutually agreed upon after discussions. Moreover, these programs will help in your academic system as children will be more focused on what they do after attending these programs!`,
   },
   {
     q: "What support do you provide before and after the program?",
-    a: `We provide comprehensive support at every stage of the engagement to ensure lasting impact.\nBefore the program, we conduct detailed needs assessments, orientation sessions for staff, and logistical planning to align the program with your institution’s goals and context.\n\nDuring the program, our team manages seamless delivery, provides on-ground facilitation, and ensures continuous communication with school leadership.\n\nAfter the program, we offer impact evaluation reports, debrief sessions, and strategic follow-ups. We also provide extended mentorship, digital resources, and implementation support to help integrate the learning into your school’s culture and practices.`,
+    a: `We offer end-to-end support to ensure lasting impact — from pre-program needs assessments, staff orientation, and logistical alignment, to seamless on-ground facilitation and real-time coordination during the sessions. Post-program, we provide detailed impact reports, debriefs, strategic follow-ups, and extended mentorship with digital resources to help embed the learning into your school’s culture.`,
   },
   {
     q: "How can we book a program or get a proposal?",
-    a: `Please call us at +91 8955529950 or write to us at info@Scolarsunited.com. Our team will schedule a consultation and send you a tailored proposal within 48 hours.`,
+    a: `Please fill the form for detailed information here. You may also call or WhatsApp us at +91 8955529950 or write to us at info@scolarsunited.com. Our team will schedule a consultation and send you a tailored proposal within 48 hours.`,
   },
   {
     q: "What is your pricing structure?",

@@ -80,8 +80,8 @@ export default function Navbar() {
     {
       name: "Student Empowerment",
       dropdown: [
-        { name: "Flagship Programs", href: "/Students/Flagship" },
-        { name: "Other Programs", href: "/Students/Other" },
+        { name: "Flagship", href: "/ProgramsPage" },
+        { name: "Student Programs", href: "/Students" },
       ],
     },
     { name: " For School", href: "/School" },
@@ -140,7 +140,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     aria-label="Toggle dropdown"
-                    className="flex items-center cursor-pointer focus:outline-none"
+                    className="flex items-center cursor-pointer  focus:outline-none"
                     onClick={(e) => {
                       e.stopPropagation();
                       setOpenDropdown(
@@ -149,7 +149,7 @@ export default function Navbar() {
                     }}
                   >
                     <svg
-                      className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                      className={`w-4 h-4 ml-1 transition-transform text-white duration-200 ${
                         openDropdown === link.name ? "rotate-180" : "rotate-0"
                       }`}
                       fill="none"

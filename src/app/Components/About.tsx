@@ -128,7 +128,7 @@ export default function AboutSection() {
                 className="relative w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 rounded-xl overflow-hidden shadow-xl"
               >
                 <Image
-                  src="/about2.png"
+                  src="/2.png"
                   alt="Portrait Student"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"

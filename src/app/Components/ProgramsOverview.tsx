@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaCode, FaKey, FaRegLightbulb } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 // Animation variants
@@ -75,23 +75,10 @@ const Particles = () => {
 };
 
 // Typewriter effect for heading
-const useTypewriter = (text: string, speed = 60) => {
-  const [displayed, setDisplayed] = useState("");
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayed(text.slice(0, i + 1));
-      i++;
-      if (i === text.length) clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return displayed;
-};
 
 export default function ProgramsOverview() {
   // Typewriter heading
-  const whatIfHeading = useTypewriter("WHAT IF…", 80);
+
   const [openProgram, setOpenProgram] = useState<null | "infinity" | "quantum">(
     null
   );
@@ -113,13 +100,13 @@ export default function ProgramsOverview() {
         × Close
       </button>
       <h2 className="text-2xl sm:text-3xl font-bold text-purple-300 mb-2">
-      &quot;The Infinity Code&quot;
+        The Infinity Code
       </h2>
       <h3 className="text-lg sm:text-xl font-semibold text-gray-200 mb-4">
-        Decode Yourself. Design the Future.
+        Decode. Develop. Design.
       </h3>
       <p className="text-gray-300 mb-4">
-        A radical 3-day experiential journey for adolescents (13–18 years)
+        A 3-Day Transformational Odyssey for the Young Mind (13-18 years)
       </p>
       <h4 className="font-bold text-purple-400 mb-2">
         What Makes It UNLIKE Anything Else?
@@ -130,29 +117,25 @@ export default function ProgramsOverview() {
           storytelling
         </li>
         <li>Multisensory experiences (sound, movement, light, tech, nature)</li>
-        <li>
-          Daily &quot;Time Capsule&quot; creation to track emotional and mental
-          transformation
-        </li>
         <li>Gamified, immersive, and deeply reflective</li>
         <li>No classrooms, no lectures — only missions, quests, and labs</li>
       </ul>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 1 – Decode: &quot;Who Am I in the Now?&quot;
+        DAY 1 – Decode: &quot;Who Am I Really?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
         Discover your inner wiring. Build a deep connection with your mind,
         body, and emotions.
       </p>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 2 – Disrupt: &quot;Who Can I Become?&quot;
+        DAY 2 – Develop: &quot;Where Do I Stand, And How Do I Rise?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
-        Break mental patterns. Discover limitless possibility. Rebuild from
-        courage and curiosity.
+        Break mental patterns. Learn inevitable skills. Build from courage and
+        curiosity.
       </p>
       <h4 className="font-bold text-purple-400 mb-2">
-        DAY 3 – Design: &quot;What Legacy Will I Leave?&quot;
+        DAY 3 – Design: &quot;What Will I Become, And Why Will It Matter?&quot;
       </h4>
       <p className="mb-2 text-gray-300">
         Design your future. Lead with empathy. Embody your highest possibility.
@@ -162,25 +145,27 @@ export default function ProgramsOverview() {
       </h4>
       <ul className="list-disc list-inside text-gray-300 mb-2 space-y-1">
         <li>Certificate of Completion</li>
+        <li>Digital Badge</li>
+        <li>Report with progress summary</li>
         <li>
           Infinity Passport: A personalized, sealed journey book with
           AI-inferred insights
         </li>
         <li>
-          Neuro Card: Shows brain-behavior pattern using responses from Brain
-          Gym
+          Infinity Bracelet: A symbolic token of inner strength and
+          limitlessness
+        </li>
+        <li>Bonuses worth 30k</li>
+        <li>
+          A deeper understanding of self, learning, emotion, creativity, and
+          values
         </li>
         <li>
-          Legacy Video: A recorded 1-minute message from the future self to
-          present self
+          Increased confidence in public speaking, team collaboration, and
+          decision-making
         </li>
-        <li>
-          Infinity Pendant: A symbolic token of inner strength and limitlessness
-        </li>
-        <li>
-          Family Circle: Final-day experience with parents to witness the
-          transformation
-        </li>
+        <li>Clarity about long-term goals and purpose</li>
+        <li>A feeling of being seen, heard, and deeply valued</li>
       </ul>
     </motion.div>
   );
@@ -245,9 +230,7 @@ export default function ProgramsOverview() {
         <li>Project Showcase: Quantum Challenge</li>
         <li>SoulSync: Purposeful Tech</li>
       </ul>
-      <h4 className="font-bold text-blue-400 mb-2 mt-4">
-        Takeaways That WOW:
-      </h4>
+      <h4 className="font-bold text-blue-400 mb-2 mt-4">Takeaways That WOW:</h4>
       <ul className="list-disc list-inside text-gray-300 mb-2 space-y-1">
         <li>Certificate of Completion</li>
         <li>A Digital Portfolio</li>
@@ -274,87 +257,52 @@ export default function ProgramsOverview() {
       <Particles />
 
       {/* WHAT IF... SECTION */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-16 z-20 flex flex-col items-center">
+
+      <section className="relative w-full min-h-screen bg-[#0b0b0f] flex items-center justify-center px-6 py-24 overflow-hidden text-white">
+        {/* Background ambient gradient glows */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-20 left-1/3 w-[600px] h-[600px] bg-purple-500/30 rounded-full blur-[180px] opacity-50 animate-pulse"></div>
+          <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[140px] opacity-40 animate-pulse"></div>
+        </div>
+
+        {/* Main content container */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full max-w-3xl bg-gradient-to-br from-gray-900/90 via-purple-900/80 to-blue-900/80 rounded-3xl shadow-2xl p-8 text-white border-4 border-purple-500/40 backdrop-blur-lg relative overflow-hidden"
+          initial={{ opacity: 0, scale: 0.95, y: 40 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative z-10 w-full max-w-5xl bg-white/5 backdrop-blur-lg border border-purple-500/20 rounded-3xl shadow-[0_0_40px_rgba(128,0,255,0.1)] px-8 sm:px-16 py-16 space-y-10 overflow-hidden"
         >
-          {/* Enhanced Animated Glow */}
-          <motion.div
-            className="absolute -inset-2 rounded-3xl pointer-events-none"
-            animate={{
-              opacity: [0.6, 0.9, 0.6],
-              filter: ["blur(20px)", "blur(40px)", "blur(20px)"],
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              background:
-                "linear-gradient(120deg, rgba(147,51,234,0.4) 0%, rgba(59,130,246,0.3) 50%, rgba(147,51,234,0.4) 100%)",
-            }}
-          />
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-3xl sm:text-6xl font-extrabold mb-6 text-center tracking-wide relative z-10 flex items-center justify-center gap-2"
-          >
-            <FaRegLightbulb className="text-purple-400 animate-pulse" />
-            <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {whatIfHeading}
-            </span>
-          </motion.h2>
-          <motion.ul
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.25 } },
-              hidden: {},
-            }}
-            className="space-y-4 text-lg sm:text-xl font-medium relative z-10"
-          >
-            <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
-              }}
-            >
-              <span className="text-purple-400">•</span> What if our children
-              discovered their strengths before the world told them their
-              limits?
-            </motion.li>
-            <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.7, delay: 0.2 },
-                },
-              }}
-            >
-              <span className="text-blue-400">•</span> What if education
-              helped them build a life — not just chase a career and fight for
-              survival?
-            </motion.li>
-            <motion.li
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                visible: {
-                  opacity: 1,
-                  x: 0,
-                  transition: { duration: 0.7, delay: 0.4 },
-                },
-              }}
-            >
-              <span className="text-purple-400">•</span> What if every teenager
-              could turn confusion into clarity, pressure into purpose?
-            </motion.li>
-          </motion.ul>
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center text-center sm:text-left">
+            <FaRegLightbulb className="text-purple-400 text-4xl animate-pulse" />
+            <h2 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              Imagine if learning actually lit the way forward.
+            </h2>
+          </div>
+
+          {/* Vertical Timeline Style List */}
+          <div className="relative pl-6 border-l-2 border-purple-500/30 space-y-8">
+            {[
+              "What if children explored their genius before the world defined their limits?",
+              "What if school made them feel seen, not small?",
+              "What if education helped them build lives, not just résumés?",
+              "What if we replaced fear with curiosity and pressure with purpose?",
+            ].map((text, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                className="relative"
+              >
+                <span className="absolute -left-3 top-1.5 w-3 h-3 bg-purple-500 rounded-full animate-ping" />
+                <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+                  {text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </section>
 

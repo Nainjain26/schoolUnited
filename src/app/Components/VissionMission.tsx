@@ -99,11 +99,11 @@ export default function VissionMission() {
                 <br />
                 <br />
                 Founded by a team of seasoned educators with over 20+ years of
-                experience, we&apos;ve witnessed both the strengths and shortcomings
-                of the current education system. What unites us is a mission to
-                redesign schooling—not just to improve academic outcomes, but to
-                place the mental well-being and holistic growth of children at
-                the heart of it.
+                experience, we&apos;ve witnessed both the strengths and
+                shortcomings of the current education system. What unites us is
+                a mission to redesign schooling—not just to improve academic
+                outcomes, but to place the mental well-being and holistic growth
+                of children at the heart of it.
                 <br />
                 <br />
                 We are not just teaching students; we are helping them unlock
@@ -112,8 +112,8 @@ export default function VissionMission() {
                 conforming, but by becoming the best version of themselves.
                 <br />
                 <br />
-                This isn&apos;t just another initiative. It&apos;s a quiet revolution. And
-                we&apos;re here to lead it.
+                This isn&apos;t just another initiative. It&apos;s a quiet
+                revolution. And we&apos;re here to lead it.
               </p>
             </motion.div>
           )}
@@ -123,7 +123,7 @@ export default function VissionMission() {
               key="vision"
               title="OUR VISION"
               borderColor="yellow-500"
-              centerImgSrc="/photo.png"
+              centerImgSrc="/1.png"
               itemsLeft={[
                 {
                   icon: "🎯",
@@ -168,7 +168,7 @@ export default function VissionMission() {
               key="mission"
               title="OUR MISSION"
               borderColor="green-500"
-              centerImgSrc="/photo.png"
+              centerImgSrc="/1.png"
               itemsLeft={[
                 {
                   icon: "🎯",

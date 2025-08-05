@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { HiOutlineMail } from "react-icons/hi";
 
 export default function Footer() {
   // Animation variants for staggered entrance
@@ -22,17 +23,17 @@ export default function Footer() {
   };
 
   const quickLinks = [
-    { name: "Contact", path: "/Contact" },
-    { name: "Our Services", path: "/Services" },
-    { name: "Terms And Condition", path: "/Terms&Condition" },
-    { name: "Privacy Policy", path: "/PrivacyPolicy" },
+    { name: "Who we are", path: "/About" },
+    { name: "Student Empowement", path: "/Students" },
+    { name: "For Schools", path: "/School" },
+    { name: "Initiatives", path: "/ShikshaSetu" },
   ];
 
   const navigationItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/About" },
-    { name: "School Empowerment", path: "/School" },
-    { name: "Student Empowerment", path: "/Students" },
+    { name: "Blog", path: "/#" },
+    { name: "Career", path: "/#" },
+    { name: "Terms and conditions", path: "/#" },
+    { name: "Privacy policy", path: "/#" },
   ];
 
   const itemVariants = {
@@ -177,27 +178,41 @@ export default function Footer() {
 
           {/* Contact Info */}
           <motion.div
-            variants={itemVariants}
-            className="text-center sm:text-left"
-          >
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 text-yellow-400">
-              Contact Us
-            </h3>
-            <p className="text-gray-300 mb-2 text-sm sm:text-base">
-              Monday to Saturday, 10 am to 7 pm
-            </p>
+  variants={itemVariants}
+  className="text-center sm:text-left"
+>
+  <h3 className="text-xl sm:text-2xl font-bold mb-4 text-yellow-400">
+    Contact Us
+  </h3>
+  <p className="text-gray-300 mb-2 text-sm sm:text-base">
+    Monday to Saturday, 10 am to 7 pm
+  </p>
 
-            <motion.a
-              whileHover={{
-                scale: 1.1,
-                boxShadow: "0 0 15px rgba(255, 255, 0, 0.3)",
-              }}
-              href="tel:+91 8955529950"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-black font-semibold shadow-lg"
-            >
-              <FaPhoneAlt /> +91 8955529950
-            </motion.a>
-          </motion.div>
+  {/* Phone Section */}
+  <motion.a
+    whileHover={{
+      scale: 1.1,
+      boxShadow: "0 0 15px rgba(255, 255, 0, 0.3)",
+    }}
+    href="tel:+918955529950"
+    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-black font-semibold shadow-lg mb-3"
+  >
+    <FaPhoneAlt /> +91 8955529950
+  </motion.a>
+
+  {/* Email Section */}
+  <motion.a
+    whileHover={{
+      scale: 1.1,
+      boxShadow: "0 0 15px rgba(255, 255, 0, 0.3)",
+    }}
+    href="mailto:info@scolarsunited.com"
+    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-black font-semibold shadow-lg"
+  >
+    <HiOutlineMail /> info@scolarsunited.com
+  </motion.a>
+</motion.div>
+
         </motion.div>
       </div>
 

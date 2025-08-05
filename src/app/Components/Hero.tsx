@@ -156,7 +156,7 @@ export default function HeroSection() {
                 by Students.
               </motion.p>
               {/* Explore More Button */}
-              <Link href="/School">
+              <Link href="/Students">
                 <motion.button
                   variants={buttonVariants}
                   whileHover="hover"

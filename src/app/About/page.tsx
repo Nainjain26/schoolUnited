@@ -27,10 +27,7 @@ export default function AboutIntroBanner() {
             <span className="block w-16 h-1 mx-auto mt-2 bg-gradient-to-r from-yellow-400 to-purple-500 rounded"></span>
           </h1>
           <p className="text-white text-base md:text-lg max-w-3xl mx-auto mt-4 font-medium">
-            Scolars United is on a mission to democratize education and ensure
-            that every learner, regardless of background or location, has access
-            to the knowledge and skills they need to succeed in this fast
-            changing and modern world.
+          Scolars United is the brain child of seasoned educators engaged in creating a revised educational-ecosystem focusing on students’ inner structuring and four-square growth beyond academics. 
           </p>
         </div>
       </div>
