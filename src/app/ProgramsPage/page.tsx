@@ -689,7 +689,14 @@ export default function ProgramsOverview() {
           Want to bring this movement to your school?
         </h3>
         <p className="text-gray-300 mb-8">
-          Please fill the form for detailed information here. You may also call
+          Please fill the form for detailed information <a
+          href="https://forms.gle/BGyHJmg5XQNrffVA7"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FFD700] underline hover:text-white"
+        >
+          here
+        </a>. You may also call
           or WhatsApp us at{" "}
           <a href="tel:+918955529950" className="text-yellow-400 underline">
             +91 8955529950
