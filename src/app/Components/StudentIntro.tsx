@@ -115,9 +115,14 @@ export default function WhatStudentEmpowermentMeans() {
             whileTap={{ scale: 0.95 }}
             className="mt-6"
           >
-            <Link href="/ProgramsPage" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300">
-              Discover Our Approach
-            </Link>
+            <Link
+  href="/ProgramsPage"
+  title="Learn about our programs"
+  aria-label="Discover our approach"
+  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300"
+>
+  Discover Our Approach
+</Link>
           </motion.div>
         </motion.div>
       </div>
