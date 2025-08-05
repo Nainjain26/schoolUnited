@@ -87,8 +87,38 @@ const schoolFAQs = [
   },
   {
     q: "How can we book a program or get a proposal?",
-    a: `Please fill the form for detailed information here. You may also call or WhatsApp us at +91 8955529950 or write to us at info@scolarsunited.com. Our team will schedule a consultation and send you a tailored proposal within 48 hours.`,
+    a: (
+      <>
+        Please fill the form for detailed information{" "}
+        <a
+          href="https://forms.gle/BGyHJmg5XQNrffVA7"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FFD700] underline hover:text-white"
+        >
+          here
+        </a>
+        . You may also call or WhatsApp us at{" "}
+        <a
+          href="https://wa.me/918955529950"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FFD700] underline hover:text-white"
+        >
+          +91 8955529950
+        </a>{" "}
+        or write to us at{" "}
+        <a
+          href="mailto:info@scolarsunited.com"
+          className="text-[#FFD700] underline hover:text-white"
+        >
+          info@scolarsunited.com
+        </a>
+        . Our team will schedule a consultation and send you a tailored proposal within 48 hours.
+      </>
+    ),
   },
+  
   {
     q: "What is your pricing structure?",
     a: `Pricing varies depending on program type, number of participants, and level of customization. For a detailed quote, please contact our team via phone or email.`,
