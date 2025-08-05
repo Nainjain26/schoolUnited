@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function WhatStudentEmpowermentMeans() {
@@ -108,14 +109,15 @@ export default function WhatStudentEmpowermentMeans() {
             We offer deeply personalized approaches, mentorship, mental ability
             enhancement, and continuous encouragement.
           </p>
+          
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="mt-6"
           >
-            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300">
+            <Link href="/ProgramsPage" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300">
               Discover Our Approach
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

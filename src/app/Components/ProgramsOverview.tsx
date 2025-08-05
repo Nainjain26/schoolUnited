@@ -276,7 +276,7 @@ export default function ProgramsOverview() {
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center text-center sm:text-left">
             <FaRegLightbulb className="text-purple-400 text-4xl animate-pulse" />
             <h2 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              Imagine if learning actually lit the way forward.
+              What If....
             </h2>
           </div>
 

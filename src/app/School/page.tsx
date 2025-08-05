@@ -68,36 +68,9 @@ const ScholarsUnitedPage = () => {
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="rounded-xl bg-white/10 backdrop-blur-md p-8 shadow-xl hover:scale-[1.02] transition-all"
-            >
-              <FaChalkboardTeacher className="text-yellow-400 text-6xl mb-4" />
-              <p className="text-gray-200">
-                Building leadership and competency to enhance school performance.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Service Block 2 */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="rounded-xl bg-white/10 backdrop-blur-md p-8 shadow-xl order-2 md:order-1 hover:scale-[1.02] transition-all"
-            >
-              <FaBrain className="text-purple-400 text-6xl mb-4" />
-              <p className="text-gray-200">
-                Life-skills, emotional intelligence, ethics and values — we support
-                full-child development.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
               className="order-1 md:order-2"
             >
-              <h2 className="text-3xl font-bold text-purple-400 mb-4">
+              <h2 className="text-3xl font-bold text-yellow-400 mb-4">
               Holistic development infrastructure for schools
               </h2>
               <p className="text-gray-300">
@@ -107,6 +80,9 @@ const ScholarsUnitedPage = () => {
               </p>
             </motion.div>
           </div>
+
+          {/* Service Block 2 */}
+         
 
           {/* Cards */}
           <div className="grid md:grid-cols-2 gap-12">

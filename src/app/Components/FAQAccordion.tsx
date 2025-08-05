@@ -114,18 +114,23 @@ const schoolFAQs = [
         >
           info@scolarsunited.com
         </a>
-        . Our team will schedule a consultation and send you a tailored proposal within 48 hours.
+        . Our team will schedule a consultation and send you a tailored proposal
+        within 48 hours.
       </>
     ),
   },
-  
+
   {
     q: "What is your pricing structure?",
     a: `Pricing varies depending on program type, number of participants, and level of customization. For a detailed quote, please contact our team via phone or email.`,
   },
 ];
 
-function AccordionList({ faqs }: { faqs: { q: string; a: string }[] }) {
+function AccordionList({
+  faqs,
+}: {
+  faqs: { q: string; a: string | React.ReactNode }[];
+}) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
     <div className="space-y-2 relative z-10">
