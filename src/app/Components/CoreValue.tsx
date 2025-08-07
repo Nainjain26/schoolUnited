@@ -78,7 +78,7 @@ export default function CoreValuesSection() {
 
   return (
     <section className="w-full py-20 bg-[#181c3a] text-gray-100 overflow-hidden">
-      <div className="max-w-2xl mx-auto text-center mb-12 px-4">
+      <div className="max-w-3xl mx-auto text-center mb-12 px-4">
         <h2 className="text-3xl md:text-6xl font-extrabold mb-4 text-white">
           OUR VALUES
         </h2>
@@ -100,12 +100,12 @@ export default function CoreValuesSection() {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                <div className="flex flex-col items-center bg-[#23284d] rounded-2xl shadow-lg p-8 border-l-4 border-yellow-400 w-full max-w-xs mx-auto h-full">
+                <div className="flex flex-col items-center bg-[#23284d] rounded-2xl shadow-lg p-8 border-l-4 border-yellow-400 w-full max-w-xl mx-auto h-full">
                   <div className="mb-3">{value.icon}</div>
-                  <h3 className="text-xl font-semibold text-yellow-300 mb-2">
+                  <h3 className="text-xl text-start font-semibold text-yellow-300 mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-gray-200 text-base text-center">
+                  <p className="text-gray-200 text-base text-start">
                     {value.desc}
                   </p>
                 </div>
@@ -130,14 +130,19 @@ export default function CoreValuesSection() {
         Join the Movement
       </h4>
       <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        <span className="text-white font-semibold">Scholars United</span> is more than a service — it&apos;s a revolution in learning.
+        <span className="text-white font-semibold">Scholars United</span> is more than a Scholars United is more than an initiative — it&apos;s a revolution in learning. 
         We&apos;re crafting futures with relevance, resilience, and real-world impact.
+
+
+
+
       </p>
       <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-        Parents seeking clarity. Teachers eager to grow. Institutions hungry for transformation.
+      Parents seeking clarity. Teachers eager to grow. Institutions hungry for transformation.
+      And students—ready to discover who they truly are and what they can become.
         <br />
         <span className="text-yellow-400 font-bold">
-          Let&apos;s build education that empowers — together.
+        Let&apos;s build education that empowers — together.
         </span>
       </p>
     </div>

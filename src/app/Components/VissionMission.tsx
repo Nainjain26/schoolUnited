@@ -15,11 +15,11 @@ const ParticleBg = () => {
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
     color: [
-      "rgba(253,224,71,0.22)",
-      "rgba(99,102,241,0.18)",
-      "rgba(34,197,94,0.18)",
-      "rgba(236,72,153,0.18)",
-      "rgba(255,255,255,0.15)",
+      "rgba(253,224,71,0.22)", // Gold
+      "rgba(147,51,234,0.18)", // Purple
+      "rgba(59,130,246,0.18)", // Blue
+      "rgba(236,72,153,0.18)", // Pink
+      "rgba(255,255,255,0.15)", // White
     ][Math.floor(Math.random() * 5)],
     duration: Math.random() * 8 + 8,
     delay: Math.random() * 4,
@@ -86,9 +86,9 @@ export default function VissionMission() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.5 }}
-              className="bg-[#121215] rounded-3xl shadow-xl p-8 border-l-8 border-yellow-700 text-white"
+              className="bg-[#121215] rounded-3xl shadow-xl p-8  text-white"
             >
-              <h2 className="text-3xl font-bold text-yellow-400 mb-4">
+              <h2 className="text-3xl font-extrabold text-white mb-4">
                 OUR STORY
               </h2>
               <p className="leading-relaxed text-gray-200 md:text-lg">
@@ -122,7 +122,7 @@ export default function VissionMission() {
             <SectionWithImage
               key="vision"
               title="OUR VISION"
-              borderColor="yellow-500"
+            
               centerImgSrc="/1.png"
               itemsLeft={[
                 {
@@ -167,8 +167,8 @@ export default function VissionMission() {
             <SectionWithImage
               key="mission"
               title="OUR MISSION"
-              borderColor="green-500"
-              centerImgSrc="/1.png"
+            
+              centerImgSrc="/m.png"
               itemsLeft={[
                 {
                   icon: "🎯",
@@ -215,7 +215,7 @@ export default function VissionMission() {
 
 interface SectionWithImageProps {
   title: string;
-  borderColor: string;
+ 
   centerImgSrc: string;
   itemsLeft: Array<{ icon: string; title: string; desc: string }>;
   itemsRight: Array<{ icon: string; title: string; desc: string }>;
@@ -225,7 +225,7 @@ interface SectionWithImageProps {
 
 function SectionWithImage({
   title,
-  borderColor,
+
   centerImgSrc,
   itemsLeft,
   itemsRight,
@@ -238,10 +238,10 @@ function SectionWithImage({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5 }}
-      className={`bg-[#0f0f20] rounded-3xl shadow-xl p-8 border-l-8 border-${borderColor} text-white`}
+      className={`bg-[#0f0f20] rounded-3xl shadow-xl p-8  text-white`}
     >
       <h2
-        className={`text-3xl font-extrabold text-center text-${borderColor} mb-6`}
+        className={`text-3xl font-extrabold text-center  mb-6`}
       >
         {title}
       </h2>
@@ -287,10 +287,10 @@ interface CardProps {
 
 function Card({ icon, title, desc }: CardProps) {
   return (
-    <div className="flex gap-4 items-start">
+    <div className="flex gap-4  items-start">
       <div className="text-2xl">{icon}</div>
       <div>
-        <h3 className="font-bold text-lg">{title}</h3>
+        <h3 className="font-bold text-rgba(253,224,71,0.22) text-lg">{title}</h3>
         <p className="text-gray-300 text-sm">{desc}</p>
       </div>
     </div>

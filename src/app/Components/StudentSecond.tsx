@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaStar,
-  FaLightbulb,
+ 
   FaSmileBeam,
   FaPuzzlePiece,
   FaBalanceScale,
@@ -23,15 +23,7 @@ const benefits = [
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
   },
-  {
-    icon: (
-      <FaLightbulb className="text-indigo-500 text-5xl mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-45" />
-    ),
-    title: "Academic Clarity",
-    text: "We help students develop a deep understanding of complex concepts and set clear academic goals. Our tailored guidance breaks down barriers to learning, ensuring students grasp foundational knowledge and apply it effectively in their studies.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-  },
+ 
   {
     icon: (
       <FaSmileBeam className="text-pink-500 text-5xl mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-45" />

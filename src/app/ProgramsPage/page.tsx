@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-
   FaCheckCircle,
   FaQuoteLeft,
   FaPhoneAlt,
@@ -14,9 +13,7 @@ import {
   FaLaptopCode,
   FaKey,
   FaCode,
-  
 } from "react-icons/fa";
-
 
 const objectives = [
   {
@@ -122,8 +119,6 @@ const transformations = [
   },
 ];
 
-
-
 // Animation variants
 
 // Particle component for CSS-based animations
@@ -140,8 +135,8 @@ const Particles = () => {
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none">
-       {/* Enhanced Animated Gradient Overlay */}
-       <motion.div
+      {/* Enhanced Animated Gradient Overlay */}
+      <motion.div
         className="absolute inset-0 z-0 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -372,8 +367,6 @@ export default function ProgramsOverview() {
     </motion.div>
   );
 
-
-
   return (
     <div className="bg-gradient-to-b from-black via-gray-900 to-black text-white px-6 py-16 space-y-32">
       {/* Hero Section */}
@@ -392,9 +385,14 @@ export default function ProgramsOverview() {
             </h1>
           </motion.div>
           <p className="text-lg sm:text-xl text-gray-300 max-w-5xl mx-auto">
-          At Scolars United, our flagship programs are more than just educational interventions — they are immersive, life-shaping journeys. Designed to nurture emotional intelligence, future-ready skills, creative thinking, and deep self-awareness, these programs empower students to understand who they are and what they can become. Each experience is rooted in science, driven by purpose, and crafted to spark a lasting transformation — helping children not just succeed in academics, but thrive in life.
-
-
+            At Scolars United, our flagship programs are more than just
+            educational interventions — they are immersive, life-shaping
+            journeys. Designed to nurture emotional intelligence, future-ready
+            skills, creative thinking, and deep self-awareness, these programs
+            empower students to understand who they are and what they can
+            become. Each experience is rooted in science, driven by purpose, and
+            crafted to spark a lasting transformation — helping children not
+            just succeed in academics, but thrive in life.
           </p>
         </div>
       </section>
@@ -689,15 +687,16 @@ export default function ProgramsOverview() {
           Want to bring this movement to your school?
         </h3>
         <p className="text-gray-300 mb-8">
-          Please fill the form for detailed information <a
-          href="https://forms.gle/BGyHJmg5XQNrffVA7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#FFD700] underline hover:text-white"
-        >
-          here
-        </a>. You may also call
-          or WhatsApp us at{" "}
+          Please fill the form for detailed information{" "}
+          <a
+            href="https://forms.gle/BGyHJmg5XQNrffVA7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#FFD700] underline hover:text-white"
+          >
+            here
+          </a>
+          . You may also call or WhatsApp us at{" "}
           <a href="tel:+918955529950" className="text-yellow-400 underline">
             +91 8955529950
           </a>{" "}

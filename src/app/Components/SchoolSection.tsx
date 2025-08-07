@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaBrain,
-  FaGraduationCap,
+ 
   FaHandsHelping,
   FaSmile,
   FaComments,
@@ -12,14 +12,7 @@ import {
 } from "react-icons/fa";
 
 const sections = [
-  {
-    icon: (
-      <FaGraduationCap className="text-indigo-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
-    ),
-    title: "Academic Mentorship",
-    content:
-      "One-on-one academic guidance tailored to each student’s learning style, helping them grow at their own pace and perform their best.",
-  },
+ 
   {
     icon: (
       <FaHandsHelping className="text-green-600 text-4xl mb-4 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" />
