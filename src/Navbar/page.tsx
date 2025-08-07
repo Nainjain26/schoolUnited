@@ -81,7 +81,7 @@ export default function Navbar() {
       name: "Student Empowerment",
       dropdown: [
         { name: "Flagship Program", href: "/ProgramsPage" },
-        { name: "Other Programs", href: "/Students" },
+        { name: "Other Programs", href: "/OtherPrograms" },
       ],
     },
     { name: " For School", href: "/School" },
