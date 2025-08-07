@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "scolarsunited",
-  description: "ShapingtheNextGen",
+  description: "Shaping The NextGen",
 };
 
 export default function RootLayout({
