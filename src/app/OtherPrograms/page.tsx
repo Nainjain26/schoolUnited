@@ -24,7 +24,7 @@ export default function OtherProgramsComingSoon() {
           Other Programs Coming Soon
         </h1>
         <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-xl mx-auto">
-          We're working on something exciting! Stay tuned for powerful new
+          We&apos;re working on something exciting! Stay tuned for powerful new
           programs that empower students, schools, and communities.
         </p>
       </motion.div>
